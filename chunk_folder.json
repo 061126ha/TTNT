@@ -1,0 +1,735 @@
+[
+  {
+    "chunk_id": 1,
+    "content": "\"\"\"### 1. Mục tiêu\n- PEO 1: Phát triển các giải pháp kỹ thuật để thực hiện các công việc xây dựng, vận hành và quản lý trong lĩnh vực phát triển phần mềm;\n- PEO 2: Có kỹ năng giao tiếp, làm việc nhóm chuyên nghiệp cũng như khả năng giải quyết vấn đề trong môi trường làm việc đa quốc gia;\n- PEO 3: Thực hiện sự liêm chính và cam kết không ngừng cải tiến trong sáng tạo, nghiên cứu và phát triển nghề nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành Khoa học máy tính",
+      "###": "1. Mục tiêu",
+      "word_count": 88
+    }
+  },
+  {
+    "chunk_id": 2,
+    "content": "\"\"\"### 2. Chuẩn đầu ra chương trình đào tạo\n- SO2: Có khả năng thiết kế, triển khai và đánh giá một giải pháp dựa trên nền tảng điện toán để đáp ứng các yêu cầu phù hợp với ngành khoa học máy tính\n- SO3: Có khả năng giao tiếp hiệu quả trong các môi trường làm việc khác nhau.\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành máy tính dựa trên các nguyên tắc pháp lý và đạo đức.\n- SO5: Có khả năng làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật.\n- SO6: Có khả năng áp dụng lý thuyết khoa học máy tính và các nguyên tắc cơ bản về phát triển phần mềm để đề ra các giải pháp dựa trên điện toán.\"\"\"",
+    "metadata": {
+      "#": "Ngành Khoa học máy tính",
+      "###": "2. Chuẩn đầu ra chương trình đào tạo",
+      "word_count": 152
+    }
+  },
+  {
+    "chunk_id": 3,
+    "content": "\"\"\"### 3. Chương trình khung các khóa ngành Khoa học máy tính\n- Chương trình khung ngành Khoa học máy tính khóa 19\n- Chương trình khung ngành Khoa học máy tính khóa 18\n- Chương trình khung ngành Khoa học máy tính khóa 17\n- Chương trình khung ngành Khoa học máy tính khóa 16\n- Chương trình khung ngành Khoa học máy tính khóa 15\n- Chương trình khung ngành Khoa học máy tính khóa 14\n- Chương trình khung ngành Khoa học máy tính khóa 13\n- Chương trình khung ngành Khoa học máy tính khóa 12\n4. Bảng tổng hợp số liệu sinh viên nhập học và tốt nghiệp hằng năm\n| Năm | Năm học | Tuyển sinh | Cử nhân tốt nghiệp |\n| --- | --- | --- | --- |\n| 1 | 2022-2023 | 130 | 69 |\n| 2 | 2021-2022 | 137 | 105 |\n| 3 | 2020-2021 | 152 | 94 |\n| 4 | 2019-2020 | 139 | 125 |\n| 5 | 2018-2019 | 125 | 185 |\"\"\"",
+    "metadata": {
+      "#": "Ngành Khoa học máy tính",
+      "###": "3. Chương trình khung các khóa ngành Khoa học máy tính",
+      "word_count": 183
+    }
+  },
+  {
+    "chunk_id": 4,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/ky-thuat-phan-mem)\nNgành Kỹ thuật phần mềm\nTên chương trình (Tiếng Việt): Cử nhân Kỹ thuật phần mềm\nTên chương trình (Tiếng Anh): Bachelor in Software Engineering\nTên ngành: Kỹ thuật phần mềm\nMã ngành đào tạo: 7480103\"\"\"",
+    "metadata": {
+      "#": "Ngành Kỹ thuật phần mềm",
+      "word_count": 37
+    }
+  },
+  {
+    "chunk_id": 5,
+    "content": "\"\"\"### 1. Mục tiêu đào tạo (PEO)\n- Mục tiêu chung:\nĐào tạo người học có kiến thức chuyên môn vững vàng, kiến thức cơ bản về khoa học, công nghệ; có kỹ năng thực hành nghề nghiệp; có khả năng vận dụng kiến thức, kỹ năng một cách sáng tạo; có khả năng làm việc độc lập hoặc theo nhóm, có tinh thần tự chủ và trách nhiệm trong quá trình hoạt động nghề nghiệp để giải quyết các vấn đề liên quan đến lĩnh vực Kỹ thuật phần mềm trong môi trường đa ngành và quốc tế.\n- Mục tiêu cụ thể (PEO):\nPEO 1: Phát triển các giải pháp để thực hiện các công việc thiết kế, dịch vụ kỹ thuật và quản lý trong lĩnh vực Kỹ thuật phần mềm;\nPEO 2: Làm việc chuyên nghiệp để thực hiện công việc trong môi trường đa quốc gia;\nPEO 3: Phát huy sự trung thực, trách nhiệm và cam kết chất lượng trong quá trình học tập và phát triển nghề nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành Kỹ thuật phần mềm",
+      "###": "1. Mục tiêu đào tạo (PEO)",
+      "word_count": 175
+    }
+  },
+  {
+    "chunk_id": 6,
+    "content": "\"\"\"### 2. Chuẩn đầu ra chương trình đào tạo (SO)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau\n- SO3: Tham gia hiệu quả vào các nhóm chuyên môn với vai trò thành viên và trưởng nhóm\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành máy tính dựa trên các nguyên tắc pháp lý và đạo đức\n- SO5: Khả năng áp dụng thiết kế kỹ thuật để đưa ra các giải pháp đáp ứng nhu cầu cụ thể, đồng thời cân nhắc đến sức khỏe, sự an toàn và phúc lợi cộng đồng cũng như các yếu tố toàn cầu, văn hóa, xã hội, môi trường và kinh tế\n- SO6: Khả năng phát triển và tiến hành thử nghiệm phù hợp, phân tích, diễn giải dữ liệu, và sử dụng phán đoán kỹ thuật để rút ra kết luận\n- SO7: Khả năng học tập suốt đời và tư duy khởi nghiệp\"\"\"",
+    "metadata": {
+      "#": "Ngành Kỹ thuật phần mềm",
+      "###": "2. Chuẩn đầu ra chương trình đào tạo (SO)",
+      "word_count": 193
+    }
+  },
+  {
+    "chunk_id": 7,
+    "content": "\"\"\"### 3. Tiêu chí đánh giá (PI)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp, trong đó:\nPI 1.1: Áp dụng kiến thức khoa học xã hội và pháp luật trong quá trình hoạt động nghề nghiệp\nPI 1.2: Áp dụng kiến thức toán, khoa học tự nhiên, kỹ thuật để xác định, mô tả và giải quyết các vấn đề kỹ thuật phức tạp\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau, trong đó:\nPI 2.1: Giao tiếp hiệu quả bằng văn bản trong môi trường chuyên môn\nPI 2.2: Giao tiếp hiệu quả bằng văn bản trong môi trường xã hội\nPI 2.3: Khả năng thuyết trình hiệu quả\n- SO3: Tham gia hiệu quả vào các nhóm chuyên môn với vai trò thành viên và trưởng nhóm, trong đó:\nPI 3.1: Thành lập nhóm làm việc\nPI 3.2: Triển khai hiệu quả kế hoạch làm việc nhóm và đóng góp vào công việc nhóm\nPI 3.3: Điều phối nhóm làm việc hiệu quả với vai trò người đứng đầu\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành máy tính dựa trên các nguyên tắc pháp lý và đạo đức, trong đó:\nPI 4.1: Khả năng nhận thức trách nhiệm nghề nghiệp trong thực hành điện toán\nPI 4.2: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên các nguyên tắc pháp luật\nPI 4.3: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên đạo đức nghề nghiệp\n- SO5: Khả năng áp dụng thiết kế kỹ thuật để đưa ra các giải pháp đáp ứng nhu cầu cụ thể, đồng thời cân nhắc đến sức khỏe, sự an toàn và phúc lợi cộng đồng cũng như các yếu tố toàn cầu, văn hóa, xã hội, môi trường và kinh tế, trong đó:\nPI 5.1: Thiết kế phần mềm đáp ứng nhu cầu cụ thể của người dùng, đảm bảo an toàn và tác động tích cực đến cộng đồng\nPI 5.2: Phát triển phần mềm theo thiết kế, có tính đến yếu tố toàn cầu, văn hóa, xã hội, môi trường và kinh tế\n- SO6: Khả năng phát triển và tiến hành thử nghiệm phù hợp, phân tích, diễn giải dữ liệu, và sử dụng phán đoán kỹ thuật để rút ra kết luận, trong đó:\nPI 6.1: Lập kế hoạch kiểm thử\nPI 6.2: Thiết kế kịch bản và thực thi kiểm thử\nPI 6.3: Xây dựng báo cáo kiểm thử\n- SO7: Khả năng học tập suốt đời và tư duy khởi nghiệp, trong đó:\nPI 7.1: Lập và thực hiện kế hoạch tự học, tự nghiên cứu để nâng cao trình độ chuyên môn\nPI 7.2: Vận dụng kiến thức đổi mới sáng tạo và tư duy khởi nghiệp để thiết kế và thuyết trình ý tưởng khởi nghiệp giả định\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 19\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 18\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 17\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 16\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 15\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 14\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 13\n- Chương trình khung ngành Kỹ thuật phần mềm Khóa 12\"\"\"",
+    "metadata": {
+      "#": "Ngành Kỹ thuật phần mềm",
+      "###": "3. Tiêu chí đánh giá (PI)",
+      "word_count": 597
+    }
+  },
+  {
+    "chunk_id": 8,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/dai-hoc-he-thong-thong-tin)\nNgành Hệ thống thông tin\nTên chương trình (Tiếng Việt): Cử nhân Hệ thống thông tin\nTên chương trình (Tiếng Anh): Bachelor in Information System\nTên ngành: Hệ thống thông tin\nMã ngành đào tạo: 7480104\"\"\"",
+    "metadata": {
+      "#": "Ngành Hệ thống thông tin",
+      "word_count": 37
+    }
+  },
+  {
+    "chunk_id": 9,
+    "content": "\"\"\"### 1. Mục tiêu đào tạo (PEO)\n- Mục tiêu chung:\nĐào tạo người học có kiến thức chuyên môn vững vàng, kiến thức cơ bản về khoa học, công nghệ; có kỹ năng thực hành nghề nghiệp; có khả năng vận dụng kiến thức, kỹ năng một cách sáng tạo; có khả năng làm việc độc lập hoặc theo nhóm, có tinh thần tự chủ và trách nhiệm trong quá trình hoạt động nghề nghiệp để giải quyết các vấn đề liên quan đến lĩnh vực hệ thống thông tin trong môi trường đa ngành và quốc tế.\n- Mục tiêu cụ thể:\nPEO 1: Phát triển các giải pháp kỹ thuật để thực hiện các công việc thiết kế, dịch vụ kỹ thuật và quản lý trong lĩnh vực công nghệ thông tin;\nPEO 2: Làm việc chuyên nghiệp để thực hiện công việc trong môi trường đa quốc gia;\nPEO 3: Phát huy sự trung thực, trách nhiệm và cam kết chất lượng trong quá trình học tập và phát triển nghề nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành Hệ thống thông tin",
+      "###": "1. Mục tiêu đào tạo (PEO)",
+      "word_count": 176
+    }
+  },
+  {
+    "chunk_id": 10,
+    "content": "\"\"\"### 2. Chuẩn đầu ra chương trình đào tạo (SO)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp;\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau;\n- SO3: Làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật;\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức;\n- SO5: Thiết kế, triển khai và đánh giá một giải pháp dựa trên nền tảng điện toán để đáp ứng các yêu cầu phù hợp với ngành hệ thống thông tin;\n- SO6: Có khả năng hỗ trợ chuyển giao, vận hành, quản lý hệ thống thông tin;\n- SO7: Có khả năng học tập suốt đời và tinh thần khởi nghiệp\"\"\"",
+    "metadata": {
+      "#": "Ngành Hệ thống thông tin",
+      "###": "2. Chuẩn đầu ra chương trình đào tạo (SO)",
+      "word_count": 162
+    }
+  },
+  {
+    "chunk_id": 11,
+    "content": "\"\"\"### 3. Tiêu chí đánh giá (PI)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp, trong đó:\nPI 1.1: Áp dụng kiến thức khoa học xã hội và pháp luật trong quá trình hoạt động nghề nghiệp.\nPI 1.2: Phân tích một vấn đề điện toán phức tạp bằng các phương pháp Công nghệ thông tin.\nPI 1.3: Áp dụng các nguyên lý Công nghệ thông tin và các lĩnh vực liên quan khác để xác định giải pháp cho các vấn đề điện toán phức tạp\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau, trong đó:\nPI 2.1: Giao tiếp hiệu quả bằng văn bản trong môi trường chuyên môn.\nPI 2.2: Giao tiếp hiệu quả bằng văn bản trong môi trường xã hội.\nPI 2.3: Khả năng thuyết trình hiệu quả.\n- SO3: Làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật, trong đó:\nPI 3.1: Thành lập nhóm làm việc.\nPI 3.2: Triển khai hiệu quả kế hoạch làm việc nhóm và đóng góp vào công việc nhóm.\nPI 3.3: Điều phối nhóm làm việc hiệu quả với vai trò người đứng đầu.\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức, trong đó:\nPI 4.1: Khả năng nhận định trách nhiệm nghề nghiệp trong thực hành điện toán.\nPI 4.2: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên các nguyên tắc pháp luật.\nPI 4.3: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên đạo đức nghề nghiệp.\n- SO5: Thiết kế, triển khai và đánh giá một giải pháp dựa trên nền tảng điện toán để đáp ứng các yêu cầu phù hợp với ngành hệ thống thông tin, trong đó:\nPI 5.1: Thiết kế được giải pháp phần mềm đáp ứng các yêu cầu điện toán đã cho bằng các công cụ và kỹ thuật của công nghệ thông tin.\nPI 5.2: Triển khai được giải pháp phần mềm đáp ứng các yêu cầu điện toán đã cho bằng các công cụ và kỹ thuật của công nghệ thông tin.\nPI 5.3: Đánh giá được giải pháp phần mềm đáp ứng các yêu cầu điện toán cho trước bằng các kỹ thuật của Công nghệ thông tin.\n- SO6: Có khả năng hỗ trợ chuyển giao, vận hành, quản lý hệ thống thông tin, trong đó:\nPI 6.1: Khả năng chuyển giao hệ thống thông tin\nPI 6.2: Khả năng vận hành hệ thống thông tin\nPI 6.3: Khả năng quản lý hệ thống thông tin\n- SO7: Có khả năng học tập suốt đời và tinh thần khởi nghiệp, trong đó:\nPI 7.1: Lập và thực hiện kế hoạch tự học, tự nghiên cứu để nâng cao trình độ chuyên môn\nPI 7.2: Vận dụng kiến thức đổi mới sáng tạo và tư duy khởi nghiệp để thiết kế và thuyết trình ý tưởng khởi nghiệp giả định\"\"\"",
+    "metadata": {
+      "#": "Ngành Hệ thống thông tin",
+      "###": "3. Tiêu chí đánh giá (PI)",
+      "word_count": 539
+    }
+  },
+  {
+    "chunk_id": 12,
+    "content": "\"\"\"### 4. Chương trình khung các khóa ngành Hệ thống thông tin:\n- Chương trình khung ngành Hệ thống thông tin khóa 19\n- Chương trình khung ngành Hệ thống thông tin khóa 18\n- Chương trình khung ngành Hệ thống thông tin khóa 17\n- Chương trình khung ngành Hệ thống thông tin khóa 16\n- Chương trình khung ngành Hệ thống thông tin khóa 15\n- Chương trình khung ngành Hệ thống thông tin khóa 14\n- Chương trình khung ngành Hệ thống thông tin khóa 13\n- Chương trình khung ngành Hệ thống thông tin khóa 12\"\"\"",
+    "metadata": {
+      "#": "Ngành Hệ thống thông tin",
+      "###": "4. Chương trình khung các khóa ngành Hệ thống thông tin:",
+      "word_count": 100
+    }
+  },
+  {
+    "chunk_id": 13,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/cong-nghe-thong-tin)\nNgành Công nghệ thông tin\nTên chương trình (Tiếng Việt): Cử nhân Công nghệ thông tin\nTên chương trình (Tiếng Anh): Bachelor in Information Technology\nTên ngành: Công nghệ thông tin\nMã ngành đào tạo: 7480201\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ thông tin",
+      "word_count": 37
+    }
+  },
+  {
+    "chunk_id": 14,
+    "content": "\"\"\"### 1. Mục tiêu đào tạo (PEO)\n- Mục tiêu chung:\nĐào tạo và cung cấp nguồn nhân lực chất lượng cao, bồi dưỡng nhân tài; Nghiên cứu khoa học, ứng dụng và chuyển giao công nghệ đáp ứng yêu cầu công nghiệp hóa – hiện đại hóa đất nước; Đảm bảo quốc phòng, an ninh và hội nhập quốc tế.\n- Mục tiêu cụ thể:\nPEO 1: Phát triển các giải pháp kỹ thuật để thực hiện các công việc thiết kế, dịch vụ kỹ thuật và quản lý trong lĩnh vực công nghệ thông tin;\nPEO 2: Làm việc chuyên nghiệp để thực hiện công việc trong môi trường công nghiệp với đội ngũ đa quốc gia;\nPEO 3: Thể hiện sự trung thực, trách nhiệm và cam kết chất lượng trong quá trình học tập và phát triển nghề nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ thông tin",
+      "###": "1. Mục tiêu đào tạo (PEO)",
+      "word_count": 143
+    }
+  },
+  {
+    "chunk_id": 15,
+    "content": "\"\"\"### 2. Chuẩn đầu ra chương trình đào tạo (SO)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp;\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau;\n- SO3: Làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật;\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức;\n- SO5: Thiết kế, triển khai và đánh giá một giải pháp dựa trên nền tảng điện toán để đáp ứng các yêu cầu và phù hợp với ngành công nghệ thông tin;\n- SO6: Sử dụng các phương pháp tiếp cận hệ thống để lựa chọn, phát triển, áp dụng, tích hợp và quản trị các công nghệ điện toán an toàn nhằm đáp ứng yêu cầu của người dùng;\n- SO7: Có khả năng học tập suốt đời và tư duy khởi nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ thông tin",
+      "###": "2. Chuẩn đầu ra chương trình đào tạo (SO)",
+      "word_count": 184
+    }
+  },
+  {
+    "chunk_id": 16,
+    "content": "\"\"\"### 3. Chuẩn đầu ra cấp độ 3/ chỉ số đánh giá hiệu năng:\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp, trong đó:\nPI1.1: Áp dụng kiến thức khoa học xã hội và pháp luật trong quá trình hoạt động nghề nghiệp.\nPI1.2: Phân tích một vấn đề điện toán phức tạp bằng các phương pháp của công nghệ thông tin.\nPI1.3: Áp dụng công nghệ thông tin và các nguyên lý của lĩnh vực liên quan để xác định giải pháp cho các vấn đề điện toán phức tạp\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau, trong đó:\nPI2.1: Giao tiếp hiệu quả bằng văn bản trong môi trường chuyên môn.\nPI2.2: Giao tiếp hiệu quả bằng văn bản trong môi trường xã hội.\nPI2.3: Khả năng thuyết trình hiệu quả.\n- SO3: Làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật, trong đó:\nPI3.1: Khả năng thành lập nhóm làm việc.\nPI3.2: Triển khai hiệu quả kế hoạch làm việc nhóm và đóng góp vào công việc nhóm.\nPI3.3: Điều phối nhóm làm việc hiệu quả với vai trò người đứng đầu.\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức, trong đó:\nPI4.1: Khả năng nhận định trách nhiệm nghề nghiệp trong thực hành điện toán.\nPI4.2: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên các nguyên tắc pháp luật.\nPI4.3: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên đạo đức nghề nghiệp.\n- SO5: Thiết kế, triển khai và đánh giá một giải pháp dựa trên nền tảng điện toán để đáp ứng các yêu cầu và phù hợp với ngành công nghệ thông tin, trong đó:\nPI5.1: Thiết kế được giải pháp phần mềm đáp ứng các yêu cầu điện toán đã cho bằng các công cụ và phương pháp của công nghệ thông tin.\nPI5.2: Triển khai được giải pháp phần mềm đáp ứng các yêu cầu điện toán đã cho bằng các công cụ và phương pháp của công nghệ thông tin.\nPI5.3: Đánh giá được giải pháp phần mềm đáp ứng các yêu cầu điện toán cho trước bằng các phương pháp của công nghệ thông tin.\n- SO6: Sử dụng các phương pháp tiếp cận hệ thống để lựa chọn, phát triển, áp dụng, tích hợp và quản trị các công nghệ điện toán an toàn nhằm đáp ứng yêu cầu của người dùng, trong đó:\nPI6.1: Sử dụng phương pháp tiếp cận hệ thống để lựa chọn giải pháp công nghệ điện toán an toàn đáp ứng mục tiêu của người sử dụng.\nPI6.2: Sử dụng phương pháp tiếp cận hệ thống để phát triển giải pháp công nghệ điện toán an toàn đáp ứng mục tiêu của người sử dụng.\nPI6.3: Sử dụng phương pháp tiếp cận hệ thống để áp dụng giải pháp công nghệ điện toán an toàn đáp ứng mục tiêu của người sử dụng.\nPI6.4: Sử dụng phương pháp tiếp cận hệ thống để tích hợp hệ thống điện toán an toàn đáp ứng mục tiêu của người sử dụng.\nPI6.5: Sử dụng phương pháp tiếp cận hệ thống để quản trị hệ thống điện toán an toàn đáp ứng mục tiêu của người sử dụng.\n- SO7: Có khả năng học tập suốt đời và tư duy khởi nghiệp, trong đó:\nPI7.1: Lập và thực hiện kế hoạch tự học, tự nghiên cứu để nâng cao trình độ chuyên môn.\nPI7.2: Vận dụng kiến thức đổi mới sáng tạo và tư duy khởi nghiệp để thiết kế và thuyết trình ý tưởng khởi nghiệp giả định.\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ thông tin",
+      "###": "3. Chuẩn đầu ra cấp độ 3/ chỉ số đánh giá hiệu năng:",
+      "word_count": 659
+    }
+  },
+  {
+    "chunk_id": 17,
+    "content": "\"\"\"### 4. Chương trình khung các khóa ngành Công nghệ thông tin\n- Chương trình khung ngành Công nghệ thông tin khóa 19_Tiếng Anh\n-Chương trình khung ngành Công nghệ thông tin khóa 19\n- Chương trình khung ngành Công nghệ thông tin khóa 18_Tiếng Anh\n-Chương trình khung ngành Công nghệ thông tin khóa 18\n- Chương trình khung ngành Công nghệ thông tin khóa 17\n- Chương trình khung ngành Công nghệ thông tin khóa 16\n- Chương trình khung ngành Công nghệ thông tin khóa 15\n- Chương trình khung ngành Công nghệ thông tin khóa 14\n- Chương trình khung ngành Công nghệ thông tin khóa 13\n- Chương trình khung ngành Công nghệ thông tin khóa 12\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ thông tin",
+      "###": "4. Chương trình khung các khóa ngành Công nghệ thông tin",
+      "word_count": 122
+    }
+  },
+  {
+    "chunk_id": 18,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/cong-nghe-da-phuong-tien)\nNgành Công nghệ đa phương tiện\nTên chương trình (Tiếng Việt): Cử nhân Công nghệ đa phương tiện\nTên chương trình (Tiếng Anh): Bachelor in Multimedia Technology\nTên ngành: Công nghệ đa phương tiện\nMã ngành đào tạo: 7320113\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ đa phương tiện",
+      "word_count": 40
+    }
+  },
+  {
+    "chunk_id": 19,
+    "content": "\"\"\"### 1. Mục tiêu đào tạo (PEO)\n- Mục tiêu chung:\nĐào tạo người học có kiến thức chuyên môn vững vàng, kiến thức cơ bản về khoa học xã hội, chính trị và pháp luật; có kỹ năng thực hành nghề nghiệp; có khả năng vận dụng kiến thức, kỹ năng một cách sáng tạo; có khả năng làm việc độc lập hoặc theo nhóm, có tinh thần tự chủ và trách nhiệm trong quá trình hoạt động nghề nghiệp để giải quyết các vấn đề liên quan đến lĩnh vực công nghệ thông tin trong môi trường đa ngành và quốc tế.\n- Mục tiêu cụ thể:\nPEO 1: Phát triển các giải pháp kỹ thuật để thực hiện các công việc thiết kế, dịch vụ kỹ thuật và quản lý trong lĩnh vực phát triển sản phẩm tích hợp công nghệ đa phương tiện.\nPEO 2: Làm việc chuyên nghiệp để thực hiện công việc trong môi trường đa quốc gia.\nPEO 3: Phát huy sự trung thực, trách nhiệm và cam kết chất lượng trong quá trình học tập và phát triển nghề nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ đa phương tiện",
+      "###": "1. Mục tiêu đào tạo (PEO)",
+      "word_count": 188
+    }
+  },
+  {
+    "chunk_id": 20,
+    "content": "\"\"\"### 2. Chuẩn đầu ra chương trình đào tạo (SO)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp.\n- SO2: Có khả năng giao tiếp hiệu quả trong các môi trường làm việc khác nhau.\n- SO3: Có khả năng làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật.\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức.\n- SO5: Có khả năng thiết kế, triển khai và đánh giá sản phẩm nội dung số trên nền tảng điện toán để đáp ứng các yêu cầu phù hợp với ngành công nghệ đa phương tiện\n- SO6: Có khả năng thiết kế, triển khai và đánh giá sản phẩm phần mềm tích hợp tài nguyên đa phương tiện trên nền tảng điện toán để đáp ứng các yêu cầu phù hợp với ngành công nghệ đa phương tiện.\n- SO7: Có khả năng học tập suốt đời và tư duy khởi nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ đa phương tiện",
+      "###": "2. Chuẩn đầu ra chương trình đào tạo (SO)",
+      "word_count": 199
+    }
+  },
+  {
+    "chunk_id": 21,
+    "content": "\"\"\"### 3. Tiêu chí đánh giá (PI):\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp, trong đó:\nPI1.1: Áp dụng kiến thức khoa học xã hội và pháp luật trong quá trình hoạt động nghề nghiệp.\nPI1.2: Phân tích một vấn đề điện toán phức tạp bằng các phương pháp Công nghệ thông tin\n- SO2: Có khả năng giao tiếp hiệu quả trong các môi trường làm việc khác nhau, trong đó:\nPI2.1: Giao tiếp hiệu quả bằng văn bản trong môi trường chuyên môn.\nPI2.2: Giao tiếp hiệu quả bằng văn bản trong môi trường xã hội.\nPI2.3: Khả năng thuyết trình hiệu quả.\n- SO3: Có khả năng làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật, trong đó:\nPI3.1: Thành lập nhóm làm việc.\nPI3.2: Triển khai hiệu quả kế hoạch làm việc nhóm và đóng góp vào công việc nhóm.\nPI3.3: Điều phối nhóm làm việc hiệu quả với vai trò người đứng đầu.\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức, trong đó:\nPI4.1: Khả năng nhận định trách nhiệm nghề nghiệp trong thực hành điện toán.\nPI4.2: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên các nguyên tắc pháp luật.\nPI4.3: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên đạo đức nghề nghiệp.\n- SO5: Có khả năng thiết kế, triển khai và đánh giá sản phẩm nội dung số trên nền tảng điện toán để đáp ứng các yêu cầu phù hợp với ngành công nghệ đa phương tiện, trong đó:\nPI5.1: Thiết kế được sản phẩm nội dung số có sử dụng tài nguyên công nghệ đa phương tiện.\nPI5.2: Triển khai được sản phẩm nội dung số có sử dụng tài nguyên công nghệ đa phương tiện.\nPI5.3: Đánh giá được sản phẩm nội dung số có sử dụng tài nguyên công nghệ đa phương tiện.\n- SO6: Có khả năng thiết kế, triển khai và đánh giá sản phẩm phần mềm tích hợp tài nguyên đa phương tiện trên nền tảng điện toán để đáp ứng các yêu cầu phù hợp với ngành công nghệ đa phương tiện, trong đó:\nPI6.1: Thiết kế được sản phẩm phần mềm số có sử dụng tài nguyên công nghệ đa phương tiện.\nPI6.2: Triển khai được sản phẩm phần mềm có sử dụng tài nguyên công nghệ đa phương tiện.\nPI6.3: Đánh giá được sản phẩm phần mềm có sử dụng tài nguyên công nghệ đa phương tiện.\n- SO7: Có khả năng học tập suốt đời và tư duy khởi nghiệp, trong đó:\nPI7.1: Lập và thực hiện kế hoạch tự học, tự nghiên cứu để nâng cao trình độ chuyên môn.\nPI7.2: Vận dụng kiến thức đổi mới sáng tạo và tư duy khởi nghiệp để thiết kế và thuyết trình ý tưởng khởi nghiệp giả định.\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ đa phương tiện",
+      "###": "3. Tiêu chí đánh giá (PI):",
+      "word_count": 527
+    }
+  },
+  {
+    "chunk_id": 22,
+    "content": "\"\"\"### 4. Chương trình khung các khóa ngành Công nghệ đa phương tiện:\n- Chương trình khung ngành Công nghệ đa phương tiện khóa 19\n- Chương trình khung ngành Công nghệ đa phương tiện khóa 18\n- Chương trình khung ngành Công nghệ đa phương tiện khóa 17\"\"\"",
+    "metadata": {
+      "#": "Ngành Công nghệ đa phương tiện",
+      "###": "4. Chương trình khung các khóa ngành Công nghệ đa phương tiện:",
+      "word_count": 49
+    }
+  },
+  {
+    "chunk_id": 23,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/an-toan-thong-tin)\nNgành An toàn thông tin\nNgành An toàn thông tin\nTên chương trình (Tiếng Việt): Cử nhân An toàn thông tin\nTên chương trình (Tiếng Anh): Bachelor in Information Security\nTên ngành: An toàn thông tin\nMã ngành đào tạo: 7480202\"\"\"",
+    "metadata": {
+      "#": "Ngành An toàn thông tin",
+      "word_count": 42
+    }
+  },
+  {
+    "chunk_id": 24,
+    "content": "\"\"\"### 1. Mục tiêu đào tạo\nMục tiêu đào tạo (PEO)\n- Mục tiêu chung:\nĐào tạo người học có kiến thức chuyên môn vững vàng, kiến thức cơ bản về khoa học, công nghệ; có kỹ năng thực hành nghề nghiệp; có khả năng vận dụng kiến thức, kỹ năng một cách sáng tạo; có khả năng làm việc độc lập hoặc theo nhóm, có tinh thần tự chủ và trách nhiệm trong quá trình hoạt động nghề nghiệp để giải quyết các vấn đề liên quan đến lĩnh vực an toàn thông tin trong môi trường đa ngành và quốc tế.\n- Mục tiêu cụ thể:\n- PEO 1: Phát triển các giải pháp kỹ thuật để thực hiện các công việc thiết kế, dịch vụ kỹ thuật và quản lý trong lĩnh vực an toàn thông tin;\n- PEO 2: Làm việc chuyên nghiệp để thực hiện công việc trong môi trường đa quốc gia;\n- PEO 3: Phát huy sự trung thực, trách nhiệm và cam kết chất lượng trong quá trình học tập và phát triển nghề nghiệp.\nPEO 1: Phát triển các giải pháp kỹ thuật để thực hiện các công việc thiết kế, dịch vụ kỹ thuật và quản lý trong lĩnh vực an toàn thông tin;\nPEO 2: Làm việc chuyên nghiệp để thực hiện công việc trong môi trường đa quốc gia;\nPEO 3: Phát huy sự trung thực, trách nhiệm và cam kết chất lượng trong quá trình học tập và phát triển nghề nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành An toàn thông tin",
+      "###": "1. Mục tiêu đào tạo",
+      "word_count": 255
+    }
+  },
+  {
+    "chunk_id": 25,
+    "content": "\"\"\"### 2. Chuẩn đầu ra chương trình đào tạo (SO)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau;\n- SO3: Làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật;\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức;\n- SO5: Có khả năng thiết kế, triển khai và đánh giá một giải pháp dựa trên nền tảng điện toán để đáp ứng các yêu cầu về an toàn thông tin;\n- SO6: Vận dụng lý thuyết và thực hiện các biện pháp đảm bảo an toàn thông tin để duy trì hoạt động của hệ thống khi xuất hiện rủi ro và các mối đe dọa;\n- SO7: Có khả năng học tập suốt đời và tinh thần khởi nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Ngành An toàn thông tin",
+      "###": "2. Chuẩn đầu ra chương trình đào tạo (SO)",
+      "word_count": 181
+    }
+  },
+  {
+    "chunk_id": 26,
+    "content": "\"\"\"### 3. Tiêu chí đánh giá (PI)\n- SO1: Áp dụng các kiến thức cơ bản về khoa học, công nghệ trong quá trình hoạt động nghề nghiệp, trong đó:\nPI 1.1: Áp dụng kiến thức khoa học xã hội và pháp luật trong quá trình hoạt động nghề nghiệp.\nPI 1.2: Phân tích được một vấn đề an toàn thông tin trong thực tiễn.\nPI 1.3: Áp dụng được các nguyên lý tính toán và các chuyên ngành liên quan khác để xác định giải pháp cho các vấn đề an toàn thông tin trong thực tiễn\n- SO2: Giao tiếp hiệu quả trong các môi trường làm việc khác nhau, trong đó:\nPI 2.1: Giao tiếp hiệu quả bằng văn bản trong môi trường chuyên môn.\nPI 2.2: Giao tiếp hiệu quả bằng văn bản trong môi trường xã hội.\nPI 2.3: Khả năng thuyết trình hiệu quả.\n- SO3: Làm việc hiệu quả với vai trò là một thành viên hoặc người đứng đầu trong các nhóm kỹ thuật, trong đó:\nPI 3.1: Thành lập nhóm làm việc.\nPI 3.2: Triển khai hiệu quả kế hoạch làm việc nhóm và đóng góp vào công việc nhóm.\nPI 3.3: Điều phối nhóm làm việc hiệu quả với vai trò người đứng đầu.\n- SO4: Nhận thức được trách nhiệm nghề nghiệp và đưa ra các đánh giá sáng suốt trong thực hành điện toán dựa trên các nguyên tắc pháp lý và đạo đức;\nPI 4.1: Khả năng nhận định trách nhiệm nghề nghiệp trong thực hành điện toán.\nPI 4.2: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên các nguyên tắc pháp luật.\nPI 4.3: Khả năng đánh giá các tình huống trong thực hành điện toán dựa trên đạo đức nghề nghiệp.\n- SO5: Có khả năng thiết kế, triển khai và đánh giá một giải pháp dựa trên nền tảng điện toán để đáp ứng các yêu cầu về an toàn thông tin, trong đó:\nPI 5.1: Thiết kế được giải pháp an toàn thông tin đáp ứng các yêu cầu đã cho trong hệ thống\nPI 5.2: Triển khai được giải pháp an toàn thông tin đáp ứng các yêu cầu đã cho trong hệ thống\nPI 5.3: Đánh giá được giải pháp an toàn thông tin đáp ứng các yêu cầu đã cho trong hệ thống\n- SO6: Vận dụng lý thuyết và thực hiện các biện pháp đảm bảo an toàn thông tin để duy trì hoạt động của hệ thống khi xuất hiện rủi ro và các mối đe dọa, trong đó:\nPI 6.1: Vận dụng lý thuyết đảm bảo an toàn thông tin để duy trì hoạt động của hệ thống khi xuất hiện rủi ro và các mối đe dọa.\nPI 6.2: Thực hiện các biện pháp đảm bảo an toàn thông tin để duy trì hoạt động của hệ thống khi xuất hiện rủi ro và các mối đe dọa.\n- SO7: Có khả năng học tập suốt đời và tinh thần khởi nghiệp.\nPI 7.1: Lập và thực hiện kế hoạch tự học, tự nghiên cứu để nâng cao trình độ chuyên môn, nghiệp vụ.\nPI 7.2: Vận dụng kiến thức đổi mới sáng tạo và tư duy khởi nghiệp để thiết kế và thuyết trình ý tưởng khởi nghiệp giả định.\"\"\"",
+    "metadata": {
+      "#": "Ngành An toàn thông tin",
+      "###": "3. Tiêu chí đánh giá (PI)",
+      "word_count": 561
+    }
+  },
+  {
+    "chunk_id": 27,
+    "content": "\"\"\"### 4. Chương trình khung các khóa ngành An toàn thông tin:\nChương trình khung ngành ATTT Khóa 19\"\"\"",
+    "metadata": {
+      "#": "Ngành An toàn thông tin",
+      "###": "4. Chương trình khung các khóa ngành An toàn thông tin:",
+      "word_count": 19
+    }
+  },
+  {
+    "chunk_id": 28,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/cao-hoc-he-thong-thong-tin)\nThạc sỹ Hệ thống thông tin\nNGÀNH THẠC SỸ HỆ THỐNG THÔNG TIN\nGiấy chứng nhận Kiểm định Thạc sỹ Ngành Hệ thống thông tin\n![Thạc sỹ Hệ thống thông tin](https://sict.haui.edu.vn//media/79/t79162.jpg)\n![Thạc sỹ Hệ thống thông tin](https://sict.haui.edu.vn//media/79/t79162.jpg)\"\"\"",
+    "metadata": {
+      "#": "Thạc sỹ Hệ thống thông tin",
+      "word_count": 38
+    }
+  },
+  {
+    "chunk_id": 29,
+    "content": "\"\"\"### 1. Mục tiêu\nSinh viên tốt nghiệp từ chương trình Thạc sỹ Hệ thống thông tin có thể:\n+ Kiến thức:\nPEO 1: Có kiến thức nền tảng trong lĩnh vực hệ thống thông tin cũng như các kỹ năng thực hành phù hợp để có thể tiếp tục học tập, nghiên cứu chuyên sâu.\nPEO 2: Có kiến thức và kỹ năng thực hành tiên tiến mang tính chất chuyên sâu, được cập nhật các chủ đề mang tính thời sự, các hướng nghiên cứu mũi nhọn trong lĩnh vực hệ thống thông tin.\n+ Kỹ năng:\nPEO 3: Có khả năng nghiên cứu khoa học, hợp tác trong nghiên cứu khoa học và công bố kết quả nghiên cứu, sử dụng được ngoại ngữ đáp ứng yêu cầu thực tế.\n+ Mức tự chủ và trách nhiệm:\nPEO 4: Có khả năng hướng dẫn người khác thực hiện nhiệm vụ và khả năng quản lý, đánh giá, cải tiến hệ thống thông tin để nâng cao hiệu quả hoạt động nghề nghiệp.\"\"\"",
+    "metadata": {
+      "#": "Thạc sỹ Hệ thống thông tin",
+      "###": "1. Mục tiêu",
+      "word_count": 175
+    }
+  },
+  {
+    "chunk_id": 30,
+    "content": "\"\"\"### 2. Chuẩn đầu ra chương trình đào tạo\n- SO1: Có khả năng vận dụng các kiến thức cơ sở ngành Hệ thống thông tin về dữ liệu, tri thức, mô hình hóa và thiết kế hệ thống để giải quyết vấn đề cơ bản trong lĩnh vực chuyên môn.\n- SO2: Có khả năng vận dụng các kiến thức chuyên sâu của ngành Hệ thống thông tin trong: quản trị hệ thống thông tin; đảm bảo an toàn, an ninh hệ thống thông tin; phát triển hệ thống thông tin.\n- SO3: Có khả năng phát hiện vấn đề trong khoa học và thực tiễn cũng như vận dụng tích hợp các kiến thức, kỹ năng, công cụ hiện đại của ngành Hệ thống thông tin và các phương pháp nghiên cứu khoa học để giải quyết vấn đề và công bố kết quả.\n- SO4: Có khả năng hướng dẫn người khác thực hiện nhiệm vụ và khả năng quản lý, đánh giá, cải tiến hệ thống thông tin.\"\"\"",
+    "metadata": {
+      "#": "Thạc sỹ Hệ thống thông tin",
+      "###": "2. Chuẩn đầu ra chương trình đào tạo",
+      "word_count": 172
+    }
+  },
+  {
+    "chunk_id": 31,
+    "content": "\"\"\"### 3. Tiêu chí đánh giá\n- PI1.1: Khả năng phân tích, thiết kế hệ thống thông tin ở mức chuyên sâu.\n- PI1.2: Khả năng quản trị và phân tích dữ liệu.\n- PI1.3: Khả năng biểu diễn, xử lý và quản trị tri thức.\n- PI2.1: Khả năng quản trị hệ thống thông tin.\n- PI2.2: Khả năng đảm bảo an toàn cho hệ thống thông tin.\n- PI2.3: Khả năng phát triển hệ thống thông tin theo một trong các hướng: Hệ thống thông minh, Hệ thống phân tán, Hệ thống nhúng.\n- PI3.1: Khả năng phát hiện vấn đề trong khoa học và thực tiễn.\n- PI3.2: Khả năng vận dụng tích hợp các kiến thức, kỹ năng, công cụ hiện đại của ngành Hệ thống thông tin và các phương pháp nghiên cứu khoa học để giải quyết vấn đề và công bố kết quả.\n- PI4.1: Khả năng hướng dẫn người khác thực hiện nhiệm vụ.\n- PI4.2: Khả năng quản lý, đánh giá, cải tiến hệ thống thông tin.\"\"\"",
+    "metadata": {
+      "#": "Thạc sỹ Hệ thống thông tin",
+      "###": "3. Tiêu chí đánh giá",
+      "word_count": 176
+    }
+  },
+  {
+    "chunk_id": 32,
+    "content": "\"\"\"### 4. Chương trình khung ngành Thạc sỹ Hệ thống thông tin\nChương trình khung ngành Thạc sỹ Hệ thống thông tin.\n![Thạc sỹ Hệ thống thông tin](https://sict.haui.edu.vn//media/78/t78562.jpg)\n![Thạc sỹ Hệ thống thông tin](https://sict.haui.edu.vn//media/78/t78562.jpg)\"\"\"",
+    "metadata": {
+      "#": "Thạc sỹ Hệ thống thông tin",
+      "###": "4. Chương trình khung ngành Thạc sỹ Hệ thống thông tin",
+      "word_count": 34
+    }
+  },
+  {
+    "chunk_id": 33,
+    "content": "\"\"\"## SỰ KIỆN SẮP DIỄN RA\nĐại học Công nghiệp Hà Nội thông báo tuyển sinh liên thông trình độ đại học chính quy năm 2026\nTổ chức gặp mặt học sinh Trường Hoa Kiều Quảng Tây, Trung Quốc\nTổ chức Hội thảo Khoa học Đổi mới và Quản lý Du lịch ICTIM 2026\nCuộc thi viết với chủ đề “Bữa cơm gia đình ấm áp yêu thương” hoạt động kỷ niệm 25 năm Ngày Gia đình Việt Nam\nTổ chức Lễ tốt nghiệp và trao bằng cho sinh viên hệ Cao đẳng năm 2026\nTổ chức Ngày hội Hiến máu tình nguyện - Lễ hội Xuân hồng 2026\"\"\"",
+    "metadata": {
+      "#": "NO_TITLE",
+      "##": "SỰ KIỆN SẮP DIỄN RA",
+      "word_count": 109
+    }
+  },
+  {
+    "chunk_id": 34,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/gioi-thieu)\nGiới thiệu\nQuá trình hình thành và phát triển củaKhoa Công nghệ thông tin - Trường Đại học Công nghiệp, tiền thân của Trường Công nghệ thông tin và Truyền thông- Trường Đại học Công nghiệpcó thể chia làm hai giai đoạn như sau:\"\"\"",
+    "metadata": {
+      "#": "Giới thiệu",
+      "word_count": 45
+    }
+  },
+  {
+    "chunk_id": 35,
+    "content": "\"\"\"### Giai đoạn 1: Từ năm 1999 đến năm 2005.\nKhoa Công nghệ thông tin được thành lập vào ngày 05/07/1999 theo Quyết định số 115/TCHC của Hiệu trưởng Trường Cao Đẳng Công nghiệp Hà Nội.\"\"\"",
+    "metadata": {
+      "#": "Giới thiệu",
+      "###": "Giai đoạn 1: Từ năm 1999 đến năm 2005.",
+      "word_count": 36
+    }
+  },
+  {
+    "chunk_id": 36,
+    "content": "\"\"\"### Giai đoạn 2: Từ năm 2005 đến năm 2024\nSau khi có quyết định 315/2005 QĐ/TTG ngày 2/12/2005 của Thủ tướng Chính phủ về việc thành lập Trường Đại học Công nghiệp Hà Nội trên cơ sở Trường Cao đẳng Công nghiệp Hà Nội, từ đây Khoa Công nghệ thông tin có thêm chức năng đào tạo bậc đại học.\"\"\"",
+    "metadata": {
+      "#": "Giới thiệu",
+      "###": "Giai đoạn 2: Từ năm 2005 đến năm 2024",
+      "word_count": 61
+    }
+  },
+  {
+    "chunk_id": 37,
+    "content": "\"\"\"### Từ ngày 1/1/2025: Trường Công nghệ Thông tin và Truyền thông\nTrường Công nghệ Thông tin và Truyền thông (SICT), được thành lập trên cơ sở phát triển từ Khoa Công nghệ Thông tin - Trường Đại học Công nghiệp Hà Nội. Sự ra đời của Trường Công nghệ Thông tin và Truyền thông đánh dấu một bước ngoặt quan trọng trong quá trình tái cấu trúc mô hình tổ chức, là trường thành viên thứ 4 được thành lập thuộc Trường Đại học Công nghiệp Hà Nội theo Nghị quyết số 73/NQ-HĐT ngày 16/12/2024 của Hội đồng trường Trường Đại học Công nghiệp Hà Nội. Đây không chỉ là một bước tiến chiến lược, mà còn là nền tảng vững chắc, là bước đệm quan trọng đưa Trường Đại học Công nghiệp Hà Nội hoàn thành mục tiêu trở thành Đại học Công nghiệp Hà Nội với mô hình đào tạo tiên tiến, hội nhập quốc tế.\nTrong các năm qua, đã có hàng nghìn sinh viên củaKhoa Công nghệ thông tin - Trường Đại học Công nghiệptrước đây vàTrường Công nghệ thông tin và Truyền thông -Trường Đại học Công nghiệpngày nay ra trường, làm việc. Phần lớn các em làm đúng ngành nghề đào tạo. Các em đã có chỗ đứng vững chắc trong xã hội và đồng thời chính các em đã làm cho vị thế của SICT cũng như của Nhà trường được nâng lên...xem tiếp\"\"\"",
+    "metadata": {
+      "#": "Giới thiệu",
+      "###": "Từ ngày 1/1/2025: Trường Công nghệ Thông tin và Truyền thông",
+      "word_count": 242
+    }
+  },
+  {
+    "chunk_id": 38,
+    "content": "\"\"\"## 1. Quá trình hình thành và phát triển\nQuá trình hình thành và phát triển của Khoa Công nghệ thông tin - Trường Đại học Công nghiệp Hà Nội, tiền thân của Trường Công nghệ thông tin và Truyền thông Trường Đại học Công nghiệp Hà Nội có thể chia làm hai giai đoạn như sau:\"\"\"",
+    "metadata": {
+      "#": "TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG",
+      "##": "1. Quá trình hình thành và phát triển",
+      "word_count": 57
+    }
+  },
+  {
+    "chunk_id": 39,
+    "content": "\"\"\"### *Giai đoạn 1: Từ năm 1999 đến năm 2005\nKhoa Công nghệ thông tin -Trường Đại học Công nghiệp Hà Nội được thành lập ngày 05/07/1999 theo Quyết định số 115/TCHC của Hiệu trưởng Trường Cao Đẳng Công nghiệp Hà Nội. Khi thành lập, Khoa chỉ có 07 cán bộ giáo viên được trang bị hơn 20 máy vi tính với khối lượng công việc lớn và mới. Tập thể cán bộ, giáo viên của Khoa đã tập trung nhiều công sức để xây dựng Khoa. Năm đó, khoa đã tuyển được 6 lớp Trung học và 7 lớp Cao đẳng Tin.\"\"\"",
+    "metadata": {
+      "#": "TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG",
+      "##": "1. Quá trình hình thành và phát triển",
+      "###": "*Giai đoạn 1: Từ năm 1999 đến năm 2005",
+      "word_count": 103
+    }
+  },
+  {
+    "chunk_id": 40,
+    "content": "\"\"\"### * Giai đoạn 2: Từ năm 2005 đến năm 2024\nSau khi có quyết định 315/2005 QĐ/TTG ngày 2/12/2005 của Thủ tướng Chính phủ về việc thành lập Trường Đại học Công nghiệp Hà Nội trên cơ sở Trường Cao đẳng Công nghiệp Hà Nội, từ đây Khoa Công nghệ thông tin (CNTT) có thêm chức năng đào tạo bậc đại học.\nKhoa CNTT có chức năng đào tạo nguồn nhân lực CNTT, hiện tại khoa có các hệ Cao đẳng, Đại học, liên thông từ Trung cấp lên Đại học và liên thông từ Cao đẳng lên Đại học, Thạc sỹ. Cùng với việc đào tạo, khoa còn có nhiệm vụ nghiên cứu khoa học. Hàng năm khoa đã có rất nhiều công trình nghiên cứu khoa học phục vụ cho công tác dạy và học trong khoa cũng như trong nhà trường.\nNgày 15 tháng 10 năm 2007 Trường đã ký hợp đồng liên kết đào tạo và nghiên cứu khoa học với Viện CNTT để cùng hợp tác và giúp đỡ khoa phát triển hơn nữa trong lĩnh vực đào tạo nguồn nhân lực CNTT.\nTrong các năm qua, đã có hàng nghìn sinh viên của khoa ra trường, làm việc. Phần lớn các em làm đúng ngành nghề đào tạo. Các em đã có chỗ đứng vững chắc trong xã hội và đồng thời chính các em đã làm cho vị thế của khoa cũng như của nhà trường được nâng lên.\"\"\"",
+    "metadata": {
+      "#": "TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG",
+      "##": "1. Quá trình hình thành và phát triển",
+      "###": "* Giai đoạn 2: Từ năm 2005 đến năm 2024",
+      "word_count": 247
+    }
+  },
+  {
+    "chunk_id": 41,
+    "content": "\"\"\"### * Từ ngày 1/1/2025: Trường Công nghệ Thông tin và Truyền thông\nTrường Công nghệ Thông tin và Truyền thông (SICT), được thành lập trên cơ sở phát triển từ Khoa Công nghệ Thông tin - Trường Đại học Công nghiệp Hà Nội. Sự ra đời của Trường Công nghệ Thông tin và Truyền thông đánh dấu một bước ngoặt quan trọng trong quá trình tái cấu trúc mô hình tổ chức, là trường thành viên thứ 4 được thành lập thuộc Trường Đại học Công nghiệp Hà Nội theo Nghị quyết số 73/NQ-HĐT ngày 16/12/2024 của Hội đồng trường Trường Đại học Công nghiệp Hà Nội. Đây không chỉ là một bước tiến chiến lược, mà còn là nền tảng vững chắc, là bước đệm quan trọng đưa Trường Đại học Công nghiệp Hà Nội hoàn thành mục tiêu trở thành Đại học Công nghiệp Hà Nội với mô hình đào tạo tiên tiến, hội nhập quốc tế.\nVideo giới thiệu về Trường Công nghệ thông tin và Truyền thông\"\"\"",
+    "metadata": {
+      "#": "TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG",
+      "##": "1. Quá trình hình thành và phát triển",
+      "###": "* Từ ngày 1/1/2025: Trường Công nghệ Thông tin và Truyền thông",
+      "word_count": 172
+    }
+  },
+  {
+    "chunk_id": 42,
+    "content": "\"\"\"## 2. Thành tích đạt được\nTrải qua 20 năm xây dựng và phát triển. Với sự nỗ lực phấn đấu, đoàn kết, thống nhất, phát huy trí tuệ tập thể của CBGV và HSSV Trường Công nghệ thông tin và Truyền thông. Trong những năm vừa qua Tập thể CBGV và HSSV của Trường đã đạt được những thành tựu to lớn trong các phong trào thi đua dạy tốt, học tốt, tham gia NCKH, phong trào văn hóa văn nghệ, thể dục thể thao. Góp phần vào sự phát triển lớn mạnh của nhà trường.\n* Bằng khen của Thủ tướng, của Bộ Công thương:\n- Bằng khen của Thủ tướng tặng Khoa vì đã có thành tích trong công tác, góp phần vào sự nghiệp xây dựng Chủ nghĩa xã hội và Bảo vệ Tổ quốc năm 2014.\n- Trong lễ kỷ niệm 125 truyền thống trường Đại học Công nghiệp Hà Nội, Tiến sĩ Đặng Trọng Hợp - Bí thư chi bộ Trường Công nghệ Thông tin và Truyền thông đã vinh dự được Thứ trưởng Bộ công thương ông Nguyễn Sinh Nhật Tân trao bằng khen của Thủ tướng chính phủ “Đã có thành tích trong công tác từ năm 2018 đến năm 2022 góp phần xây dựng chủ nghĩa và bảo vệ Tổ quốc”.\n- Trong lễ kỷ niệm 42 năm Ngày Nhà giáo Việt Nam 20/11 Trường Đại học Công Nghiệp Hà Nội, PGS. TS. Trần Đăng Hưng - Trưởng bộ môn Hệ thống thông tin vinh dự được Nhà nước phong tặng danh hiệu Nhà giáo ưu tú năm học 2023-2024.\n- Trong lễ kỷ niệm 42 năm Ngày Nhà giáo Việt Nam 20/11 Trường Đại học Công Nghiệp Hà Nội, TS. Nguyễn Bá Nghiễn - Trưởng bộ môn Kỹ thuật và Mạng máy vinh dự được Nhà trường phong tặng danh hiệu Nhà giáo tiêu biểu năm học 2023-2024.\n* Chứng nhận kiểm định:\n- Ngày 07/10/2024, chương trình đào tạo trình độ thạc sỹ ngành Hệ thống thông tin – Trường Công nghệ Thông tin và Truyền thông - Trường Đại học Công nghiệp Hà Nội đã đạt chứng nhận Kiểm định chất lượng giáo dục theo tiêu chuẩn chất lượng giáo dục của Bộ Giáo dục Đào tạo.\n![KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/79/t79531.jpg)\n![KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/79/t79531.jpg)\n- Chương trình cử nhân ngành khoa học máy tính Trường Đại học Công Nghiệp Hà Nội được Ủy ban kiểm định các chương trình máy tính (CAC) của ABET công nhận đạt kiểm định quốc tế năm 2024.\n![KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/79/t79532.jpg)\n![KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/79/t79532.jpg)\n* Thi OLYMPIC tin học:\n- Năm 2004: Nhất đồng đội, 2 Nhì cá nhân, 1 giải Ba cá nhân.\n- Năm 2005: Nhì đồng đội, 01 giải Ba cá nhân, 2 KK cá nhân.\n- Năm 2006: Nhì đồng đội, 1 Nhì cá nhân, 2 KK cá nhân.\n- Năm 2007: 1 Nhì cá nhân, 1 Ba cá nhân, 1 KK cá nhân.\n- Năm 2008: 1 Nhì cá nhân, 1 Ba cá nhân, 2 KK cá nhân\n- Năm 2009: 01 Nhì cá nhân, 02 KK cá nhân.\n- Năm 2010: 01 Ba cá nhân, 02 KK cá nhân.\n- Năm 2011: 01 Nhất cá nhân, 02 KK cá nhân.\n- Năm 2012: 1 Nhì cá nhân, 2 Ba cá nhân, 2 KK cá nhân\n- Năm 2013: 01 Ba cá nhân, 02 KK cá nhân.\n- Năm 2015: 02 giải Ba\n- Năm 2016: 02 giải Ba cấp Quốc gia\n- Năm 2017: 03 giải Khuyến khích cấp Quốc gia\n- Năm 2018: 01 giải Nhì, 03 giải Ba cấp Quốc gia.\n- Năm 2020: 01 giải Nhất, 01 giải Nhì, 01 giải Ba cho Team.\n- Năm 2022: Đồng giải 3 giải ICPC Asia Hanoi 2021, 01 giải nhì và 01 giải KK Olympic chuyên. 01 giải nhì và 02 giải ba Olympic không chuyên. 01 giải nhất, 01 giải nhì và 01 giải 3 Procon tại cuộc thi Olympic Tin học sinh viên Việt Nam lần thứ 30 , Procon và Kỳ thi Lập trình sinh viên quốc tế ICPC Asia Hanoi 2021.\n- Năm 2023: Top 4 Procon 2023 tại Nhật Bản. 01 giải Nhất tại cuộc thi Procon Việt Nam năm 2023. 01 giải Nhì khối chuyên Tin trong cuộc thi Olympic Tin học SV Việt Nam năm 2023. 01 giải Ba khối không chuyên Tin trong cuộc thi Olympic Tin học SV Việt Nam năm 2023. 01 giải Ba ICPC Quốc gia.\n- Năm 2024: 01 giải Ba tại Kỳ thi ICPC Northern Vietnam 2024 (Đội thi HaUI.Wise_Owls gồm 3 SV: Nguyễn Duy Tuấn Anh CNTT1-K17, Nguyễn Viết Vượng KHMT1-K16, Nguyễn Huy Hoàng KHMT2-K18).\n- TẠI KỲ THI OLYMPIC TIN HỌC SINH VIÊN VÀ ASIA ICPC NĂM 2024\n+ TS. Phạm Văn Hà - Hiệu phó Trường Công nghệ Thông tin và Truyền thông,Trường Đại học Công Nghiệp Hà Nội được Liên hiệp các Hội Khoa học và Kỹ thuật Việt Nam trao tặng Bằng khen vì đã có thành tích xuất sắc trong công tác tổ chức và bồi dưỡng sinh viên tham dự các Kỳ thi Olympic Tin học sinh viên Việt Nam và Kỳ thi Lập trình sinh viên quốc tế ICPC.\n+ TS. Đặng Trọng Hợp - Hiệu trưởng Trường Công nghệ Thông tin và Truyền thông , PGS.TS.Nguyễn Thị Kim Sơn - Hiệu phó Trường Công nghệ Thông tin và Truyền thông, ThS. Nguyễn Trung Phú - giảng viên Trường Công nghệ Thông tin và Truyền thông vinh dự được Hội tin học Việt Nam trao tặng Bằng khen vì đã có đóng góp xuất sắc tổ chức Kỳ thi Olympic Tin học Sinh viên Việt Nam lần thứ 33 (OLP’24), Procon và Kỳ thi lập trình sinh viên quốc tế ICPC Asia Hanoi 2024.\nGiải Nhì Procon Việt Nam đội SV: Nguyễn Duy Tuấn Anh CNTT1-K17, Nguyễn Thế Anh CNTT4-K17\n![🥈](https://sict.haui.edu.vn/media/-202412/t-161035323.jpg)\n![🥈](https://sict.haui.edu.vn/media/-202412/t-161035323.jpg)\nGiải Nhì Procon Việt Nam đội SV: Nguyễn Duy Minh Quân CNTT1-K16, Phạm Văn Hùng Cơ khí 1-K17\n![🥈](https://sict.haui.edu.vn/media/-202412/t-161035323.jpg)\n![🥈](https://sict.haui.edu.vn/media/-202412/t-161035323.jpg)\nGiải Nhì Khối Chuyên tin : Nguyễn Duy Tuấn Anh CNTT1-K17, Nguyễn Duy Minh Quân CNTT1-K16, Trần Đoàn Xuân Thành CNTT7-K16\n![🥈](https://sict.haui.edu.vn/media/-202412/t-161035323.jpg)\n![🥈](https://sict.haui.edu.vn/media/-202412/t-161035323.jpg)\nGiải Ba khối không chuyên tin: Phạm Văn Hùng Cơ khí 1-K17\n![🥉](https://sict.haui.edu.vn/media/-202412/t-161035326.jpg)\n![🥉](https://sict.haui.edu.vn/media/-202412/t-161035326.jpg)\nGiải Khuyến khích ICPC Quốc gia đội SV: Nguyễn Duy Tuấn Anh CNTT1-K17, Trần Đoàn Xuân Thành CNTT7-K16, Nguyễn Viết Vượng KHMT1-K16.\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\nGiải Khuyến khích khối không chuyên tin: Lâm Đức Cương ĐTVT, Phạm Văn Hùng Cơ khí 1-K17, Đỗ Đình Long - Cơ ĐT\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\nGiải Khuyến khích Khối thi Phần mềm nguồn mở đội SV: Phạm Đăng Đông CNTT3-K16, Nguyễn Thị Trang KTPM3-K16, Đỗ Trung Hòa KTPM2-K17\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\nGiải Khuyến khích Khối thi Phần mềm nguồn mở đội SV: Phạm Đình Tiến KTPM1-K16, Nguyễn Tiến Kiên CNTT7K16, Đặng Hoàng Phương KHMT2-K16, Nguyễn Duy Minh Quân CNTT1-K16, Trần Đoàn Xuân Thành CNTT7-K16, Nguyễn Duy Tuấn Anh CNTT1-K17, Nguyễn Viết Vượng KHMT1-K16, Phạm Văn Hùng Cơ khí 1-K17, Nguyễn Mạnh Thắng TDH2-K18, Nguyễn Thị Khánh Linh NNA2-K19.\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\n![🏅](https://sict.haui.edu.vn/media/-202412/t-161035327.jpg)\n* Thi tay nghề cấp Thành phố:\n- Năm 2008: 01 giải Nhất, 01 giải Nhì, 02 giải Ba, 02 giải KK.\n- Năm 2009: 01 giải Nhì, 03 giải Ba, 02 giải KK.\n- Năm 2010: 01 giải Nhất, 03 giải Ba, 03 giải KK\n- Năm 2011: 02 giải Nhất, 04 giải Nhì, 01 giải Ba.\n- Năm 2012: 02 giải Nhất, 01 giải Nhì, 01 giải Ba.\n- Năm 2013: 01 giải Nhất, 01 giải KK.\n- Năm 2014: 01 giải Nhất, 04 giải KK.\n- Năm 2015: 02 giải Nhì, 02 giải Ba\n- Năm 2016: 01 giải Nhì, 01 giải Ba, 01 giải Khuyến khích\n- Năm 2018: 01 giải Nhì, 02 giải Ba, 01 giải Khuyến khích\n- Năm 2023: 01 giải Nhất nghề giải pháp phần mềm CNTT, 01 giải Ba nghề giải pháp phần mềm CNTT, 02 giải Khuyến khích nghề Thiết kế đồ họa.\n- Năm 2024: Sinh viên Nguyễn Tiến Kiên - Lớp Đại học CNTT7K16 đón nhận Bằng khen của Chủ tịch UBND TP Hà Nội đã có thành tích tại Kỳ thi Kỹ năng nghề TP Hà Nội năm 2023.\n* Thi Học sinh giỏi Thành phố:Từ năm 2003 đến nay đội tuyển học sinh giỏi Thành phố của khoa Công nghệ thông tin luôn đạt nhiều thành tích cao:\n- Năm 2007: 02 giải Nhì Thành phố.\n- Năm 2008: 01 giải Nhất, 03 giải Nhì Thành phố.\n- Năm 2009: 02 giải Nhất, 01 giải Nhì.\n- Năm 2010: 01 giải Nhất; 05 giải Nhì; 02 giải Ba.\n- Năm 2011: 02 giải Nhì, 04 giải Ba.\n* Thi Tay nghề cấp Bộ Công thương:\n- Năm 2005: 01 giải Ba; 01 giải KK.\n- Năm 2006: 01 giải Ba.\n- Năm 2008: 02 giải Ba; 02 giải KK.\n- Năm 2010: 01 giải Nhất; 01 giải Nhì; 04 giải Ba; 04 giải KK.\n- Năm 2012: 01 giải Nhất; 02 giải Ba.\n- Năm 2014: 01 giải Nhì; 02 giải Ba, 02 giải KK.\n- Năm 2016: 02 giải Nhì, 02 giải KK.\n- Năm 2018: 02 giải Nhì, 01 giải Ba, 01 giải KK.\n* Thi Tay nghề ASEAN:\n- Năm 2015: 01 giải Nhì\n* Thi Tay nghề cấp Quốc gia:\n- Năm 2006: 01 giải Ba.\n- Năm 2008: 01 giải Nhì.\n- Năm 2010: 02 giải KK.\n- Năm 2012: 01 giải Nhì, 02 giải Ba, 01 giải KK.\n- Năm 2014: 01 giải Nhất, 01 giải Ba.\n- Năm 2015: 01 giải Ba\n- Năm 2016: Cấp thành phố: 01 Giải Nhì nghề Giải pháp phần mềm CNTT, 01 Giải Khuyến khích và 01 Giải Ba nghề quản trị hệ thống mạng CNTT; Cấp Bộ: 01 Giải Nhì và 01 Giải Khuyến khích nghề Quản trị hệ thống mạng CNTT, 01 Giải Nhì và 01 Giải Khuyến khích nghề Giải pháp phần mềm CNTT; Cấp Quốc Gia: Giải Ba nghề Giải pháp phần mềm CNTT. Huy chương Bạc, giải Nhì tại kỳ thi tay nghề Asean tại Malaysia.\n- Năm 2018: Cấp thành phố: 02 giải Nhì, 01 giải Ba, 01 giải Khuyến khích; Cấp Bộ: 02 giải Nhì, 01 giải Ba, 01 giải Khuyến khích; Cấp Quốc Gia: 02 giải Nhất, 02 giải Khuyến khích.\n- Năm 2020: 01 Huy chương vàng, 01 Huy chương bạc.\n* Nghiên cứu khoa học:\n- Năm 2014: 01 giải Nhất\n- Năm 2016: 04 giải Nhất, 02 giải KK cấp trường\n- Năm 2017: 01 Giải Nhất, 01 giải Nhì, 02 giải Ba, 05 giải Khuyến khích cấp trường\n- Năm 2018: 01 Giải Ba cấp trường. Đề tài: ứng dụng công nghệ nhận dạng ký tự quang học trong phát triển một ứng dụng học Tiếng Anh ngành CNTT trên Android. Giảng viên hướng dẫn: TS Trần Tiến Dũng. Sinh viên: Khuất Trọng Hiếu và Phan Mạnh Cường - Lớp KTPMCLCK9.\n- Năm 2019:\n+ 01 Giải Nhất cấp trường. Đề tài sinh viên: Nghiên cứu ứng dụng Internet of Things vào xây dựng hệ thống nhà kính thông minh chuyên canh cây ngắn ngày.\n+ 01 Giải Nhì cấp trường. Đề tài sinh viên: Nghiên cứu ứng dụng trắc nghiệm tính cách MBTI và John Holland xây dựng thành công Cổng thông tin tư vấn hướng nghiệp, phát triển website thay thế phương pháp hướng nghiệp truyền thống.\n+ 01 Giải Ba cấp trường. Đề tài sinh viên: Nghiên cứu công nghệ thời gian thực và ứng dụng xây dựng hệ thống đăng ký mượn phòng thực hành online khoa CNTT.\n+ 01 Giải Ba cấp trường. Đề tài sinh viên: Hệ thống kết nối, quảng bá cửa hàng online\".\n- Năm 2020:\n+ 01 Giải Nhất cấp trường. Đề tài sinh viên: Xây dựng hệ thống điểm danh sinh viên trên lớp và phòng thi từ bức ảnh chụp khuôn mặt bằng kỹ thuật Deep Learning trên máy tính hiệu năng cao” của nhóm sinh viên nhóm sinh viên Lê Đình Mạnh, Đoàn Văn Quân, Nguyễn Hữu Sơn\n+ 02 Giải Nhì cấp trường. Đề tài sinh viên: “Ứng dụng Machine Learning xây dựng hệ thống tư vấn du lịch” của nhóm sinh viên Lê Hồng Linh, Đặng Tiến Dũng, Bùi Thị Trang do ThS. Trần Hùng Cường hướng dẫn và Nghiên cứu ứng dụng IoT, phát triển hệ thống trồng cây thủy canh” của nhóm sinh viên Nguyễn Thanh Tùng, Bùi Văn Tuấn, Nguyễn Đăng Phương do ThS. Nguyễn Thị Mỹ Bình hướng dẫn\n+ 02 Giải Ba cấp trường. Đề tài sinh viên: Nghiên cứu xây dựng hệ thống cảnh báo cháy rừng – nhóm sinh viên Bùi Văn Tuấn, Nguyễn Thanh Tùng, Nguyễn Đăng Phương do ThS. Nguyễn Thị Mỹ Bình hướng dẫn và Nghiên cứu thuật toán định tuyến ứng dụng xây dựng hệ thống giao hàng thông minh”- nhóm sinh viên Đỗ Mạnh Quang, Chu Trọng Sơn, Lê Thị Hà, Ngô Tiến Mạnh, Lê Thị Quỳnh Trang.\n- Năm 2021:\n+ 01 giải Nhất cấp trường: Đề tài sinh viên: Tự động phát hiện hành vi bất thường trong video dựa trên các đặc trưng khác nhau, ứng dụng cho bài toán phát hiện gian lận thi cử của nhóm sinh viên Hoàng Tùng Lâm, Bùi Ngọc Hải, Đào Lê Huy, Nguyễn Đức Linh, Phan Thành Trung do TS. Vũ Việt Thắng hướng dẫn.+ 01 giải Nhất cấp trường: Đề tài sinh viên: Nghiên cứu xây dựng phòng thí nghiệm hóa học 3D ảo của nhóm sinh viên Đinh Thị Trang, Hà Ngọc Ánh, Nguyễn Hoàng Lan, Trần Thị Thu do ThS. Vũ Minh Yến hướng dẫn.+ 01 giải Nhì cấp trường: Đề tài sinh viên: Quản lý một chuỗi cửa hàng và đưa ra dự báo doanh thu của chuỗi cửa hàng đó trong các năm tiếp theo của sinh viên Trần Quang Trường do TS. Nguyễn Bá Nghiễn hướng dẫn.+ 01 giải Nhì cấp trường: Đề tài sinh viên: Ứng dụng kỹ thuật Deep Learning vào bài toán chống gian lận thi cử của nhóm sinh viên Đỗ Trung Kiên, Nguyễn Tiến Dũng, Đặng Văn Anh, Thảo Mỷ do ThS Lê Thị Thủy hướng dẫn.+ 01 giải Ba cấp trường: Đề tài sinh viên: Nghiên cứu giải pháp đảm bảo an toàn bảo mật thông tin cho hệ thống Internet of Things của nhóm sinh viên Ngô Công Mạnh, Lê Đức Anh, Nguyễn Thị Hồng Gấm, Nguyễn Văn Hoàng do TS. Phạm Văn Hà hướng dẫn.+ 01 giải Ba cấp trường: Đề tài sinh viên: Nghiên cứu Unity 3D và kỹ thuật VR, áp dụng xây dựng ứng dụng du lịch lịch sử ảo của nhóm sinh viên Vũ Việt Dũng, Lưu Thế Minh do Ths Vũ Đức Huy hướng dẫn.+ 01 giải Ba cấp trường: Đề tài sinh viên: Hệ thống cung cấp thông tin đơn vị bảo trợ xã hội và làm từ thiện 4.0 THP của nhóm sinh viên Lê Thị Lan Phương, Nguyễn Thị Thúy Hường do ThS. Nguyễn Thị Hương Lan hướng dẫn.\n- Năm 2022:\n+ 01 giải Nhất cấp trường: Đề tài sinh viên: Nghiên cứu các kỹ thuật của Trí tuệ nhân tạo cùng các mô hình học máy Deep Learning, Support Vector Machine, Transfer Learning và ứng dụng cho bài toán hỗ trợ xử lý bệnh cây trồng trong nông nghiệp của nhóm sinh viên Nguyễn Đức Huy (CN), Nguyễn Viết Dương, Đào Văn Nguyên do TS.Nguyễn Mạnh Cường hướng dẫn.\n+ 01 giải Nhất cấp trường: Đề tài sinh viên: Xây dựng ứng dụng hỗ trợ an toàn trong lái xe bằng công nghệ AI của nhóm sinh viên Lê Anh Tuấn (CN) do ThS. Trần Thanh Hùng hướng dẫn.\n+ 01 giải Nhất cấp trường: Đề tài sinh viên: Xây dựng ứng dụng di động quản lý hoạt động của các thiết bị điện từ xa của nhóm sinh viên Trương Thị Thu Phương (CN), Nguyễn Vũ Chí Tình, Hà Thị Phượng, Hà Văn Phòng do ThS. Nguyễn Trung Phú hướng dẫn.\n+ 01 giải Nhất cấp trường: Đề tài sinh viên: Nghiên cứu phương pháp học tăng cường trong giải bài toán tối ưu của nhóm sinh viên Đào Thị Hồng Phương (CN), Nguyễn Hữu Hoàng, Vũ Văn Hôm, Hồ Trần Quốc Khánh, Nguyễn Quang Anh do ThS. Nguyễn Đức Lưu hướng dẫn.\n+ 01 giải Nhất cấp trường: Đề tài sinh viên: Nghiên cứu bài toán xác định cảm xúc của sinh viên trong các lớp học trực tuyến sử dụng trí tuệ nhân tạo của nhóm sinh viên Phùng Thế Tài (CN), Lê Hoàng Thạch do TS. Trần Tiến Dũng hướng dẫn.\n+ 01 giải Nhì cấp trường: Đề tài sinh viên: Nghiên cứu các kỹ thuật của trí tuệ nhân tạo và các mô hình học máy Deep Learning, Support Vector Machine, Transfer Learning ứng dụng xây dựng hệ thống hỗ trợ các dịch vụ dựa trên định danh tự động của nhóm sinh viên Phạm Ngọc Huân (CN), Phí Trung Hiếu, Nguyễn Lương Bằng do TS. Nguyễn Mạnh Cường hướng dẫn.\n+ 01 giải Nhì cấp trường: Đề tài sinh viên: Nghiên cứu mạng Resnet và ứng dụng cho bài toán phân loại ảnh của nhóm sinh viên Nguyễn Hồng Phong (CN), Đặng Đình Phức, Vi Văn Oanh, Hạ Ngọc Nam, Vũ Thị Bình Yên do TS. Trần Hùng Cường hướng dẫn.\n+ 01 giải Nhì cấp trường: Đề tài sinh viên: Nghiên cứu và xây dựng hệ thống phát hiện đám đông hỗ trợ cảnh báo nguy cơ lây nhiễm virus Corona của nhóm sinh viên Nguyễn Minh Trường (CN), Cù Việt Hưng, Đường Ngọc Khanh, Quách Phương Thảo do ThS. Nguyễn Lan Anh hướng dẫn.\n+ 01 giải Nhì cấp trường: Đề tài sinh viên: Nghiên cứu công nghệ Blockchain và xây dựng sàn đấu giá của nhóm sinh viên Đặng Đức Mạnh (CN), Nguyễn Viết Trí, Bùi Việt Dũng, Hà Văn Hiển do TS. Đặng Trọng Hợp hướng dẫn.\n+ 01 giải Nhì cấp trường: Đề tài sinh viên: Nghiên cứu giải thuật tiến hóa đa nhiệm vụ trong giải quyết bài toán tối ưu của nhóm sinh viên Lê Văn Nghiêm (CN), Hoàng Thị Sao Mai, Tạ Văn Toàn, Nguyễn Quang Linh, Nguyễn Hoàng Minh do TS. Nguyễn Thị Mỹ Bình hướng dẫn.\n+ 01 giải Nhì cấp trường: Đề tài sinh viên: Nghiên cứu giải thuật tiến hóa giải bài toán tối ưu trong mạng cảm biến không dây của nhóm sinh viên Nguyễn Hoàng Long (CN), Nguyễn Trung Thành, Mai Thế Đoàn, Phùng Thế Khánh, Nguyễn Tuấn Đạt do TS. Nguyễn Thị Mỹ Bình hướng dẫn.\n+ 01 giải Nhì cấp trường: Đề tài sinh viên: Xây dựng chatbot thông minh phục vụ công tác tư vấn học tập cho sinh viên khoa Công nghệ thông tin, Đại học công nghiệp Hà Nội của nhóm sinh viên Hoàng Xuân Thiên (CN), Phạm Văn Kiên, Vũ Đình Quân, Lý Thành Lâm, Nguyễn Bá Công do TS. Đỗ Mạnh Hùng hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Nghiên cứu phát triển ứng dụng phân tích hành vi người dùng sử dụng nền tảng học máy ML.NET của nhóm sinh viên Nguyễn Thị Thủy (CN), Lê Mạnh Cường do TS. Phạm Văn Hà hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Điểm danh trong lớp học bằng khuôn mặt ứng dụng kỹ thuật học sâu của nhóm sinh viên Lê Văn Hùng (CN), Nguyễn Đình Tùng Lâm, Nguyễn Thị Thùy Linh, Trần Minh Thắng, Nguyễn Lương Nam Anh do TS. Trần Hùng Cường hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Thu thập chỉ số điện nước tự động ứng dụng kỹ thuật học sâu của nhóm sinh viên Nguyễn Văn Thùy (CN) do ThS. Lê Thị Thủy hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Nghiên cứu các kỹ thuật học máy và ứng dụng vào bài toán phát hiện sản phẩm lỗi của nhóm sinh viên Cao Bá Lộc (CN) do ThS. Vũ Thị Tuyết Mai hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Nghiên cứu các kỹ thuật học máy và ứng dụng xây dựng dây truyền phân loại hoa quả tự động của nhóm sinh viên Lê Quảng Nam (CN), Nguyễn Thành Dương, Vũ Đức Cường do ThS. Mai Thanh Hồng hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Nghiên cứu xử lý multiplayer trong ứng dụng 3D của nhóm sinh viên Đào Văn Nguyên (CN), Phạm Thế Phúc do ThS. Vũ Minh Yến hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Nghiên cứu MongoDB và ứng dụng trong cân bằng tải của nhóm sinh viên Mai Thị Hường (CN), Nguyễn Khắc Huy, Tạ Văn Hiếu, Trần Huy Cảnh do ThS. Nguyễn Thị Hướng Lan hướng dẫn.\n+ 01 giải Ba cấp trường: Đề tài sinh viên: Ứng dụng chuẩn mật mã dữ liệu (DES) vào hỗ trợ thi tuyển sinh đại học của nhóm sinh viên Phạm Việt Anh (CN), Lý Trần Hồng Minh do ThS. Trần Phương Nhung hướng dẫn.\n- Năm 2023:\n+ 01 giải Nhất cấp Trường: Đề tài sinh viên: Nghiên cứu tìm hiểu hệ thống phát hiện hành vi không đội mũ bảo hiểm khi tham gia giao thông ứng dụng trí tuệ nhân tạo do TS. Vũ Việt Thắng hướng dẫn.\n+ 01 giải Nhất cấp Trường: Đề tài sinh viên: Nghiên cứu ứng dụng phương pháp học sâu cho bài toán phát hiện bất thường về trang phục bảo hộ lao động do TS. Phạm Văn Hà hướng dẫn.\n+ 01 giải Nhất cấp Trường: Đề tài sinh viên: Nghiên cứu tìm hiểu kỹ thuật Anti-Spoofing ứng dụng cho bài toán điểm danh tự động dựa trên khuôn mặt do TS. Vũ Việt Thắng hướng dẫn.\n+ 01 giải Nhất cấp Trường: Đề tài sinh viên: Nghiên cứu mạng GAN và ứng dụng tạo ảnh hoạt hình do TS. Trần Hùng Cường hướng dẫn\n+ 01 giải Nhất cấp Trường: Đề tài sinh viên: Nghiên cứu nhận dạng giọng nói và ứng dụng trong tự động ghi biên bản cuộc họp do TS. Đặng Trọng Hợp hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu phương pháp nâng xếp hạng trường đại học trên Webometrics theo tiếp cận khoa học dữ liệu và mạng phức hợp do TS.Trần Tiến Dũng hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu LSTM và ứng dụng trong phân loại văn bản Tiếng Việt do ThS. Trần Việt Hà hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu một số thuật toán AI và ứng dụng nhận diện giọng nói do ThS. Chu Thị Quyên hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu các kỹ thuật của trí tuệ nhân tạo cùng các mô hình học máy Deep Learning, Support Vector Machine, Transfer Learning và ứng dụng cho bài toán hỗ trợ phân loại nguồn gốc sản phẩm do TS. Nguyễn Mạnh Cường hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu mạng Unet và ứng dụng cho phân vùng ảnh do Th.S Đỗ Ngọc Sơn hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu Multilayer Perceptron và ứng dụng trong bài toán phân loại bệnh ung thư phổi do Th.S Nguyễn Thị Cẩm Ngoan hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu xây dựng phòng thực hành ảo 3D tháo lắp động cơ ô tô do ThS. Vũ Minh Yến hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu mạng nơ-ron tích chập và ứng dụng xây dựng hệ thống hỗ trợ coi thi online của trường Đại học Công nghiệp Hà Nội do ThS. Ngô Thị Thanh Hòa hướng dẫn.\n+ 01 giải Nhì cấp Trường: Đề tài sinh viên: Nghiên cứu một số mô hình Deeplearning và ứng dụng trong xây dựng hệ thống điểm danh tự động dựa trên nhận diện khuôn mặt do ThS. Nguyễn Xuân Hoàng hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Nghiên cứu một số thuật toán AI và ứng dụng trong phân loại thư rác do ThS. Nguyễn Thị Cẩm Ngoan hướng dẫn\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Nghiên cứu mạng nơ ron tích chập đồ thị để giải bài toán quy hoạch tuyến tính nguyên hỗn hợp do TS. Nguyễn Thị Mỹ Bình hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Nghiên cứu phát triển ứng dụng tìm bãi đỗ xe thông minh trên nền hệ điều hành Android Automotive do TS. Phạm Văn Hà hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Triển khai ứng dụng theo dõi vận đơn tương tác bằng API và cơ sở dữ liệu Amazon DynamoDB do ThS. Nguyễn Thị Hương Lan hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Nghiên cứu mạng CNN để giải bài toán tối ưu hóa tổ hợp do TS. Nguyễn Thị Mỹ Bình hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Nghiên cứu học sâu hồi quy RNN ứng dụng nhận diện hành vi con người bằng Mediapipe Pose và LSTM Model do ThS. Nguyễn Đức Lưu hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Nghiên cứu và xây dựng hệ thống hỗ trợ nhập thông tin bằng tốt nghiệp trung học phổ thông cho ban tuyển sinh trường Đại học Công Nghiệp Hà Nội do ThS. Nguyễn Lan Anh hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Chẩn đoán ung thư da dựa trên mô hình học sâu do TS. Trần Hùng Cường hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Nghiên cứu thuật toán quy hoạch động trong mô hình học tăng cường để giải bài tối ưu hóa tổ hợp do Th.S Nguyễn Đức Lưu.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: AGV khảo sát và vẽ bản đồ 2D theo đặc thù địa lý do Th.S Nguyễn Trung Phú hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Xây dựng ứng dụng phân loại phim dựa trên các thuật toán phân lớp do Th.S Vũ Thị Tuyết Mai hướng dẫn.\n+ 01 giải Ba cấp Trường: Đề tài sinh viên: Tìm hiểu và vận dụng các công cụ Digital Marketing: Google, Facebook, SEO, Email, Zalo, TikTok trên dự án marketing online do ThS. Ngô Thị Bích Thúy hướng dẫn.\n- Năm 2024: Năm học 2023-2024, hội nghị sinh viên nghiên cứu khoa học của Khoa CNTT có sự tham gia của 61 nhóm với 196 sinh viên. Sau quá trình đánh giá các công trình, hội đồng đã lựa chọn và khen thưởng cho 14 nhóm đạt giải Nhì, 13 nhóm đạt giải Ba, 34 nhóm đạt giải Khuyến khích.\n* Giáo viên dạy giỏi: nhiều giải cao trong các cuộc thi giáo viên giỏi do trường và thành phố Hà Nội tổ chức.\n- Năm 2008: 01 giải Nhất Toàn quốc; 01 giải Nhất Thành phố; 01giải Nhì Thành phố.\n- Năm 2010: 01 giải nhất, 01 giải Nhì Thành phố\n- Năm 2012: 01 giải Ba toàn Quốc, 02 giải Nhì Thành phố.\n- Năm 2014: 01 giải Nhì thành phố\n- Năm 2015: 01 giải Nhất, 01 giải Nhì, 01 giải Ba cấp thành phố\n- Năm 2017: 01 giải Nhất, 01 giải Ba\n- Năm 2018: 01 giải Nhì, 01 giải Khuyến khích\n- Năm 2019: 01 giải Nhì.\n* Hoạt động Công đoàn, Phong trào văn hoá văn nghệ thể dục thể thao:\nTổ chức công đoàn và đoàn thanh niên trong khoa đã tổ chức và tham gia các cuộc thi văn nghệ, thể thao toàn trường đạt thành tích cao.\n- Đồng chí Vũ Thị Tuyết Mai – Tổ trưởng Tổ nữ công Trường Công nghệ Thông tin và Truyền thông Công đoàn Trường Đại học Công Nghiệp Hà Nội vinh dự đón nhận Bằng khen của Ban Chấp hành Công đoàn Công Thương Việt Nam trao tặng vì đã có thành tích xuất sắc trong phong trào thi đua ”Giỏi việc nước, Đảm việc nhà” năm học 2023-2024.\n- Đồng chí Phạm Văn Hiệp được bầu vào Ban Thanh tra Nhân dân nhiệm kỳ 2024-2026 tại Hội nghị viên chức, người lao động; tổng kết năm học 2023 – 2024 và triển khai nhiệm vụ năm học 2024 – 2025.\n- Văn nghệ: Đạt giải Nhất các năm 2003, 2006, 2007, 2015; Nhì các năm 2002, 2005. Đạt giải Nhất thiết kế thời trang năm 2009. Đạt giải Ba toàn đoàn năm 2009; 2011, 2013, 2018. Năm 2022 sinh viên Nguyễn Dương Trọng Nghĩa lớp CNTT4K14 đạt quán quân giọng hát hay SV với \"Bài ca Hà Nội\". Năm 2022 đạt giải Nhất đơn ca, giải Nhì song ca, giải Nhì đồng ca, giải Nhì múa, đạt giải Nhất toàn đoàn tại hội diễn văn nghệ quần chúng năm 2022. Năm 2023 Chi bộ khoa CNTT, chi bộ Trung tâm CNTT, chi bộ Trung tâm GDTC - QPAN, chi bộ Trung tâm Hợp tác quốc tế - Doanh nghiệp đã đạt giải Nhất toàn đoàn cuộc thi \" Học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh\". Năm 2023 sinh viên Lê Đức Huy Khóa 17 đạt giải Ba cuộc thi \" Tìm kiếm tài năng MC 2023\" do Đoàn trường tổ chức. Bằng khen của BCH Công đoàn Công thương Việt Nam tặng đồng chí Nguyễn Thái Cường đã có thành tích xuất sắc trong phong trào thi đua lao động giỏi và xây dựng tổ chức Công đoàn vững mạnh năm học 2022-2023. Tháng 8/2024 Thầy Lê Anh Thắng và Cô Trần Phương Nhung tham gia \"Hội diễn Văn nghệ Các trường Đại học, Cao đẳng Cụm IV hướng tới kỷ niệm 70 năm giải phóng Thủ đô\" và đạt giải Nhất Toàn đoàn. Tháng 10/2024 Thầy Lê Anh Thắng và Cô Trần Phương Nhung tham gia \"Hội diễn Văn nghệ Chào mừng 70 năm giải phóng thủ đô\" tại Học viện âm nhạc và đạt giải Ba toàn đoàn.\n- Bóng đá: Vô địch năm 2003, Nhì năm 2004, Ba năm 2002, Nhất năm 2012, Nhì năm 2013. Nhất 2015. Vô địch bóng đá nữ năm 2022. Đạt giải Ba bóng đá nam năm 2023. Đạt giải phong trào bóng đá nữ năm 2023.\n- Bóng chuyền: đạt giải Nhì nam năm 2009, nhì 2013. Nhì 2016, nhì 2019.\n- Bóng bàn: cô Trần Thị Trinh đạt Huy chương vàng đơn nữ môn bóng bàn, thầy Trần Thái Cường đạt Huy chương vàng đơn nam môn bóng bàn tại Hội thao viên chức, người lao động HaUI năm 2023.\n- Dân vũ: Liên quân Trường Công nghệ Thông tin và Truyền thông đạt giải Phong trào và đạt giải Ba toàn đoàn tại Hội thao viên chức người lao động HaUI năm 2023.\n- Hoạt động khác: Sinh viên Trường Công nghệ Thông tin và Truyền thông đạt giải Nhất tại cuộc thi \"Tìm hiểu an toàn giao thông\" năm 2022 và năm 2023, giải Nhì cuộc thi \"Tìm hiểu an toàn giao thông\" năm 2024. Đội nghệ thuật Istar thuộc LCĐ-LCH SV Trường Công nghệ Thông tin và Truyền thông đạt giải Ba tại cuộc thi \"Sinh viên với biển đảo Tổ quốc\" năm 2022.\n- 5S: Đạt giải Nhì về 5S Khối Đào tạo trong lần 5s thứ 20 chủ đề \"5s-Tháng hành động về an toàn, vệ sinh lao động\" ngày 19/5/2022. Đạt giải Nhất về 5S lần thứ 21 với chủ đề\" 5S- Tháng hành động về an toàn phòng chống cháy nổ\". Đạt giải Ba về 5S lần thứ 22 với chủ đề \"HaUI ngăn nắp gọn gàng, 5S nền tảng vững vàng tiến lên\".\n* SINH VIÊN 5 TỐT:\nSinh viên Vũ Thị Huế, Bùi Bích Diệp, Bùi Huy Hải lớp Đại học HTTT1-K16, Nguyễn Trang Nhung lớp Đại học HTTT2-K16 đạt danh hiệu \"Sinh viên 5 tốt tiêu biểu\" cấp trường năm học 2023-2024. Sinh viên Trần Văn Nhã lớp Đại học KHMT2-K17, Trần Duy Đình Hải lớp Đại học KTPM3-K16, Lê Thị Ngọc, Thân Ngọc Thiện lớp Đại học HTTT1-K16 đạt danh hiệu \"Sinh viên 5 tốt\" cấp trường năm học 2023-2024. Sinh viên Hồ Nam Tú lớp Đại học KHMT1-K16, SV Lê Đình Quốc lớp Đại học KHMT2-K17, Câu lạc bộ hỗ trợ kỹ thuật IT Supporter, Câu lạc bộ Truyền thông FiT Media vinh dự đón nhận Bằng khen của Ban chấp hành Hội SV Trường Đại học Công Nghiệp Hà Nội trao tặng vì đã có thành tích xuất sắc trong công tác Hội và phong trào SV năm học 2023-2024.\n* SINH VIÊN VỚI Ý TƯỞNG KHỞI NGHIỆP:\nVới ý tưởng khởi nghiệp “Game mô phỏng giáo dục kỹ năng mềm cho trẻ em Simukids” Đội thi SVKN 72 gồm sinh viên Thân Ngọc Thiện lớp ĐH HTTT1 Khóa 16 và sinh viên Trần Duy Đình Hải lớp ĐH KTPM3 Khóa 16 của Trường Công nghệ Thông tin và Truyền thông, Trường Đại học Công Nghiệp Hà Nội đã giành giải Xuất sắc Cuộc thi “Sinh viên với ý tưởng khởi nghiệp 2024”.\n=> Với những thành tích đã đạt được trong những năm qua, Trường Công nghệ thông tin và Truyền thông đã liên tục được công nhận là đơn vị tiên tiến xuất sắc. Tập thể Cán bộ giáo viên và học sinh sinh viên Trường Công nghệ Thông tin và Truyền thông đã được tặng nhiều phần thưởng cao quí trong đó có bằng khen của Thủ tướng Chính phủ cho tập thể khoa Công nghệ thông tin năm 2015\"\"\"",
+    "metadata": {
+      "#": "TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG",
+      "##": "2. Thành tích đạt được",
+      "word_count": 5701
+    }
+  },
+  {
+    "chunk_id": 43,
+    "content": "\"\"\"## Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông\n![SƠ ĐỒ TỔ CHỨC](https://sict.haui.edu.vn/media/81/t81764.jpg)\n![SƠ ĐỒ TỔ CHỨC](https://sict.haui.edu.vn/media/81/t81764.jpg)\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "word_count": 21
+    }
+  },
+  {
+    "chunk_id": 44,
+    "content": "\"\"\"### 1. Hiệu trưởng: TS. Đặng Trọng Hợp\n![TS. Đặng Trọng Hợp](https://sict.haui.edu.vn/media/76/t76567.jpg)\n![TS. Đặng Trọng Hợp](https://sict.haui.edu.vn/media/76/t76567.jpg)\nTS. Đặng Trọng Hợp\n* Các nhiệm vụ được phân công:\na) Lãnh đạo, quản lý toàn diện các mặt công tác của Trường theo chức năng, nhiệm vụ, quyền hạn được giao; Làm chủ tịch hội đồng khoa học và đào tạo Trường CNTT &TT và Chủ tịch các hội đồng khác theo quy định;\nb) Trực tiếp phụ trách các mặt công tác:\n- Tổ chức nhân sự, Bồi dưỡng đội ngũ, bảo vệ chính trị nội bộ, Đánh giá xếp loại chất lượng, thi đua khen thưởng, kỷ luật viên chức và người lao động;\n- Hành chính, đối ngoại, truyền thông và quan hệ công chúng;\n- Tài chính, tài sản, đầu tư xây dựng;\n- Ký kết các hợp đồng kinh tế, hợp đồng đào tạo, thực tập; hợp tác doanh nghiệp\n- Công tác phát triển chương trình đào tạo mới;\n- Công tác tuyển sinh;\n- Xây dựng chiến lược, quy hoạch phát triển Trường CNTT &TT\nTổ chức nhân sự, Bồi dưỡng đội ngũ, bảo vệ chính trị nội bộ, Đánh giá xếp loại chất lượng, thi đua khen thưởng, kỷ luật viên chức và người lao động;\nHành chính, đối ngoại, truyền thông và quan hệ công chúng;\nTài chính, tài sản, đầu tư xây dựng;\nKý kết các hợp đồng kinh tế, hợp đồng đào tạo, thực tập; hợp tác doanh nghiệp\nCông tác phát triển chương trình đào tạo mới;\nCông tác tuyển sinh;\nXây dựng chiến lược, quy hoạch phát triển Trường CNTT &TT\nc) Đơn vị phụ trách: Khoa Khoa học máy tính; Phòng tổng hợp; Trung tâm nghiên cứu tiên tiến về ICT.\nd) Sinh hoạt chuyên môn tại Khoa Khoa học máy tính. Sinh hoạt viên chức, đoàn thể tại Trung tâm nghiên cứu và ứng dụng trí tuệ nhân tạo.\n* Thông tin liên lạc:\n- Email:dangtronghop@gmail.com\n- Phòng làm việc: 1206-A1\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "1. Hiệu trưởng: TS. Đặng Trọng Hợp",
+      "word_count": 334
+    }
+  },
+  {
+    "chunk_id": 45,
+    "content": "\"\"\"### 2. Phó Hiệu trưởng: TS. Phạm Văn Hà\n![SƠ ĐỒ TỔ CHỨC](https://sict.haui.edu.vn/media/76/t76569.jpg)\n![SƠ ĐỒ TỔ CHỨC](https://sict.haui.edu.vn/media/76/t76569.jpg)\nTS. Phạm Văn Hà\n* Các nhiệm vụ được phân công:\na) Lĩnh vực phụ trách:\n- Công tác quản lý và tổ chức đào tạo, một số công việc về tuyển sinh, công tác khảo thí cho đào tạo đại học;\n- Công tác quản lý và hỗ trợ sinh viên; Hoạt động các câu lạc bộ sinh viên; Các cuộc thi dành cho sinh viên; Công tác cựu người học;\n- Các hoạt động thực hành, thực tập; Công tác quản lý và bảo dưỡng, bảo trì trang thiết bị thực hành, thí nghiệm;\n- Công tác thanh tra, kiểm tra; công tác 5S, an ninh trật tự;\nCông tác quản lý và tổ chức đào tạo, một số công việc về tuyển sinh, công tác khảo thí cho đào tạo đại học;\nCông tác quản lý và hỗ trợ sinh viên; Hoạt động các câu lạc bộ sinh viên; Các cuộc thi dành cho sinh viên; Công tác cựu người học;\nCác hoạt động thực hành, thực tập; Công tác quản lý và bảo dưỡng, bảo trì trang thiết bị thực hành, thí nghiệm;\nCông tác thanh tra, kiểm tra; công tác 5S, an ninh trật tự;\nb) Đơn vị phụ trách: Khoa Mạng máy tính và Truyền thông; Trung tâm Hợp tác phát triển.\nc) Đảm nhiệm các nhiệm vụ khác khi được Hiệu trưởng phân công.\nd) Sinh hoạt chuyên môn tại Khoa Mạng máy tính và Truyền thông. Sinh hoạt viên chức, đoàn thể tại Phòng Tổng hợp.\n* Thông tin liên lạc:\n- Email:phamvanha@gmail.com\n- Phòng làm việc: 1204A-A1\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "2. Phó Hiệu trưởng: TS. Phạm Văn Hà",
+      "word_count": 283
+    }
+  },
+  {
+    "chunk_id": 46,
+    "content": "\"\"\"### 3. Phó Hiệu trưởng: PGS.TS. Nguyễn Thị Kim Sơn\n![SƠ ĐỒ TỔ CHỨC](https://sict.haui.edu.vn/media/79/t79278.jpg)\n![SƠ ĐỒ TỔ CHỨC](https://sict.haui.edu.vn/media/79/t79278.jpg)\nPGS.TS. Nguyễn Thị Kim Sơn\n* Các nhiệm vụ được phân công:\na) Lĩnh vực phụ trách:\n- Công tác quản lý và tổ chức đào tạo, công tác tuyển sinh, công tác khảo thí cho đào tạo sau đại học;\n- Hoạt động xây dựng chương trình chi tiết, hướng dẫn tổ chức dạy học, mô tả kỹ thuật đánh giá học phần và ngân hàng câu hỏi.\n- Công tác đảm bảo chất lượng, đánh giá cải tiến, kiểm định các chương trình đào tạo;\n- Hợp tác và liên kết đào tạo trong nước và nước ngoài;\n- Các hoạt động công đoàn, đoàn thanh niên; các hoạt động văn hoá, văn nghệ, thể thao, y tế;\nCông tác quản lý và tổ chức đào tạo, công tác tuyển sinh, công tác khảo thí cho đào tạo sau đại học;\nHoạt động xây dựng chương trình chi tiết, hướng dẫn tổ chức dạy học, mô tả kỹ thuật đánh giá học phần và ngân hàng câu hỏi.\nCông tác đảm bảo chất lượng, đánh giá cải tiến, kiểm định các chương trình đào tạo;\nHợp tác và liên kết đào tạo trong nước và nước ngoài;\nCác hoạt động công đoàn, đoàn thanh niên; các hoạt động văn hoá, văn nghệ, thể thao, y tế;\nb) Đơn vị phụ trách: Khoa Công nghệ thông tin;\nc) Đảm nhiệm các nhiệm vụ khác khi được Hiệu trưởng phân công.\nd) Sinh hoạt chuyên môn tại Khoa Công nghệ thông tin. Sinh hoạt viên chức, đoàn thể tại Khoa Công nghệ thông tin.\n* Thông tin liên lạc:\n- Email:nguyenthikimson.haui@gmail.com\n- Phòng làm việc: 1207-A1\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "3. Phó Hiệu trưởng: PGS.TS. Nguyễn Thị Kim Sơn",
+      "word_count": 294
+    }
+  },
+  {
+    "chunk_id": 47,
+    "content": "\"\"\"### BAN CHI ỦY CHI BỘ TRƯỜNG NHIỆM KỲ 2022-2025\n1. Đặng Trọng Hợp – Bí thư\n2. Phạm Văn Hà – Phó Bí thư\n3. Phạm Văn Hiệp - Chi ủy\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "BAN CHI ỦY CHI BỘ TRƯỜNG NHIỆM KỲ 2022-2025",
+      "word_count": 32
+    }
+  },
+  {
+    "chunk_id": 48,
+    "content": "\"\"\"### BAN CHẤP HÀNH CÔNG ĐOÀN TRƯỜNG NHIỆM KỲ 2025-2027\n1. Nguyễn Đức Lưu – Chủ tịch\n2. Phạm Văn Hiệp – Phó chủ tịch\n3. Vũ Thị Tuyết Mai – Ủy viên\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "BAN CHẤP HÀNH CÔNG ĐOÀN TRƯỜNG NHIỆM KỲ 2025-2027",
+      "word_count": 33
+    }
+  },
+  {
+    "chunk_id": 49,
+    "content": "\"\"\"### * BAN CHẤP HÀNH LIÊN CHI ĐOÀN TRƯỜNG NHIỆM KỲ 2025 - 2027\n1. Nguyễn Chiến Thắng – Bí thư\n2. Nguyễn Trường An – Phó bí thư\n3. Lê Ngọc Nam Anh – Phó bí thư\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "* BAN CHẤP HÀNH LIÊN CHI ĐOÀN TRƯỜNG NHIỆM KỲ 2025 - 2027",
+      "word_count": 38
+    }
+  },
+  {
+    "chunk_id": 50,
+    "content": "\"\"\"### * BAN CHẤP HÀNH LIÊN CHI HỘI NHIỆM KỲ 2023 - 2025\n1. Nguyễn Hoàng Trang Anh - Liên chi Hội trưởng\n2. Lê Đình Quốc - Liên chi Hội phó\n3. Hoàng Trung Dũng - Liên chi Hội phó\n4. Phạm Dương Việt Dũng - Uỷ viên BCH\n5. Võ Tá Học - Uỷ viên BCH\n6. Phạm Minh Hoàng - Uỷ viên BCH\n7. Nguyễn Hữu Nhật - Uỷ viên BCH\n8. Bùi Thị Hải Yến - Uỷ viên BCH\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "* BAN CHẤP HÀNH LIÊN CHI HỘI NHIỆM KỲ 2023 - 2025",
+      "word_count": 83
+    }
+  },
+  {
+    "chunk_id": 51,
+    "content": "\"\"\"### * CÁC KHOA CHUYÊN MÔN\n| STT | Tên khoa | Trưởng khoa | Phòng làm việc |\n| --- | --- | --- | --- |\n| 1 | Khoa Khoa học máy tính | TS. Trần Hùng Cường | 1506-A1 |\n| 2 | Khoa Công nghệ phần mềm | PGS.TS. Trần Đăng Hưng | 1406-A1 |\n| 3 | Khoa Công nghệ thông tin | TS. Nguyễn Bá Nghiễn | 1306-A1 |\n| 4 | Khoa Mạng máy tính và Truyền thông | PGS.TS. Lê Trọng Vĩnh | 1607-A1 |\nSTT\nTên khoa\nTrưởng khoa\nPhòng làm việc\n1\nKhoa Khoa học máy tính\nTS. Trần Hùng Cường\n1506-A1\n2\nKhoa Công nghệ phần mềm\nPGS.TS. Trần Đăng Hưng\n1406-A1\n3\nKhoa Công nghệ thông tin\nTS. Nguyễn Bá Nghiễn\n1306-A1\n4\nKhoa Mạng máy tính và Truyền thông\nPGS.TS. Lê Trọng Vĩnh\n1607-A1\n* CÁC PHÒNG-TRUNG TÂM\n| STT | Tên phòng/trung tâm | Trưởng phòng/GĐ | Phòng làm việc |\n| --- | --- | --- | --- |\n| 1 | Phòng Tổng hợp | TS. Phạm Văn Hà | 1203-A1 |\n| 2 | Trung tâm Hợp tác phát triển | TS. Nguyễn Hoàng Tú | 1204-A1 |\n| 3 | Trung tâm Nghiên cứu và ứng dụng trí tuệ nhân tạo | TS. Đặng Trọng Hợp | 1201-A1 |\nSTT\nTên phòng/trung tâm\nTrưởng phòng/GĐ\n1\nPhòng Tổng hợp\nTS. Phạm Văn Hà\n1203-A1\n2\nTrung tâm Hợp tác phát triển\nTS. Nguyễn Hoàng Tú\n1204-A1\n3\nTrung tâm Nghiên cứu và ứng dụng trí tuệ nhân tạo\nTS. Đặng Trọng Hợp\n1201-A1\n* CỐ VẤN HỌC TẬP:\nCác cố vấn học tập thuộc Phòng Tổng hợp - Phòng 1203 A1.\n- Cô Trần Mai Linh – SĐT: 0984291823\n- Cô Nguyễn Thị Kim Tuyến – SĐT: 0974221649\n- Cô Trần Thị Trinh – SĐT: 0963005376\n- Cô Nguyễn Lan Anh - SĐT: 0399595054\"\"\"",
+    "metadata": {
+      "#": "SƠ ĐỒ TỔ CHỨC",
+      "##": "Cơ cấu tổ chức Trường Công nghệ thông tin và Truyền thông",
+      "###": "* CÁC KHOA CHUYÊN MÔN",
+      "word_count": 323
+    }
+  },
+  {
+    "chunk_id": 52,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/chien-luoc-phat-trien)\nChiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "word_count": 17
+    }
+  },
+  {
+    "chunk_id": 53,
+    "content": "\"\"\"### 1.\n#### a. Tuyển sinh và quy mô đào tạo\nBảng 1. Quy mô tuyển sinh và đào tạo\n| Stt | Ngành | Hệ | Số lượng SV nhập học | Quy mô K15- K18 |\n| --- | --- | --- | --- | --- |\n| 2020 | 2021 | 2022 | 2023 |\n| 1 | Công nghệ thông tin | ĐH | 415 | 461 | 408 | 406 | 1690 |\n| 2 | Khoa học máy tính | ĐH | 147 | 136 | 132 | 122 | 537 |\n| 3 | Kỹ thuật phần mềm | ĐH | 284 | 299 | 254 | 240 | 1077 |\n| 4 | Hệ thống thông tin | ĐH | 158 | 149 | 127 | 126 | 560 |\n| 5 | Công nghệ ĐPT | ĐH | Mở năm 2021 |\n| 6 | Hệ thống thông tin | ThS | 12 | 15 | 32 | 36 | 95 |\n|  | Tổng: |  | 1.016 | 1.060 | 953 | 930 | 3959 |\nStt\nNgành\nHệ\nSố lượng SV nhập học\nQuy mô K15- K18\n2020\n2021\n2022\n2023\n1\nCông nghệ thông tin\nĐH\n415\n461\n408\n406\n1690\n2\nKhoa học máy tính\nĐH\n147\n136\n132\n122\n537\n3\nKỹ thuật phần mềm\nĐH\n284\n299\n254\n240\n1077\n4\nHệ thống thông tin\nĐH\n158\n149\n127\n126\n560\n5\nCông nghệ ĐPT\nĐH\nMở năm 2021\n6\nHệ thống thông tin\nThS\n12\n15\n32\n36\n95\nTổng:\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "1.",
+      "word_count": 266
+    }
+  },
+  {
+    "chunk_id": 54,
+    "content": "\"\"\"### 1.060\n953\n930\n3959\n#### b. Công tác phát triển và kiểm định chương trình đào tạo\n- Xây dựng hồ sơ mở ngành mới CNĐPT;\n- Xây dựng chương trình đào tạo ngành CNTT theo CDIO;\n- Chỉnh sửa CTĐT thạc sĩ ngành HTTT;\n- Hoàn thành kiểm định chương trình đào tạo ngành CNTT;\n- Hoàn thành tự đánh giá, chuẩn bị đánh giá ngoài ngành HTTT;\n- Thực hiện đề án xây dựng và vận hành CTĐT ngành KHMT theo định hướng kiểm theo tiêu chuẩn ABET;\n- Xây dựng bài giảng điện tử cho 17 học phần;\n- Xây dựng mới và cập nhật đề cương chi tiết học phần, hướng dẫn giảng dạy, hướng dẫn đánh giá kết quả học tập theo KH.\n#### c. Công tác tổ chức đào tạo\nTrong thời gian qua, toàn thể cán bộ, giảng viên Trường đã thực hiện tốt công tác chuyên môn giảng dạy đối với các lớp học lý thuyết cũng như thực hành, đảm bảo duy trì nề nếp học tập và hoàn thành đúng tiến độ đào tạo trong điều kiện covid 19.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "1.060",
+      "word_count": 190
+    }
+  },
+  {
+    "chunk_id": 55,
+    "content": "\"\"\"### 2. Khoa học công nghệ\nBảng 2. Hoạt động khoa học công nghệ\n| Hoạt động KHCN | 2022 | 2023 | 2024 |\n| --- | --- | --- | --- |\n| 1. Số lượng bài báo, trong đó: | 33 bài | 45 bài | 55 bài |\n| - Tạp chí và hội thảo quốc tế | 8 | 4 | 6 |\n| - Tạp chí và hội thảo trong nước | 25 | 32 | 25 |\n| - Bài báo đăng ở tạp chí ISI/Scopus | 7 | 9 | 24 |\n| 2. Đề tài NCKH | 2 đề tài cấp trường | 2 đề tài cấp trường | 5 đề tài cấp trường, 3 đề tài cấp tỉnh/bộ. |\n| 3. Giáo trình/sách chuyên khảo | 01 cuốn | 03 cuốn | 03 cuốn |\n| 4. Đề tài SVNCKH(Số lượng SV tham gia) | 43 đề tài | 52 đề tài | 61 đề tài |\n| 5. Tổng số giờ khoa học | 7.064 giờ | 8.961 giờ | 14.202 |\n| 6. Số giờ khoa học bình quân | 141 giờ/GV | 169 giờ/GV | 253 giờ/GV |\nHoạt động KHCN\n2022\n2023\n2024\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "2. Khoa học công nghệ",
+      "word_count": 207
+    }
+  },
+  {
+    "chunk_id": 56,
+    "content": "\"\"\"### 1. Số lượng bài báo, trong đó:\n33 bài\n45 bài\n55 bài\n- Tạp chí và hội thảo quốc tế\n8\n4\n6\n- Tạp chí và hội thảo trong nước\n25\n32\n25\n- Bài báo đăng ở tạp chí ISI/Scopus\n7\n9\n24\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "1. Số lượng bài báo, trong đó:",
+      "word_count": 47
+    }
+  },
+  {
+    "chunk_id": 57,
+    "content": "\"\"\"### 2. Đề tài NCKH\n2 đề tài cấp trường\n2 đề tài cấp trường\n5 đề tài cấp trường, 3 đề tài cấp tỉnh/bộ.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "2. Đề tài NCKH",
+      "word_count": 25
+    }
+  },
+  {
+    "chunk_id": 58,
+    "content": "\"\"\"### 4. Đề tài SVNCKH\n(Số lượng SV tham gia)\n43 đề tài\n52 đề tài\n61 đề tài\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "4. Đề tài SVNCKH",
+      "word_count": 19
+    }
+  },
+  {
+    "chunk_id": 59,
+    "content": "\"\"\"### 3. Đội ngũ và cơ cấu tổ chức\n#### a. Cơ cấu tổ chức của Trường CNTT và Truyền thông\nTổng số viên chức và người lao động (cơ hữu): 85 người.\n- PGS: 03 người Tiến sĩ: 20 người. Thạc sĩ: 58 người. Đại học: 04 người\n- Giảng viên: 76 người. Chuyên viên: 07 người. Nhân viên: 02 người\n|  |\n| --- |\n|  |  |\nBan Giám hiệu, gồm:\n- Hiệu trưởng: TS. Đặng Trọng Hợp\n- Các Phó Hiệu trưởng: TS. Phạm Văn Hà; PGS.TS. Nguyễn Thị Kim Sơn; TS. Trần Tiến Dũng\nCác Khoa, Khối Phòng, Trung tâm thuộc Trường:4 Khoa, 1 Phòng, 2 Trung tâm\nBảng 3. Cơ cấu tổ chức nhân sự\n| Chỉ tiêu | Số lượng | Tỷ lệ |\n| --- | --- | --- |\n| 1. Theo trình độ |  |  |\n| (i). Giảng viên | 76 |  |\n| - Tiến sỹ | 20 | 26,3% |\n| - Thạc sỹ | 58 | 76,3% |\n| (ii). Chuyên viên | 07 |  |\n| - Tiến sỹ | 0 | 0,0% |\n| - Thạc sỹ | 04 | 57,1% |\n| - Đại học | 03 | 42,8% |\n| 2. Theo giới tính |  |  |\n| - Nam | 31 | 59,6% |\n| - Nữ | 21 | 40,4% |\n| 3. Độ tuổi(độ tuổi trung bình: 38,5 tuổi) |  |  |\n| <= 35 tuổi | 4 | 7,7% |\n| 36 tuổi ÷ 40 tuổi | 10 | 19,2% |\n| 41 tuổi ÷ 45 tuổi | 27 | 51,9% |\n| 46 tuổi ÷ 50 tuổi | 9 | 17,4% |\n| Trên 50 tuổi | 2 | 3,8% |\nChỉ tiêu\nSố lượng\nTỷ lệ\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "3. Đội ngũ và cơ cấu tổ chức",
+      "word_count": 300
+    }
+  },
+  {
+    "chunk_id": 60,
+    "content": "\"\"\"### 1. Theo trình độ\n(i). Giảng viên\n76\n- Tiến sỹ\n20\n26,3%\n- Thạc sỹ\n58\n76,3%\n(ii). Chuyên viên\n07\n- Tiến sỹ\n0\n0,0%\n- Thạc sỹ\n04\n57,1%\n- Đại học\n03\n42,8%\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "1. Theo trình độ",
+      "word_count": 38
+    }
+  },
+  {
+    "chunk_id": 61,
+    "content": "\"\"\"### 3. Độ tuổi(độ tuổi trung bình: 38,5 tuổi)\n<= 35 tuổi\n4\n7,7%\n36 tuổi ÷ 40 tuổi\n10\n19,2%\n41 tuổi ÷ 45 tuổi\n27\n51,9%\n46 tuổi ÷ 50 tuổi\n9\n17,4%\nTrên 50 tuổi\n2\n3,8%\n#### b. Khối lượng giảng dạy hàng năm\nBảng 4. Khối lượng giảng dạy (2019 ÷ 2022)\n| Bộ môn | Năm học 2019÷2020 | Năm học 2020÷2021 | Năm học 2021÷2022(dự kiến) |\n| --- | --- | --- | --- |\n| GVcơ hữu | Khối lượng | Bình quân | GVcơ hữu | Khối lượng | Bình quân | GVcơ hữu | Khối lượng | Bình quân |\n| Công nghệ phần mềm | 6 | 4780 | 797 | 8 | 6144 | 768 |  |  |  |\n| Khoa học máytính | 16 | 11100 | 694 | 14 | 12090 | 864 | 46,5 | 41.470 | 892 |\n| Hệ thống thông tin | 10 | 8310 | 831 | 10 | 8480 | 848 |\n| Kỹ thuật & Mạng máy tính | 9,5 | 6989 | 699 | 9,5 | 8700 | 870 |\n| Công nghệ đa phương tiện | 6 | 5518 | 920 | 5 | 4730 | 946 |\n| Tổng: | 47,5 | 36697 | 773 | 46,5 | 40.150 | 854 |\nBộ môn\nNăm học 2019÷2020\nNăm học 2020÷2021\nNăm học 2021÷2022\n(dự kiến)\nGV\ncơ hữu\nKhối lượng\nBình quân\nGV\ncơ hữu\nKhối lượng\nBình quân\nGV\ncơ hữu\nKhối lượng\nBình quân\nCông nghệ phần mềm\n6\n4780\n797\n8\n6144\n768\nKhoa học máy\ntính\n16\n11100\n694\n14\n12090\n864\n46,5\n41.470\n892\nHệ thống thông tin\n10\n8310\n831\n10\n8480\n848\nKỹ thuật & Mạng máy tính\n9,5\n6989\n699\n9,5\n8700\n870\nCông nghệ đa phương tiện\n6\n5518\n920\n5\n4730\n946\nTổng:\n47,5\n36697\n773\n46,5\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "3. Độ tuổi(độ tuổi trung bình: 38,5 tuổi)",
+      "word_count": 322
+    }
+  },
+  {
+    "chunk_id": 62,
+    "content": "\"\"\"### 4. Cơ sở vật chất\n- 09 phòng làm việc và 1 phòng họp.\n- 17 phòng máy dùng cho giảng dạy cơ sở ngành và chuyên ngành (14 phòng tại cơ sở 1 và 3 phòng tại cơ sở 3). Mỗi phòng thực hành được trang bị từ 35 đến 40 máy tính cho sinh viên và 1 máy tính cho giảng viên. Các Phòng được cài đặt các phần mềm để giảng dạy cho tất cả các học phần của các chương trình đào tạo của Trường.\n- Các trang thiết bị chuyên dụng phục vụ cho một số học phần đặc thù. Các thiết bị này được đặt trong phòng thực hành và sử dụng theo nhu cầu của từng học phần.\n- Để phục vụ cho các hoạt động nghiên cứu chuyên sâu, Trường CNTT và Truyền thông trang bị 3 phòng Lab về các lĩnh vực: “Computer Vision & Artificial Intelligence”, “Modeling, Simulation and Optimization” và “Intelligent systems and IoT”.\n- Để quản trị các phòng máy tính và phục vụ NCKH, Trường có 4 máy chủ và 4 máy HPC có GPU đặt tại các phòng Lab. Trong năm học 2021 Trường sẽ xây dựng hệ thống máy chủ trong đó bổ sung máy chủ và hệ thống phần mềm của VMWare để ảo hóa và quản trị, cấp tài nguyên cho giảng viên và sinh viên sử dụng.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "4. Cơ sở vật chất",
+      "word_count": 236
+    }
+  },
+  {
+    "chunk_id": 63,
+    "content": "\"\"\"### 5. Hoạt động khác\n- Hoạt động hợp tác doanh nghiệp luôn được Trường quan tâm. Trường có quan hệ với hầu hết các doanh nghiệp lớn về CNTT ở khu vực phía Bắc (Samsung, LG, FPT, Viettel, VNPT, MISA, Sun*,…), các doanh nghiệp luôn sẵn sàng hỗ trợ Trường trong các hoạt động tham quan trải nghiệm, thực tập, tuyển dụng, tham gia vào quá trình phát triển chương trình đào tạo.\n- Trường có 7 câu lạc bộ sinh viên với nhiều hoạt động bổ ích, tạo phong trào học tập và hỗ trợ cho hoạt động đào tạo, truyền thông của Trường.\n- Đoàn thanh niên và Công đoàn Trường luôn đi đầu trong các hoạt động phong trào cũng như hỗ trợ triển khai các hoạt động chuyên môn trong Trường.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "5. Hoạt động khác",
+      "word_count": 136
+    }
+  },
+  {
+    "chunk_id": 64,
+    "content": "\"\"\"### 6. Kết luận\n#### a. Thế mạnh\n- Nhóm ngành CNTT có vai trò quan trọng, nhu cầu nhân lực cao, được cả xã hội quan tâm trong cuộc CMCN 4.0;\n- Phương thức tổ chức dạy - học được đổi mới theo hướng tích cực và có ứng dụng công nghệ, là nhóm ngành phù hợp cho các hình thức đào tạo kết hợp;\n- Chương trình đào tạo luôn được cập nhật, đổi mới, phù hợp cao với xu hướng công nghệ và nhu cầu của xã hội. Công tác kiểm định chất lượng chương trình đào tạo triển khai có hệ thống, lộ trình đảm bảo hết năm 2023 khoa có 100% CTĐT đủ thời gian đã được kiểm định;\n- Cơ sở vật chất phục vụ cho đào tạo được Nhà trường quan tâm đầu tư đồng bộ, hiện đại, chi phí đầu tư không cao trong khối ngành kỹ thuật;\n- Trường có mối quan hệ gắn kết với mạng lưới hầu hết các doanh nghiệp trong lĩnh vực CNTT như Samsung, LG, HCL, VNPT, Viettel, FPT, Sun*, VTI, …\n- Tập thể lãnh đạo Trường và giảng viên có tinh thần trách nhiệm cao, nhiệt tình, đoàn kết trong thực hiện các nhiệm vụ của Trường.\n#### b. Điểm yếu\n- Chất lượng giảng viên chưa đồng đều, thiếu các chuyên gia hàng đầu trong các ngành đào tạo.\n- Hoạt động nghiên cứu khoa học chưa tương xứng với tiềm năng và yêu cầu.\n- Đội ngũ giảng viên trên 40 tuổi chiếm ~73%, có những hạn chế trong các lĩnh vực công nghệ mới, học tập nâng cao trình độ.\n- Cơ sở vật chất phục vụ các hoạt động nghiên cứu chuyên sâu còn hạn chế.\n#### c. Cơ hội\n- Nhu cầu nhân lực về CNTT tăng mạnh, xu hướng các trung tâm outsourcing chuyển về Việt Nam ngày càng nhiều.\n- Xu hướng liên ngành, xuyên ngành, đa ngành ngày càng phổ biến mà trong đó có ứng dụng và đào tạo thuộc nhóm ngành CNTT.\n- Đại dịch covid đã làm thay đổi cách con người làm việc và giao tiếp, trong đó sẽ có nhiều hoạt động được thực hiện trên môi trường số hóa, mạng internet.\n- Sự quan tâm và đầu tư của Nhà trường cho lĩnh vực CNTT nói chung và đào tạo CNTT nói riêng.\n#### d. Thách thức\n-Xu hướng hội nhập quốc tế trong lĩnh vực giáo dục tiếp tục đặt ra những áp lực nâng cao chất lượng đào tạo và nghiên cứu khoa học.\n- Ngành CNTT đòi hỏi chương trình đào tạo luôn thay đổi cập nhật, yêu cầu đáp ứng yêu cầu của doanh nghiệp ngày càng cao trong điều kiện vòng đời của các công nghệ ngày càng rút ngắn.\n- Sự thiếu hụt giảng viên về CNTT, việc thu hút giảng viên có trình độ chuyên môn cao gặp khó khăn do phải cạnh tranh với các cơ sở đào tạo và doanh nghiệp.\n- Tính cạnh tranh trong giáo dục đại học ngày càng mạnh mẽ, đặc biệt là sự xuất hiện các trường quốc tế, trường tư chất lượng cao, các trường đại học đều đầu tư mạnh cho nhóm ngành CNTT.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "I. Thực trạng của Trường Công nghệ thông tin và Truyền thông",
+      "###": "6. Kết luận",
+      "word_count": 550
+    }
+  },
+  {
+    "chunk_id": 65,
+    "content": "\"\"\"## II. Định hướng phát triển khoa đến năm 2025 tầm nhìn đến năm 2030\nTrường CNTT và Truyền thông tiếp tục đổi mới nội dung và phương pháp dạy học để từng bước nâng cao chất lượng đào tạo, đáp ứng yêu cầu của xã hội. Triển khai kế hoạch xây dựng mới, cập nhật chỉnh sửa các chương trình đào tạo. Thực hiện kiểm định chương trình đào tạo theo tiêu chuẩn Việt Nam và ABET. Đẩy mạnh các hoạt động nghiên cứu khoa học trong giảng viên và sinh viên. Đưa Trường CNTT và truyền thông trở thành một trong những Trường hàng đầu ở Việt Nam theo định hướng ứng dụng. Các chỉ tiêu phấn đấu cụ thể như sau:\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "II. Định hướng phát triển khoa đến năm 2025 tầm nhìn đến năm 2030",
+      "word_count": 124
+    }
+  },
+  {
+    "chunk_id": 66,
+    "content": "\"\"\"### 1. Đào tạo\n- Duy trì quy mô tuyển sinh và đào tạo 4.000-4.500 sinh viên, học viên.\n- Đến năm 2025 đào tạo từ 6 - 7 ngành đại học, 1-2 ngành thạc sĩ, 1 ngành tiến sĩ.\n- Tất cả các chương trình đào tạo được kiểm định theo tiêu chuẩn Việt Nam hoặc quốc tế (năm 2023 kiểm định xong 3 ngành trình độ đại học: CNTT, HTTT, KTPM, 1 ngành trình độ thạc sĩ: HTTT theo tiêu chuẩn Việt Nam và 1 ngành theo tiêu chuẩn ABET).\n- Đổi mới phương thức tổ chức đào tạo, ứng dụng công nghệ, hình thành môi trường học tập mở, sáng tạo và trải nghiệm. Số học phần đào tạo kết hợp chiếm trên 30% tổng số học phần, 10-15 học phần dạy bằng ngoại ngữ. 100% các học phần được chuẩn hóa về nội dung và phương pháp đánh giá kết quả học tập. Tăng cường dạy-học theo dự án và dạy-học kết hợp với doanh nghiệp.\n- Một số chỉ tiêu cần đạt được: Tỷ lệ sinh viên tốt nghiệp đúng hạn > 70%; tỷ lệ sinh viên thôi học < 5%; thời gian tốt nghiệp đại học <4,5 năm; tỷ lệ sinh viên có việc làm sau tốt nghiệp 1 năm > 95%, mức độ hài lòng của người học về CTĐT > 85%, mức độ hài lòng của đơn vị sử dụng lao động về năng lực người học > 80%.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "II. Định hướng phát triển khoa đến năm 2025 tầm nhìn đến năm 2030",
+      "###": "1. Đào tạo",
+      "word_count": 247
+    }
+  },
+  {
+    "chunk_id": 67,
+    "content": "\"\"\"### 2. Khoa học công nghệ\nĐẩy mạnh các hoạt động nghiên cứu khoa học để tương xứng tiềm năng của giảng viên, sinh viên trong Trường, gắn kết nghiên cứu khoa học với chuyển giao công nghệ và nâng cao chất lượng đào tạo, đặc biệt là đào tạo sau đại học. Chỉ tiệu cụ thể hàng năm như sau:\n+ 20 bài báo đăng trên các tạp chí và hội nghị có uy tín, trong đó 20% đăng trên tạp chí được tính điểm tối đa 1 điểm, 10% đăng trên tạp chí thuộc danh mục ISI, Scopus;\n+ 02 giáo trình, tài liệu tham khảo/năm;\n+ 03-05 đề tài NCKH các cấp/năm;\n+ Hướng dẫn sinh viên nghiên cứu khoa học: 30 đề tài/năm;\n+ 02 hội thảo hoặc tọa đàm khoa học hàng năm;\n+ 12 seminar báo cáo khoa học về các lĩnh vực đa ngành hàng năm;\n+ 100% đề tài NCKH được ứng dụng trong quản lý và đào tạo;\n+ 40% đề tài NCKH có sinh viên, học viên cao học tham gia;\n+ 20% đề tài NCKH được chuyển giao cho các doanh nghiệp;\n+ Đến năm 2025 có 5 lab, trong đó có 2-3 lab với các nhóm nghiên cứu mạnh hoạt động trong các lĩnh vực liên ngành.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "II. Định hướng phát triển khoa đến năm 2025 tầm nhìn đến năm 2030",
+      "###": "2. Khoa học công nghệ",
+      "word_count": 219
+    }
+  },
+  {
+    "chunk_id": 68,
+    "content": "\"\"\"### 3. Đội ngũ và cơ cấu tổ chức\n- Phát triển nguồn nhân lực đủ về số lượng, đảm bảo chất lượng đáp ứng các yêu cầu hoạt động đào tạo, nghiên cứu khoa học và phục vụ cộng đồng:\n+ >30% giảng viên có trình độ tiến sỹ.\n+ >75% giảng viên thực giảng được đào tạo, bồi dưỡng hàng năm.\n+ 100% giảng viên thực giảng tham gia thực tế tại doanh nghiệp 01 lần/năm.\n+ 100% giảng viên có báo cáo chuyên đề hàng năm.\n+ 100% giảng viên cơ hữu đạt yêu cầu về khối lượng giờ NCKH.\n+ Hình thành đội ngũ chuyên gia trong các ngành đào tạo: 02 giảng viên có học hàm PGS, 2-3 nhóm nghiên cứu mạnh.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "II. Định hướng phát triển khoa đến năm 2025 tầm nhìn đến năm 2030",
+      "###": "3. Đội ngũ và cơ cấu tổ chức",
+      "word_count": 127
+    }
+  },
+  {
+    "chunk_id": 69,
+    "content": "\"\"\"### 4. Cơ sở vật chất\n- 100% phòng thực hành của Trường được quản lý tập trung, được quản trị qua máy chủ và cơ chế ảo hóa.\n- Có phòng máy chủ lưu trữ bài tập lớn, đồ án tốt nghiệp và các công trình nghiên cứu của giảng viên và sinh viên. Các sản phẩm có thể truy cập được từ xa, cho phép khai thác hiệu quả các tài nguyên số của Trường.\n- Các phòng lab đáp ứng đủ nhu cầu nghiên cứu khoa học của giảng viên, tiến tới mỗi bộ môn sẽ có ít nhất 1 phòng lab chuyên sâu. Chất lượng máy móc, trang thiết bị và phần mềm đáp ứng tốt nhu cầu học tập, nghiên cứu của giảng viên và sinh viên.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "II. Định hướng phát triển khoa đến năm 2025 tầm nhìn đến năm 2030",
+      "###": "4. Cơ sở vật chất",
+      "word_count": 132
+    }
+  },
+  {
+    "chunk_id": 70,
+    "content": "\"\"\"### 5. Các hoạt động khác\n- Đẩy mạnh các họat động hợp tác và phát triển:\n+ Hợp tác thường xuyên với 50 doanh nghiệp, 50% có quy mô > 300 nhân sự;\n+ 50% sinh viên năm thứ 3, 4 đi tham quan, thực tập tại các doanh nghiệp;\n+ 40% GV tham gia các hội nghề nghiệp, 90% GV thực hiện kết nối, hợp tác với doanh nghiệp;\n+ 20% học phần chuyên ngành có chuyên gia từ doanh nghiệp, giảng viên nước ngoài giảng dạy.\n+ Hàng năm tổ chức tối thiểu 10 hội thảo chuyên môn, định hướng nghề nghiệp và kỹ năng làm việc cho sinh viên.\n+ Kết nối tìm kiếm các cơ hội thực tập, việc làm cho sinh viên: 100 thông báo tuyển dụng, 1000 vị trí việc làm hàng năm.\n-Đa dạng hóa, từng bước nâng cao chất lượng hoạt động hỗ trợ người học:\n+ Có 8-10 câu lạc bộ sinh viên, trong đó 6-8 câu lạc bộ học thuật.\n+ 100% SV được tư vấn nghề nghiệp từ năm 2 bởi chuyên gia ngoài doanh nghiệp.\n+ Duy trì và đổi mới các hoạt động của tuần lễ CNTT – IT Festival để thu hút sinh viên và doanh nghiệp tham gia.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "II. Định hướng phát triển khoa đến năm 2025 tầm nhìn đến năm 2030",
+      "###": "5. Các hoạt động khác",
+      "word_count": 214
+    }
+  },
+  {
+    "chunk_id": 71,
+    "content": "\"\"\"### 1. Giải pháp hoạt động đào tạo\n- Áp dụng quy trình CDIO trong hoạt động phát triển và vận hành CTĐT. Nhân rộng và áp dụng đồng bộ các kết quả của đề án ABET cho các chương trình đào tạo khác trong Trường. Triển khai thường xuyên các hoạt động tự đánh giá CTĐT và điều chỉnh CTĐT đảm bảo đáp ứng các yêu cầu của các tiêu chuẩn kiểm định chất lượng CTĐT trong nước và quốc tế.\n- Đẩy mạnh áp dụng phương pháp dạy học kết hợp, dạy học trực tuyến, dạy học theo dự án, dạy học có sự chia sẻ kinh nghiệm thực tiễn của các chuyên gia… nhằm phát huy vai trò chủ động tích cực của người học;\n- Triển khai có hiệu quả các hoạt động khảo thí trong đánh giá năng lực người học theo chuẩn đầu ra.\n- Ứng dụng công nghệ thông tin trong thu thập, phân tích dữ liệu phục vụ quản lý đào tạo, nghiên cứu khoa học, phát triển thương hiệu.\n- Đẩy mạnh hoạt động hợp tác với doanh nghiệp trong phát triển và vận hành chương trình đào tạo. Tăng cường hoạt động của giảng viên và sinh viên ra ngoài doanh nghiệp, thúc đầy doanh nghiệp cùng tham gia quá trình đào tạo.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "III. Giải pháp",
+      "###": "1. Giải pháp hoạt động đào tạo",
+      "word_count": 223
+    }
+  },
+  {
+    "chunk_id": 72,
+    "content": "\"\"\"### 2. Giải pháp hoạt động khoa học và công nghệ\n- Xây dựng các lab chủ chốt với quy mô tối thiểu 3 nhân sự giảng viên, 3-5 SV, HV và NCS, có cùng mục tiêu và động lực phát triển về khoa học và công nghệ.\n- Tăng cường kết nối các nhà khoa học của Khoa với các Khoa khác trong Trường, các cơ sở đào tạo, viện nghiên cứu bên ngoài thông qua phối hợp thực hiện chung các nhiệm vụ KHCN, tổ chức các hội thảo quốc gia, quốc tế.\n- Giao chỉ tiêu hoạt động khoa học công nghệ có tính khả thi cho các bộ môn và lab.\n- Kết hợp đào tạo và nghiên cứu khoa học bằng việc ưu tiên các đề tài có sinh viên và học viên tham gia.\n- Bồi dưỡng các kỹ năng và phương pháp nghiên cứu, tổ chức tọa đàm khoa học mời các diễn giả có uy tín về trao đổi các vấn đề KHCN.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "III. Giải pháp",
+      "###": "2. Giải pháp hoạt động khoa học và công nghệ",
+      "word_count": 171
+    }
+  },
+  {
+    "chunk_id": 73,
+    "content": "\"\"\"### 3. Giải pháp về công tác tổ chức và đội ngũ\n- Quy hoạch, đôn đốc, động viên và tạo điều kiện để giảng viên đi học NCS. Thành lập các nhóm NC, thúc đẩy hợp tác trong hoạt động NCKH để tiến sĩ hoàn thiện các điều kiện để có thể phong hàm PGS.\n- Đẩy mạnh các hoạt động bồi dưỡng thông qua các khóa ngắn hạn, công nghệ mới, các khóa tự đào tạo bồi dưỡng nội bộ.\n- Duy trì và xây dựng mối quan hệ với doanh nghiệp thông qua hoạt động hỗ trợ thực tập, tuyển dụng, tham quan. Ngoài lãnh đạo Trường, mỗi doanh nghiệp có 1 giáo viên và chuyên viên để thường xuyên liên hệ và triển khai các hoạt động hợp tác.\n- Xây dựng bộ các tiêu chí đánh giá cho từng hoạt động, vị trí việc làm. Tiêu chí đánh giá chất lượng công việc cá nhân/bộ môn làm căn cứ đánh giá xếp loại hoàn thành nhiệm vụ, kiên thưởng, tuyên dương.\n- Phân công khối lượng giảng dạy, nhiệm vụ đào tạo, nghiên cứu khoa học cụ thể cho từng bộ môn, giảng viên.\n- Tăng cường sự phối hợp của Công đoàn bộ phận và Đoàn thanh niên trong việc xây dựng môi trường làm việc năng động, dân chủ, mở để thúc đẩy mỗi cán bộ viên chức phát huy hết năng lực của mình, đồng thời thu hút đội ngũ giảng viên có trình độ cao, kinh nghiệm thực tiễn về công tác tại Khoa.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "III. Giải pháp",
+      "###": "3. Giải pháp về công tác tổ chức và đội ngũ",
+      "word_count": 263
+    }
+  },
+  {
+    "chunk_id": 74,
+    "content": "\"\"\"### 4. Giải pháp phát triển cơ sở vật chất\n- Quản lý và vận hành có hiệu quả cơ sở vật chất hiện có. Hàng năm rà soát bảo trì, nâng cấp để các phòng máy hoạt động trơn tru. Đặc biệt ứng dụng cơ chế máy chủ tập trung và ảo hóa trong quản lý phòng máy nhằm đơn giản hóa khâu bảo trì.\n- Trang bị thêm ít nhất 1 phòng lab hiện đại, nghiên cứu khoa học có tính chất liên ngành. Phòng lab cần được trang bị các hệ thống máy chủ GPU, cho phép huấn luyện AI và phân tích dữ liệu, trang bị các thiết bị chuyên dụng, phục vụ việc thu thập thông tin, truyền dẫn dữ liệu và điều khiển.\n- Trang bị cơ sở vật chất phục vụ đào tạo và nghiên cứu chuyên sâu cho từng học phần/nhóm học phần.\n- Đẩy mạnh ứng dụng công nghệ thông tin trong quản lý trang thiết bị, kế hoạch và tổ chức đào tạo thực hành thí nghiệm.\n- Đa dạng hóa cách bố trí các phòng thực hành, cho phép triển khai các phương pháp dạy-học khác nhau trên phòng máy.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "III. Giải pháp",
+      "###": "4. Giải pháp phát triển cơ sở vật chất",
+      "word_count": 201
+    }
+  },
+  {
+    "chunk_id": 75,
+    "content": "\"\"\"### 5. Các kiến nghị\n- Cho phép Trường tuyển SV TN từ Trường về làm chuyên viên kỹ thuật, trợ giảng với định hướng nguồn bổ sung vào đội ngũ giảng viên khi đủ điều kiện.\n- Ưu tiên chuyển ngạch, vị trí làm việc cho các tiến sĩ CNTT, quy định về sinh hoạt chuyên môn của GV tại các Khoa đào tạo.\n- Đầu tư cơ sở vật chất chuyên sâu phục vụ đào tạo và NCKH.\n- Hỗ trợ kinh phí cho các khóa đào tạo, bồi dưỡng giảng viên trên nền tảng trực tuyến của các hãng, trường đại học quốc tế.\"\"\"",
+    "metadata": {
+      "#": "Chiến lược Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025, tầm nhìn 2030",
+      "##": "III. Giải pháp",
+      "###": "5. Các kiến nghị",
+      "word_count": 107
+    }
+  },
+  {
+    "chunk_id": 76,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/can-bo-giang-vien)\nĐội ngũ cán bộ, giảng viên\nHiện nay, đội ngũ cán bộ, giảng viên Trường Công nghệ thông tin và Truyền thông gồm: 03 PGS.TS và các cán bộ, giảng viên có trình độ Tiến sỹ, Thạc sỹ và kỹ sư. Các VC NLĐ trong Đơn vị đều có kiến thức chuyên ngành vững vàng, có khả năng nghiên cứu khoa học, viết báo, và thực hiện các đề tài, dự án...\nTrong những năm qua, tập thể VC NLĐ Khoa Công nghệ thông tin, tiền thân của Trường Công nghệ thông tin và Truyền thông ngày nay, đều được đánh giá là một tập vững mạnh, đoàn kết và giành được nhiều các giải thưởng trong hoạt động thi giáo viên dạy giỏi, các cuộc thi tay nghề và các hoạt động phong trào thể dục, thể thao, văn hóa văn nghệ do Trường Đại học công nghiệp Hà Nội tổ chức.\n![Đội ngũ cán bộ, giảng viên](https://sict.haui.edu.vn/media/80/t80055.jpg)\n![Đội ngũ cán bộ, giảng viên](https://sict.haui.edu.vn/media/80/t80055.jpg)\"\"\"",
+    "metadata": {
+      "#": "Đội ngũ cán bộ, giảng viên",
+      "word_count": 166
+    }
+  },
+  {
+    "chunk_id": 77,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/co-so-vat-chat)\nCƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg\n- Trụ sở chính: Tầng 12-16, Nhà A1, Trường Đại học Công nghiệp Hà Nội, Số 298 đường Cầu Diễn, Phường Tây Tựu, thành phố Hà Nội\n- Cơ sở vật chất, tài sản của Trường gồm các trang thiết bị, phòng làm việc, phòng máy, phòng thực hành, phòng hội thảo và tài sản được Trường ĐHCNHN giao cho Trường quản lý và khai thác, sử dụng.\nDưới đây là một số hình ảnh giới thiệu về cơ sở vật chất của Trường Công nghệ thông tin và Truyền thông.\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80056.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80056.jpg)\nPhòng Hội thảo - P.1205 A1\nCác phòng, trung tâm của Trường được trang bị đầy đủ bàn ghế, mỗi chuyên viên một bộ máy vi tính, máy in, máy chiếu và hệ thống mạng phục vụ cho công tác in ấn, lưu trữ các cuộc họp được đảm bảo.\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80057.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80057.jpg)\nPhòng Tổng hợp - P.1203 A1\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80058.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80058.jpg)\nTrung tâm Hợp tác phát triển - P.1204 A1\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80059.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80059.jpg)\nTrung tâm Nghiên cứu và Ứng dụng trí tuệ nhân tạo - P.1201 A1\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80066.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80066.jpg)\nVăn phòng Khoa Công nghệ thông tin - P.1307 A1\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80061.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80061.jpg)\nVăn phòng Khoa Công nghệ phần mềm - P.1407 A1\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80062.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80062.jpg)\nVăn phòng Khoa Khoa học máy tính - P.1507 A1\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80060.jpg)\n![CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg](https://sict.haui.edu.vn/media/80/t80060.jpg)\nVăn phòng Khoa Mạng máy tính và Truyền thông - P.1606 A1\nTrường Công nghệ thông tin và Truyền thông được trang bị tất cả 13 phòng máy với trang thiết bị tân tiến, máy tính, máy chiếu, hệ thống mạng được đảm bảo để phục vụ việc giảng dạy của giảng viên và việc thực hành của sinh viên.\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76751.jpg)\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76751.jpg)\nPhòng Lab IoT\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76752.jpg)\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76752.jpg)\nPhòng Lab Samsung\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76730.jpg)\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76730.jpg)\nPhòng máy 1\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76731.jpg)\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76731.jpg)\nPhòng máy 2\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76732.jpg)\n![CƠ SỞ VẬT CHẤT KHOA CÔNG NGHỆ THÔNG TIN](https://sict.haui.edu.vn/media/76/t76732.jpg)\nPhòng máy 3\"\"\"",
+    "metadata": {
+      "#": "CƠ SỞ VẬT CHẤT TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNg",
+      "word_count": 570
+    }
+  },
+  {
+    "chunk_id": 78,
+    "content": "\"\"\"[Nguồn](https://sict.haui.edu.vn/vn/html/dia-chi-lien-he)\nTRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG\n- Ban Giám hiệu Trường CNTT và TT:Tầng 12, nhà A1, Số 298 đường Cầu Diễn, Phường Tây Tựu, Thành Phố Hà Nội.\n- Phòng Tổng hợp, Trung tâm hợp tác phát triển, Trung tâm nghiên cứu công nghệ tiên tiến ICT:Tầng 12, nhà A1, Số 298 đường Cầu Diễn, Phường Tây Tựu, Thành Phố Hà Nội.\n- Văn phòng các Khoa:\n+Khoa Công nghệ thông tin: Phòng 1307, Tầng 13, nhà A1, Số 298 đường Cầu Diễn, Phường Tây Tựu, Thành Phố Hà Nội.\n+Khoa Công nghệ phần mềm: Phòng 1407, Tầng 14, nhà A1,Số 298 đường Cầu Diễn, Phường Tây Tựu, Thành Phố Hà Nội.\n+Khoa Khoa học máy tính: Phòng 1507, Tầng 15, nhà A1, Số 298 đường Cầu Diễn, Phường Tây Tựu, Thành Phố Hà Nội.\n+Khoa Mạng máy tính và Truyền thông: Phòng 1606, Tầng 16, nhà A1, Số 298 đường Cầu Diễn, Phường Tây Tựu, Thành Phố Hà Nội.\n- Một số thông tin về Trường Công nghệ thông tin và Truyền thông (SICT):\nWebsite:https://sict.haui.edu.vn/vn\nFacebook:https://www.facebook.com/FITHaUI\nBộ phận truyền thông FIT Media:https://www.facebook.com/fitmediahaui\nĐội Thanh niên tình nguyện Trường CNTT và Truyền thông-HaUI:https://www.facebook.com/TNTNCNTT\nĐội nghệ thuật Trường CNTT và Truyền thông Istar-HaUI:https://www.facebook.com/ISTARHaUI\nĐội hỗ trợ kỹ thuật IT Supporter:https://www.facebook.com/ITSupport.HaUI\"\"\"",
+    "metadata": {
+      "#": "TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG",
+      "word_count": 213
+    }
+  },
+  {
+    "chunk_id": 79,
+    "content": "\"\"\"## Tin tức\nTrong những năm gần đây, Trí tuệ nhân tạo (AI) đã trở thành một trong những công nghệ quan trọng nhất của thế kỷ XXI, hiện diện ngày càng sâu rộng trong đời sống và sản xuất. Từ các nền tảng giải trí, thiết bị thông minh cho đến các hệ thống trong y tế, giao thông, tài chính hay công nghiệp, AI đang góp phần thay đổi cách con người làm việc, học tập và sáng tạo. Trong bối cảnh chuyển đổi số đang diễn ra mạnh mẽ tại Việt Nam, trí tuệ nhân tạo được xem là công nghệ cốt lõi, đóng vai trò quan trọng trong việc khai thác dữ liệu và tạo ra giá trị mới cho nền kinh tế.\nTrường Công nghệ thông tin và Truyền thông – Đại học Công nghiệp Hà Nội tư vấn tuyển sinh tại Trường THPT Thượng Cát\nHội đồng bảo vệ đề án tốt nghiệp thạc sĩ ngành Hệ thống thông tin\nĐội tuyển PROCON HaUI khẳng định năng lực tại NAPROCK PROCON Quốc tế lần thứ 17\nSinh viên Đại học Công nghiệp Hà Nội tích cực tham gia bầu cử đại biểu Quốc hội khóa XVI và HĐND các cấp nhiệm kỳ 2026 – 2031\nLiên quân SICT tham gia Hội thi “Vui hội dân gian – Gắn kết yêu thương” chào mừng 8/3\"\"\"",
+    "metadata": {
+      "#": "NO_TITLE",
+      "##": "Tin tức",
+      "word_count": 230
+    }
+  }
+]
