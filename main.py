@@ -44,13 +44,13 @@ def main():
 
         result = agent.chat(query)
 
-        print(f"\nBot [{result['intent']}]: {result['answer']}\n")
+        print(f"\nBot [{result.intent}]: {result.answer}\n")
 
-        if SHOW_SOURCES and result["sources"]:
+        if SHOW_SOURCES and result.sources:
             print("── Sources ──")
-            for src in result["sources"]:
-                label = " > ".join(filter(None, [src["section"], src["subsection"]]))
-                print(f"  [{src['chunk_id']}] {label}  (score: {src['score']})")
+            for src in result.sources:
+                label = " > ".join(filter(None, [src.section, src.subsection]))
+                print(f"  [{src.chunk_id}] {label}  (score: {src.score})")
             print()
 
 
