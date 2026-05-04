@@ -2,7 +2,7 @@
 
 ## `HAUIAgent` (`src/agent/haui_agent.py`)
 
-Wrapper stateful cho LangGraph graph, quản lý conversation history qua nhiều lượt chat.
+Stateful wrapper for the LangGraph graph, managing conversation history across multiple turns.
 
 ### Constructor
 
@@ -10,35 +10,35 @@ Wrapper stateful cho LangGraph graph, quản lý conversation history qua nhiề
 agent = HAUIAgent()
 ```
 
-Khởi tạo graph và message history rỗng.
+Initializes the graph and an empty message history.
 
 ### Methods
 
 #### `chat(query: str) -> AgentResponse`
 
-Gửi câu hỏi và nhận câu trả lời.
+Send a query and receive a response.
 
 ```python
-response = agent.chat("Ngành Kỹ thuật phần mềm có những môn học gì?")
+response = agent.chat("What courses are in the Software Engineering program?")
 
-print(response.answer)   # str — câu trả lời
+print(response.answer)   # str — the answer
 print(response.intent)   # str — "curriculum" | "regulations" | "general" | "related" | "unrelated"
-print(response.sources)  # list[RetrievedChunk] — chunks được sử dụng
+print(response.sources)  # list[RetrievedChunk] — chunks used to generate the answer
 ```
 
 **Intent values:**
 
-| Intent | Ý nghĩa |
+| Intent | Meaning |
 |--------|---------|
-| `"curriculum"` | Câu hỏi về chương trình đào tạo |
-| `"regulations"` | Câu hỏi về quy định, thông tin nhà trường |
-| `"general"` | Câu hỏi chung, không thuộc hai domain trên |
-| `"related"` | Có retrieval xảy ra nhưng không có query_type |
-| `"unrelated"` | Không có retrieval nào xảy ra |
+| `"curriculum"` | Query about academic programs |
+| `"regulations"` | Query about university regulations or information |
+| `"general"` | General query not belonging to either domain |
+| `"related"` | Retrieval occurred but no query_type was set |
+| `"unrelated"` | No retrieval occurred |
 
 #### `reset() -> None`
 
-Xóa toàn bộ lịch sử hội thoại.
+Clear the entire conversation history.
 
 ```python
 agent.reset()
@@ -58,7 +58,7 @@ class ChatMessage(BaseModel):
 
 ### `RetrievedChunk`
 
-Một chunk được truy xuất từ FAISS index.
+A chunk retrieved from the FAISS index.
 
 ```python
 class RetrievedChunk(BaseModel):
@@ -71,7 +71,7 @@ class RetrievedChunk(BaseModel):
 
 ### `AgentResponse`
 
-Kết quả trả về từ `HAUIAgent.chat()`.
+The result returned by `HAUIAgent.chat()`.
 
 ```python
 class AgentResponse(BaseModel):
@@ -97,29 +97,29 @@ store = VectorStore(
 
 #### `retrieve(query: str, top_k: int = None) -> list[RetrievedChunk]`
 
-Tìm kiếm chunks gần nhất với query.
+Find the nearest chunks to the query.
 
 ```python
-chunks = store.retrieve("chương trình kỹ thuật phần mềm", top_k=5)
+chunks = store.retrieve("software engineering program", top_k=5)
 for chunk in chunks:
     print(f"[{chunk.score:.3f}] {chunk.section} > {chunk.subsection}")
     print(chunk.content[:200])
 ```
 
-**Nếu `top_k=None`**, sử dụng `settings.top_k`.
+If `top_k=None`, uses `settings.top_k`.
 
 ### Properties
 
 #### `is_ready -> bool`
 
-Kiểm tra cả hai file index và metadata đều tồn tại.
+Check that both the index file and metadata file exist.
 
 ```python
 if store.is_ready:
     chunks = store.retrieve(query)
 ```
 
-### Singleton instances
+### Singleton Instances
 
 ```python
 from src.service.vectorstore import curriculum_store, regulation_store
@@ -131,22 +131,22 @@ from src.service.vectorstore import curriculum_store, regulation_store
 
 ### `retrieve_curriculum(query: str) -> str`
 
-Tool được bind vào curriculum worker. Gọi `curriculum_store.retrieve()` và format kết quả.
+Tool bound to the curriculum worker. Calls `curriculum_store.retrieve()` and formats results.
 
 **Output format:**
 ```
-[1] Đào tạo > Kỹ thuật phần mềm
-Chương trình đào tạo kỹ sư...
+[1] Training > Software Engineering
+The software engineering program...
 
 ---
 
-[2] Tuyển sinh > Chỉ tiêu
-Năm 2024, chỉ tiêu tuyển sinh...
+[2] Admissions > Quotas
+In 2024, the enrollment quota...
 ```
 
 ### `retrieve_regulations(query: str) -> str`
 
-Tool được bind vào regulation worker. Gọi `regulation_store.retrieve()` và format tương tự.
+Tool bound to the regulation worker. Calls `regulation_store.retrieve()` and formats results the same way.
 
 ---
 
@@ -154,7 +154,7 @@ Tool được bind vào regulation worker. Gọi `regulation_store.retrieve()` v
 
 ### `get_client() -> OpenAI`
 
-Trả về OpenAI client (dùng cho embedding requests).
+Returns an OpenAI client (used for embedding requests).
 
 ```python
 from src.llm.client import get_client
@@ -162,13 +162,13 @@ from src.llm.client import get_client
 client = get_client()
 response = client.embeddings.create(
     model=settings.embedding_model,
-    input="văn bản cần embed"
+    input="text to embed"
 )
 ```
 
 ### `get_chat_model() -> ChatOpenAI`
 
-Trả về LangChain `ChatOpenAI` instance.
+Returns a LangChain `ChatOpenAI` instance.
 
 ```python
 from src.llm.client import get_chat_model
@@ -182,23 +182,23 @@ llm = get_chat_model()
 
 ## `build_graph()` (`src/agent/graph.py`)
 
-Xây dựng và compile LangGraph `StateGraph`.
+Builds and compiles the LangGraph `StateGraph`.
 
 ```python
 from src.agent.graph import build_graph
 
 graph = build_graph()
 result = graph.invoke({
-    "messages": [HumanMessage(content="Hỏi gì đó")],
+    "messages": [HumanMessage(content="Ask something")],
     "query_type": ""
 })
 ```
 
 ### `_add_rag_worker(builder, domain, tool, system_prompt)`
 
-Internal helper — thêm toàn bộ nodes và edges của một RAG worker vào graph builder.
+Internal helper — adds all nodes and edges for a RAG worker to the graph builder.
 
-**Nodes được tạo ra:**
+**Nodes created:**
 - `{domain}_generate`
 - `{domain}_retrieve`
 - `{domain}_grade` (conditional edge)
@@ -232,7 +232,7 @@ settings.regulation_meta_file     # str
 ```python
 node_fn = make_generate_node(
     tool=retrieve_curriculum,
-    system_prompt="Bạn là trợ lý...",
+    system_prompt="You are an assistant...",
     node_name="curriculum_generate"
 )
 # node_fn(state: AgentState) -> dict
@@ -240,7 +240,7 @@ node_fn = make_generate_node(
 
 ### `make_grade_edge(node_name)`
 
-Trả về conditional routing function, không phải node thông thường.
+Returns a conditional routing function, not a regular node.
 
 ```python
 edge_fn = make_grade_edge("curriculum")
@@ -263,4 +263,4 @@ node_fn = make_rewrite_node("curriculum")
 
 ### `general_respond_node(state: AgentState) -> dict`
 
-Direct response node, không có factory wrapper.
+Direct response node with no factory wrapper.

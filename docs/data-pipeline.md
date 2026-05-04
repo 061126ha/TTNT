@@ -1,8 +1,8 @@
 # Data Pipeline
 
-Tài liệu mô tả quy trình thu thập, xử lý và lập chỉ mục dữ liệu từ website SICT HAUI.
+This document describes the process for collecting, processing, and indexing data from the SICT HAUI website.
 
-## Tổng quan pipeline
+## Pipeline Overview
 
 ```
 sict.haui.edu.vn
@@ -20,133 +20,133 @@ scripts/build_index.py
       └  faiss_regulation.bin + faiss_regulation_meta.pkl
 ```
 
-## Bước 1 — Thu thập dữ liệu (`scripts/crawl_website.py`)
+## Step 1 — Data Collection (`scripts/crawl_website.py`)
 
-**Nguồn:** `https://sict.haui.edu.vn/vn/`
+**Source:** `https://sict.haui.edu.vn/vn/`
 
-**Các mục được crawl:**
+**Crawled sections:**
 
-| Mục | Nội dung |
-|-----|----------|
-| Giới thiệu | Tổng quan về khoa SICT |
-| Đào tạo | Chương trình đào tạo, ngành học |
-| Tuyển sinh | Thông tin tuyển sinh, chỉ tiêu |
-| Khoa | Các bộ môn và giảng viên |
-| Phòng & Trung tâm | Các phòng ban, trung tâm nghiên cứu |
-| Khoa học - Công nghệ | Nghiên cứu khoa học |
+| Section | Content |
+|---------|---------|
+| Introduction | Overview of SICT faculty |
+| Training | Academic programs, majors |
+| Admissions | Enrollment information, quotas |
+| Faculty | Departments and lecturers |
+| Offices & Centers | Administrative offices, research centers |
+| Science & Technology | Scientific research |
 
-**Quy trình:**
-1. Lấy danh sách URL seed từ 6 mục menu chính
-2. Crawl từng URL seed và các trang liên kết (depth ≤ 2)
-3. Parse HTML với BeautifulSoup, trích xuất nội dung văn bản
-4. Cấu trúc mỗi chunk với metadata: section, subsection, content
-5. Lọc bỏ chunks có ít hơn 30 từ
+**Process:**
+1. Collect seed URLs from 6 main menu sections
+2. Crawl each seed URL and linked pages (depth ≤ 2)
+3. Parse HTML with BeautifulSoup, extract text content
+4. Structure each chunk with metadata: section, subsection, content
+5. Filter out chunks with fewer than 30 words
 
 **Output:** `data/web_chunks.json`
 
 ```json
 [
   {
-    "section": "Đào tạo",
-    "subsection": "Chương trình Kỹ thuật phần mềm",
-    "content": "Chương trình đào tạo kỹ sư...",
+    "section": "Training",
+    "subsection": "Software Engineering Program",
+    "content": "The software engineering program...",
     "url": "https://sict.haui.edu.vn/vn/dao-tao/..."
   }
 ]
 ```
 
-## Bước 2 — Phân loại theo domain (`scripts/split_chunks.py`)
+## Step 2 — Domain Classification (`scripts/split_chunks.py`)
 
-Phân chia `web_chunks.json` thành hai domain riêng biệt dựa trên từ khóa trong section/subsection.
+Splits `web_chunks.json` into two separate domains based on keywords in section/subsection.
 
-**Curriculum keywords** (chương trình đào tạo):
+**Curriculum keywords** (academic programs):
 - `"Ngành"`, `"Thạc sỹ"`, `"Thạc sĩ"`, `"Đào tạo"`, `"Tuyển sinh"`
 
-**Logic phân loại:**
-- Chunk có section/subsection chứa curriculum keywords → `curriculum_chunks.json`
-- Các chunk còn lại → `regulation_chunks.json`
+**Classification logic:**
+- Chunks whose section/subsection contains curriculum keywords → `curriculum_chunks.json`
+- All remaining chunks → `regulation_chunks.json`
 
 **Output:**
-- `data/curriculum_chunks.json` — thông tin ngành học, môn học, chuẩn đầu ra (PEO/SO/PI)
-- `data/regulation_chunks.json` — thông tin nhà trường, bộ môn, chính sách
+- `data/curriculum_chunks.json` — majors, courses, program outcomes (PEO/SO/PI)
+- `data/regulation_chunks.json` — university info, departments, policies
 
-## Bước 3 — Xây dựng FAISS index (`scripts/build_index.py`)
+## Step 3 — Build FAISS Index (`scripts/build_index.py`)
 
-Chạy hai lần, một lần cho mỗi domain.
+Run once for each domain.
 
-**Quy trình cho mỗi domain:**
+**Process for each domain:**
 
-1. Load file JSON chunks
-2. Tạo text đầy đủ cho mỗi chunk:
+1. Load JSON chunks file
+2. Build full text for each chunk:
    ```
    {section} > {subsection}
    {content}
    ```
-3. Gọi OpenRouter embedding API (`text-embedding-3-small`) để embed từng text
-4. L2-normalize từng embedding vector
-5. Xây dựng `faiss.IndexFlatIP(1536)` và add tất cả embeddings
-6. Lưu index binary (`faiss.write_index`)
-7. Lưu metadata list (`pickle.dump`)
+3. Call OpenRouter embedding API (`text-embedding-3-small`) to embed each text
+4. L2-normalize each embedding vector
+5. Build `faiss.IndexFlatIP(1536)` and add all embeddings
+6. Save binary index (`faiss.write_index`)
+7. Save metadata list (`pickle.dump`)
 
-**Metadata mỗi chunk:**
+**Per-chunk metadata:**
 ```python
 {
     "chunk_id": int,
     "content": str,
     "section": str,
     "subsection": str,
-    "text": str,      # full text dùng để embed
-    "score": float    # similarity score (điền khi retrieve)
+    "text": str,      # full text used for embedding
+    "score": float    # similarity score (filled at retrieval time)
 }
 ```
 
-**Chạy lại pipeline:**
+**Re-running the pipeline:**
 
 ```bash
-# Crawl dữ liệu mới
+# Crawl new data
 python scripts/crawl_website.py
 
-# Phân loại lại
+# Re-classify
 python scripts/split_chunks.py
 
 # Rebuild index
 python scripts/build_index.py
 ```
 
-> **Lưu ý:** Chỉ cần chạy lại từ bước có thay đổi. Ví dụ nếu chỉ thay đổi logic phân loại, không cần crawl lại.
+> **Note:** Only re-run from the step where changes occurred. For example, if only the classification logic changed, there is no need to re-crawl.
 
 ## Vector Index
 
-| File | Kích thước | Nội dung |
-|------|-----------|---------|
+| File | Size | Contents |
+|------|------|---------|
 | `faiss_curriculum.bin` | ~1.3 MB | Curriculum FAISS index |
-| `faiss_curriculum_meta.pkl` | — | Metadata cho curriculum chunks |
+| `faiss_curriculum_meta.pkl` | — | Metadata for curriculum chunks |
 | `faiss_regulation.bin` | ~2.6 MB | Regulation FAISS index |
-| `faiss_regulation_meta.pkl` | — | Metadata cho regulation chunks |
+| `faiss_regulation_meta.pkl` | — | Metadata for regulation chunks |
 
-**Index type:** `IndexFlatIP` — brute-force inner product (cosine similarity với L2-norm)  
+**Index type:** `IndexFlatIP` — brute-force inner product (cosine similarity with L2-norm)  
 **Embedding dimension:** 1536  
-**Embedding model:** `openai/text-embedding-3-small` qua OpenRouter
+**Embedding model:** `openai/text-embedding-3-small` via OpenRouter
 
-## Cấu trúc dữ liệu nguồn
+## Source Data Structure
 
 ### `data/web_chunks.json`
 
-Raw chunks crawled từ website, chưa phân loại.
+Raw chunks crawled from the website, not yet classified.
 
 ### `data/curriculum_chunks.json`
 
-Thông tin chương trình đào tạo:
-- Danh sách ngành học (Kỹ thuật phần mềm, CNTT, Điện tử...)
-- Chỉ tiêu tuyển sinh
-- Chuẩn đầu ra: Program Educational Outcomes (PEO), Student Outcomes (SO), Performance Indicators (PI)
-- Danh sách môn học và tín chỉ
+Academic program information:
+- List of majors (Software Engineering, IT, Electronics, ...)
+- Enrollment quotas
+- Program outcomes: Program Educational Outcomes (PEO), Student Outcomes (SO), Performance Indicators (PI)
+- Course list and credit hours
 
 ### `data/regulation_chunks.json`
 
-Thông tin nhà trường và quy định:
-- Giới thiệu về khoa SICT
-- Cơ cấu tổ chức, các bộ môn
-- Phòng ban, trung tâm
-- Kế hoạch chiến lược
-- Chính sách, quy định học vụ
+University and policy information:
+- Introduction to SICT faculty
+- Organizational structure, departments
+- Offices and centers
+- Strategic plans
+- Academic policies and regulations

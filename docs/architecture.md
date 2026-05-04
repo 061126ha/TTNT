@@ -1,15 +1,15 @@
-# Kiến trúc hệ thống
+# System Architecture
 
-## Tổng quan
+## Overview
 
-HAUI Agent sử dụng mô hình **Supervisor-Worker** với LangGraph. Mỗi câu hỏi được phân loại bởi một Supervisor, sau đó chuyển đến Worker chuyên biệt để truy xuất và trả lời.
+HAUI Agent uses a **Supervisor-Worker** pattern with LangGraph. Each query is classified by a Supervisor, then routed to a specialized Worker for retrieval and response generation.
 
 ```
 User Query
     │
     ▼
 ┌─────────────────┐
-│  Supervisor     │  ← LLM classifier (phân loại ý định)
+│  Supervisor     │  ← LLM classifier (classifies intent)
 └─────────────────┘
     │
     ├─ "curriculum"  ──→  Curriculum Worker  ──→  FAISS curriculum index
@@ -21,65 +21,65 @@ User Query
                     (answer + intent + sources)
 ```
 
-## Luồng xử lý RAG Worker
+## RAG Worker Processing Flow
 
-Mỗi RAG worker (curriculum / regulation) thực hiện quy trình sau:
+Each RAG worker (curriculum / regulation) follows this pipeline:
 
 ```
 generate_query
     │
-    ├─ (không gọi tool) ──→ answer  ──→  END
+    ├─ (no tool call) ──→ answer  ──→  END
     │
     └─ tool_calls present
          │
          ▼
-    retrieve_<domain>   ← gọi FAISS search
+    retrieve_<domain>   ← FAISS search
          │
          ▼
-    grade_documents     ← kiểm tra độ liên quan
+    grade_documents     ← relevance check
          │
          ├─ "yes" ──→  answer  ──→  END
          │
          └─ "no"  ──→  rewrite_question  ──→  generate_query (retry)
 ```
 
-## Các Layer kiến trúc
+## Architecture Layers
 
 ### 1. Presentation Layer
 
-| File | Vai trò |
-|------|---------|
-| `app.py` | Streamlit web UI — hiển thị chat, badge intent, trace nodes, sources |
-| `main.py` | CLI tương tác — vòng lặp nhập/xuất đơn giản |
+| File | Role |
+|------|------|
+| `app.py` | Streamlit web UI — chat display, intent badge, node trace, sources |
+| `main.py` | Interactive CLI — simple input/output loop |
 
 ### 2. Agent Layer (`src/agent/`)
 
-| File | Vai trò |
-|------|---------|
-| `haui_agent.py` | `HAUIAgent` — wrapper stateful, quản lý conversation history |
-| `graph.py` | `build_graph()` — xây dựng LangGraph `StateGraph` |
-| `state.py` | `AgentState` — TypedDict chứa messages và query_type |
-| `supervisor.py` | Phân loại ý định, routing đến worker phù hợp |
-| `nodes.py` | Factory functions tạo các node: generate, grade, answer, rewrite |
-| `tools.py` | `@tool` functions cho FAISS retrieval |
+| File | Role |
+|------|------|
+| `haui_agent.py` | `HAUIAgent` — stateful wrapper, manages conversation history |
+| `graph.py` | `build_graph()` — builds the LangGraph `StateGraph` |
+| `state.py` | `AgentState` — TypedDict holding messages and query_type |
+| `supervisor.py` | Classifies intent and routes to the appropriate worker |
+| `nodes.py` | Factory functions creating nodes: generate, grade, answer, rewrite |
+| `tools.py` | `@tool` functions for FAISS retrieval |
 
 ### 3. Service Layer (`src/service/`)
 
-| File | Vai trò |
-|------|---------|
+| File | Role |
+|------|------|
 | `vectorstore.py` | `VectorStore` — lazy-loaded FAISS wrapper |
 
 ### 4. LLM Layer (`src/llm/`)
 
-| File | Vai trò |
-|------|---------|
+| File | Role |
+|------|------|
 | `client.py` | `get_client()` (embeddings), `get_chat_model()` (chat) |
 
 ### 5. Configuration Layer
 
-| File | Vai trò |
-|------|---------|
-| `src/config.py` | `Settings` — Pydantic BaseSettings đọc từ `.env` |
+| File | Role |
+|------|------|
+| `src/config.py` | `Settings` — Pydantic BaseSettings reading from `.env` |
 | `src/models.py` | Pydantic schemas: `ChatMessage`, `RetrievedChunk`, `AgentResponse` |
 
 ## Agent State
@@ -87,19 +87,19 @@ generate_query
 ```python
 class AgentState(TypedDict):
     messages: Annotated[list[AnyMessage], add_messages]
-    # Toàn bộ lịch sử hội thoại — append-only nhờ add_messages reducer
+    # Full conversation history — append-only via add_messages reducer
 
     query_type: str
     # "curriculum" | "regulations" | "general"
-    # Được đặt bởi supervisor, dùng để routing
+    # Set by the supervisor, used for routing
 ```
 
 ## Supervisor Node
 
-**Input:** câu hỏi của user  
+**Input:** user query  
 **Output:** `{"query_type": "curriculum" | "regulations" | "general"}`
 
-Supervisor gọi LLM với một system prompt tiếng Việt yêu cầu trả về đúng một từ. Nếu kết quả không khớp với ba loại hợp lệ, fallback về `"general"`.
+The Supervisor calls an LLM with a system prompt instructing it to return exactly one word. If the result does not match one of the three valid types, it falls back to `"general"`.
 
 **Routing logic:**
 
@@ -113,36 +113,36 @@ def route_to_agent(state) -> str:
 
 ## Worker Nodes (Node Factories)
 
-Các node của hai worker (curriculum và regulation) được tạo bằng factory functions để tránh trùng lặp code:
+Nodes for both workers (curriculum and regulation) are created via factory functions to avoid code duplication:
 
 ### `make_generate_node(tool, system_prompt, node_name)`
 
-- Bind retrieval tool vào chat model
-- Prepend system prompt vào messages
-- Gọi LLM → trả về AI message (có thể có `tool_calls`)
+- Binds the retrieval tool to the chat model
+- Prepends the system prompt to messages
+- Calls the LLM → returns an AI message (may contain `tool_calls`)
 
 ### `make_grade_edge(node_name)` — Conditional Edge
 
-- Nhận retrieved chunks từ tool message
-- Gọi LLM với `GRADE_PROMPT`, yêu cầu structured output `GradeDocuments(binary_score)`
-- `"yes"` → chuyển đến answer node
-- `"no"` → chuyển đến rewrite node
+- Receives retrieved chunks from the tool message
+- Calls the LLM with `GRADE_PROMPT`, requesting structured output `GradeDocuments(binary_score)`
+- `"yes"` → routes to the answer node
+- `"no"` → routes to the rewrite node
 
 ### `make_answer_node(node_name)`
 
-- Extract câu hỏi gốc và retrieved context từ messages
-- Gọi LLM với `GENERATE_PROMPT` để tổng hợp câu trả lời
-- Trả về AI message với nội dung grounded vào sources
+- Extracts the original question and retrieved context from messages
+- Calls the LLM with `GENERATE_PROMPT` to synthesize the answer
+- Returns an AI message grounded in the retrieved sources
 
 ### `make_rewrite_node(node_name)`
 
-- Gọi LLM với `REWRITE_PROMPT` để cải thiện câu hỏi
-- Trả về `HumanMessage` mới để restart vòng lặp retrieval
+- Calls the LLM with `REWRITE_PROMPT` to improve the query
+- Returns a new `HumanMessage` to restart the retrieval loop
 
 ### `general_respond_node(state)`
 
-- Gọi LLM với `GENERAL_SYSTEM` prompt
-- Không truy xuất, trả lời trực tiếp hoặc chuyển hướng
+- Calls the LLM with `GENERAL_SYSTEM` prompt
+- No retrieval; responds directly or redirects the user
 
 ## LangGraph Structure
 
@@ -186,29 +186,29 @@ class HAUIAgent:
         self._messages = []
 ```
 
-**Intent classification trong response:**
-- `"curriculum"` / `"regulations"` / `"general"` — từ `query_type` do supervisor đặt
-- `"related"` — nếu có tool call nhưng không có `query_type`
-- `"unrelated"` — nếu không có retrieval nào xảy ra
+**Intent classification in response:**
+- `"curriculum"` / `"regulations"` / `"general"` — from `query_type` set by the supervisor
+- `"related"` — if a tool call occurred but no `query_type` was set
+- `"unrelated"` — if no retrieval occurred
 
 ## Vector Store
 
 ```python
 class VectorStore:
     def __init__(self, index_file: str, metadata_file: str):
-        # Lazy init — chỉ load khi retrieve() được gọi lần đầu
+        # Lazy init — only loads on first retrieve() call
 
     def retrieve(query: str, top_k: int = None) -> list[RetrievedChunk]:
         # 1. Embed query via OpenAI text-embedding-3-small
-        # 2. L2-normalize embedding vector
+        # 2. L2-normalize the embedding vector
         # 3. FAISS.IndexFlatIP.search(embedding, top_k)
         # 4. Map results → list[RetrievedChunk]
 ```
 
-**Index type:** `FAISS.IndexFlatIP` với L2-normalized embeddings = cosine similarity  
+**Index type:** `FAISS.IndexFlatIP` with L2-normalized embeddings = cosine similarity  
 **Dimension:** 1536 (text-embedding-3-small)
 
-Hai singleton instances tại module level:
+Two singleton instances at module level:
 ```python
 curriculum_store = VectorStore("faiss_curriculum.bin", "faiss_curriculum_meta.pkl")
 regulation_store = VectorStore("faiss_regulation.bin", "faiss_regulation_meta.pkl")

@@ -1,39 +1,39 @@
-# Hướng dẫn phát triển
+# Development Guide
 
-## Thiết lập môi trường
+## Environment Setup
 
 ```bash
-# Clone và cài đặt
+# Clone and install
 git clone <repo-url>
 cd Haui_Agent
 pip install -r requirements.txt
 
-# Cấu hình
+# Configure environment
 cp .env.example .env
-# Điền OPENROUTER_API_KEY
+# Fill in OPENROUTER_API_KEY
 
-# Đảm bảo FAISS indexes đã được build
+# Ensure FAISS indexes are built
 python scripts/build_index.py
 ```
 
-## Nguyên tắc thiết kế
+## Design Principles
 
-Dự án tuân theo **OOP** và **SOLID**:
+This project follows **OOP** and **SOLID** principles:
 
-- **S** — Mỗi class/module có một trách nhiệm duy nhất
-- **O** — Mở rộng bằng cách thêm subclass, không sửa base class
-- **L** — Mọi implementation phải thay thế được cho abstraction
-- **I** — Interface tối giản, không nhồi thêm method không cần thiết
-- **D** — Depend vào abstraction, không depend vào concrete class
+- **S** — Each class/module has a single responsibility
+- **O** — Extend by adding subclasses, never modify base classes
+- **L** — Every implementation must be a drop-in replacement for its abstraction
+- **I** — Keep interfaces minimal; don't bloat them with methods only some subclasses need
+- **D** — Depend on abstractions, not concrete classes
 
-## Thêm một RAG domain mới
+## Adding a New RAG Domain
 
-Ví dụ: thêm domain "research" cho thông tin nghiên cứu khoa học.
+Example: adding a "research" domain for scientific research information.
 
-### 1. Chuẩn bị dữ liệu
+### 1. Prepare Data
 
 ```bash
-# Tạo chunks JSON cho domain mới
+# Create JSON chunks for the new domain
 # data/research_chunks.json
 
 # Build FAISS index
@@ -41,13 +41,13 @@ python scripts/build_index.py --input data/research_chunks.json \
     --output faiss_research.bin --meta faiss_research_meta.pkl
 ```
 
-### 2. Cập nhật VectorStore (`src/service/vectorstore.py`)
+### 2. Update VectorStore (`src/service/vectorstore.py`)
 
 ```python
 research_store = VectorStore("faiss_research.bin", "faiss_research_meta.pkl")
 ```
 
-### 3. Thêm retrieval tool (`src/agent/tools.py`)
+### 3. Add Retrieval Tool (`src/agent/tools.py`)
 
 ```python
 @tool
@@ -57,9 +57,9 @@ def retrieve_research(query: str) -> str:
     return _format_chunks(chunks)
 ```
 
-### 4. Cập nhật Supervisor (`src/agent/supervisor.py`)
+### 4. Update Supervisor (`src/agent/supervisor.py`)
 
-Thêm `"research"` vào danh sách valid types và cập nhật routing:
+Add `"research"` to the list of valid types and update routing:
 
 ```python
 VALID_TYPES = {"curriculum", "regulations", "general", "research"}
@@ -72,14 +72,14 @@ def route_to_agent(state: AgentState) -> str:
         case _:             return "general_respond"
 ```
 
-### 5. Cập nhật system prompt của Supervisor
+### 5. Update the Supervisor System Prompt
 
-Thêm hướng dẫn phân loại "research" vào prompt.
+Add classification instructions for the "research" type to the prompt.
 
-### 6. Thêm worker vào graph (`src/agent/graph.py`)
+### 6. Add Worker to Graph (`src/agent/graph.py`)
 
 ```python
-RESEARCH_SYSTEM = "Bạn là trợ lý về nghiên cứu khoa học tại SICT HAUI..."
+RESEARCH_SYSTEM = "You are an assistant for scientific research at SICT HAUI..."
 
 def build_graph() -> CompiledGraph:
     builder = StateGraph(AgentState)
@@ -87,15 +87,15 @@ def build_graph() -> CompiledGraph:
 
     _add_rag_worker(builder, "curriculum", retrieve_curriculum, CURRICULUM_SYSTEM)
     _add_rag_worker(builder, "regulation", retrieve_regulations, REGULATION_SYSTEM)
-    _add_rag_worker(builder, "research", retrieve_research, RESEARCH_SYSTEM)  # Thêm dòng này
+    _add_rag_worker(builder, "research", retrieve_research, RESEARCH_SYSTEM)  # Add this line
 
     builder.add_node("general_respond", general_respond_node)
     # ... edges ...
 ```
 
-## Thêm một loại node tùy chỉnh
+## Adding a Custom Node Type
 
-### Node không sử dụng retrieval
+### Node Without Retrieval
 
 ```python
 def my_custom_node(state: AgentState) -> dict:
@@ -105,18 +105,17 @@ def my_custom_node(state: AgentState) -> dict:
     return {"messages": [response]}
 ```
 
-Đăng ký vào graph:
+Register it in the graph:
 ```python
 builder.add_node("my_custom", my_custom_node)
 builder.add_edge("supervisor", "my_custom")
 builder.add_edge("my_custom", END)
 ```
 
-### Conditional edge
+### Conditional Edge
 
 ```python
 def my_routing_edge(state: AgentState) -> str:
-    # Logic quyết định next node
     last_message = state["messages"][-1]
     if condition:
         return "node_a"
@@ -128,11 +127,11 @@ builder.add_conditional_edges("some_node", my_routing_edge, {
 })
 ```
 
-## Thay đổi LLM provider
+## Changing the LLM Provider
 
-Tất cả LLM calls đều đi qua `src/llm/client.py`. Để đổi provider:
+All LLM calls go through `src/llm/client.py`. To switch providers:
 
-### Sang provider khác (vẫn dùng OpenAI-compatible API)
+### Another Provider (OpenAI-compatible API)
 
 ```python
 # src/llm/client.py
@@ -145,7 +144,7 @@ def get_chat_model() -> ChatOpenAI:
     )
 ```
 
-### Sang LangChain provider khác (ví dụ: Google Gemini native)
+### Native LangChain Provider (e.g., Google Gemini)
 
 ```python
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -158,17 +157,17 @@ def get_chat_model():
     )
 ```
 
-## Visualize graph
+## Visualize Graph
 
 ```bash
 python visualize_graph.py
 ```
 
-Xuất file `graph_schema.png` — sơ đồ toàn bộ LangGraph nodes và edges.
+Outputs `graph_schema.png` — a diagram of all LangGraph nodes and edges.
 
-## Debug và troubleshooting
+## Debug and Troubleshooting
 
-### Kiểm tra FAISS index
+### Check FAISS Index
 
 ```python
 from src.service.vectorstore import curriculum_store, regulation_store
@@ -177,12 +176,12 @@ print("Curriculum ready:", curriculum_store.is_ready)
 print("Regulation ready:", regulation_store.is_ready)
 
 # Test retrieval
-chunks = curriculum_store.retrieve("kỹ thuật phần mềm", top_k=3)
+chunks = curriculum_store.retrieve("software engineering", top_k=3)
 for c in chunks:
     print(f"[{c.score:.3f}] {c.section} > {c.subsection}")
 ```
 
-### Kiểm tra LLM kết nối
+### Check LLM Connection
 
 ```python
 from src.llm.client import get_chat_model
@@ -193,16 +192,16 @@ response = llm.invoke([HumanMessage(content="Hello")])
 print(response.content)
 ```
 
-### Log agent trace
+### Log Agent Trace
 
-Streamlit UI hiển thị trace tự động. Trong CLI, thêm:
+The Streamlit UI displays traces automatically. For CLI, add:
 
 ```python
 import logging
 logging.getLogger("src.agent").setLevel(logging.DEBUG)
 ```
 
-### Rebuild index khi dữ liệu thay đổi
+### Rebuild Index When Data Changes
 
 ```bash
 # Full rebuild
@@ -210,36 +209,36 @@ python scripts/crawl_website.py
 python scripts/split_chunks.py
 python scripts/build_index.py
 
-# Chỉ rebuild index (không crawl lại)
+# Rebuild index only (skip crawl)
 python scripts/build_index.py
 ```
 
-## Cấu trúc thư mục chi tiết
+## Detailed Directory Structure
 
 ```
 src/
-├── config.py           # Settings — chỉ đọc, không import circular
-├── models.py           # Pydantic schemas — không import từ src/agent/
+├── config.py           # Settings — read-only, no circular imports
+├── models.py           # Pydantic schemas — do not import from src/agent/
 │
 ├── agent/
 │   ├── __init__.py     # Logging setup
-│   ├── state.py        # AgentState — không import từ agent modules khác
-│   ├── tools.py        # @tool functions — import từ service/vectorstore
-│   ├── nodes.py        # Node factories — import tools, llm/client
-│   ├── supervisor.py   # Supervisor node — import llm/client
-│   ├── graph.py        # build_graph() — import tất cả nodes, supervisor
-│   └── haui_agent.py   # HAUIAgent — import graph, models
+│   ├── state.py        # AgentState — do not import from other agent modules
+│   ├── tools.py        # @tool functions — imports from service/vectorstore
+│   ├── nodes.py        # Node factories — imports tools, llm/client
+│   ├── supervisor.py   # Supervisor node — imports llm/client
+│   ├── graph.py        # build_graph() — imports all nodes, supervisor
+│   └── haui_agent.py   # HAUIAgent — imports graph, models
 │
 ├── llm/
 │   ├── __init__.py
-│   └── client.py       # get_client(), get_chat_model() — import config
+│   └── client.py       # get_client(), get_chat_model() — imports config
 │
 └── service/
     ├── __init__.py
-    └── vectorstore.py  # VectorStore — import llm/client, models, config
+    └── vectorstore.py  # VectorStore — imports llm/client, models, config
 ```
 
-**Import order** (không được tạo circular imports):
+**Import order** (no circular imports allowed):
 ```
 config → llm/client → service/vectorstore → agent/tools → agent/nodes
 config → models

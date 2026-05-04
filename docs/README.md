@@ -1,41 +1,49 @@
-# HAUI Agent — Tổng quan dự án
+# HAUI Agent — Project Overview
 
-**HAUI Agent** là chatbot RAG (Retrieval-Augmented Generation) hỗ trợ sinh viên và giảng viên trường Đại học Công nghiệp Hà Nội (HAUI) — Khoa Công nghệ Thông tin và Truyền thông (SICT) tra cứu thông tin về chương trình đào tạo, quy định nhà trường và sổ tay sinh viên.
+**HAUI Agent** is a RAG (Retrieval-Augmented Generation) chatbot that helps students and faculty at Hanoi University of Industry (HAUI) — Faculty of Information and Communication Technology (SICT) — look up information about academic programs, university regulations, and the student handbook.
 
-## Tính năng chính
+## Key Features
 
-- **Phân loại câu hỏi thông minh** — Supervisor phân loại ý định người dùng trước khi chuyển tiếp đến agent phù hợp
-- **Truy xuất ngữ cảnh (RAG)** — Hai chỉ mục FAISS riêng biệt cho chương trình đào tạo và quy định nhà trường
-- **Kiểm tra độ liên quan** — Tự động đánh giá và viết lại câu hỏi nếu kết quả truy xuất không phù hợp
-- **Giao diện đa dạng** — Streamlit web UI và CLI tương tác
-- **Hỗ trợ tiếng Việt** — Toàn bộ prompt và dữ liệu bằng tiếng Việt
+- **Intelligent Query Classification** — A Supervisor classifies user intent before routing to the appropriate agent
+- **Context Retrieval (RAG)** — Two separate FAISS indexes for academic programs and university regulations
+- **Relevance Grading** — Automatically evaluates retrieved documents and rewrites the query if results are not relevant
+- **Multiple Interfaces** — Streamlit web UI and interactive CLI
+- **Vietnamese Language Support** — All prompts and data are in Vietnamese
 
-## Khởi động nhanh
+## Agent Graph
 
-### 1. Cài đặt dependencies
+The diagram below shows the full LangGraph node structure — how queries flow from the Supervisor through each RAG worker and back to the end.
+
+![Agent Graph](../graph_schema.png)
+
+The Supervisor routes each query to one of three paths: **curriculum** (academic programs), **regulations** (university policies), or **general** (direct LLM response). Each RAG path includes a retrieve → grade → answer loop with an automatic query rewrite if retrieved documents are not relevant.
+
+## Quick Start
+
+### 1. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Cấu hình môi trường
+### 2. Configure Environment
 
 ```bash
 cp .env.example .env
-# Điền OPENROUTER_API_KEY và các biến môi trường khác
+# Fill in OPENROUTER_API_KEY and other environment variables
 ```
 
-### 3. Chạy ứng dụng
+### 3. Run the Application
 
 ```bash
-# Giao diện web (Streamlit)
+# Web interface (Streamlit)
 streamlit run app.py
 
-# CLI tương tác
+# Interactive CLI
 python main.py
 ```
 
-## Cấu trúc thư mục
+## Directory Structure
 
 ```
 Haui_Agent/
@@ -44,46 +52,46 @@ Haui_Agent/
 ├── requirements.txt
 ├── .env.example
 │
-├── data/                       # Dữ liệu nguồn (JSON chunks)
+├── data/                       # Source data (JSON chunks)
 │   ├── curriculum_chunks.json
 │   ├── regulation_chunks.json
 │   └── web_chunks.json
 │
 ├── scripts/                    # Data pipeline
-│   ├── crawl_website.py        # Thu thập dữ liệu từ website
-│   ├── split_chunks.py         # Phân loại chunks theo domain
-│   └── build_index.py          # Xây dựng FAISS index
+│   ├── crawl_website.py        # Crawl data from the website
+│   ├── split_chunks.py         # Classify chunks by domain
+│   └── build_index.py          # Build FAISS indexes
 │
-├── faiss_curriculum.bin/.pkl   # Vector index — chương trình đào tạo
-├── faiss_regulation.bin/.pkl   # Vector index — quy định nhà trường
+├── faiss_curriculum.bin/.pkl   # Vector index — academic programs
+├── faiss_regulation.bin/.pkl   # Vector index — university regulations
 │
 ├── src/
-│   ├── config.py               # Cấu hình runtime
+│   ├── config.py               # Runtime configuration
 │   ├── models.py               # Pydantic schemas
 │   ├── agent/                  # LangGraph multi-agent
 │   ├── llm/                    # LLM client
 │   └── service/                # VectorStore
 │
-└── docs/                       # Tài liệu dự án (thư mục này)
+└── docs/                       # Project documentation (this directory)
 ```
 
-## Tài liệu chi tiết
+## Documentation
 
-| File | Nội dung |
+| File | Contents |
 |------|----------|
-| [architecture.md](architecture.md) | Kiến trúc hệ thống, luồng xử lý, các component |
-| [data-pipeline.md](data-pipeline.md) | Thu thập dữ liệu, phân loại, xây dựng vector index |
-| [configuration.md](configuration.md) | Biến môi trường, cấu hình model, tùy chỉnh |
-| [development.md](development.md) | Hướng dẫn mở rộng, thêm agent/node mới |
-| [api-reference.md](api-reference.md) | Tham chiếu API classes và functions |
+| [architecture.md](architecture.md) | System architecture, request flow, components |
+| [data-pipeline.md](data-pipeline.md) | Data collection, classification, vector index building |
+| [configuration.md](configuration.md) | Environment variables, model configuration, customization |
+| [development.md](development.md) | Extension guide, adding new agents/nodes |
+| [api-reference.md](api-reference.md) | API class and function reference |
 
-## Công nghệ sử dụng
+## Technology Stack
 
-| Thư viện | Vai trò |
-|----------|---------|
-| LangGraph | Điều phối multi-agent workflow |
-| LangChain | Abstractions cho LLM và tool calling |
+| Library | Role |
+|---------|------|
+| LangGraph | Multi-agent workflow orchestration |
+| LangChain | Abstractions for LLM and tool calling |
 | FAISS | Vector similarity search |
-| OpenRouter | LLM API gateway (Gemini, Claude, v.v.) |
+| OpenRouter | LLM API gateway (Gemini, Claude, etc.) |
 | Streamlit | Web UI |
 | Pydantic | Data validation |
