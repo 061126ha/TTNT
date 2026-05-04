@@ -39,7 +39,41 @@ cp .env.example .env
 # Fill in OPENROUTER_API_KEY and other environment variables
 ```
 
-### 3. Run the Application
+### 3. Build FAISS Vector Index
+
+Run once per domain before starting the application. Requires `OPENROUTER_API_KEY` to be set in `.env` (used to embed text via `openai/text-embedding-3-small`).
+
+```bash
+# Index for academic programs
+python scripts/build_index.py \
+    --input data/curriculum_chunks.json \
+    --index faiss_curriculum.bin \
+    --meta  faiss_curriculum_meta.pkl
+
+# Index for university regulations
+python scripts/build_index.py \
+    --input data/regulation_chunks.json \
+    --index faiss_regulation.bin \
+    --meta  faiss_regulation_meta.pkl
+```
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `--input` | Yes | Input chunks JSON file |
+| `--index` | Yes | Output FAISS index file (`.bin`) |
+| `--meta` | Yes | Output metadata file (`.pkl`) |
+| `--model` | No | Embedding model (default: `openai/text-embedding-3-small`) |
+
+Once complete, the following 4 files will appear in the project root and are loaded automatically on startup:
+
+```
+faiss_curriculum.bin
+faiss_curriculum_meta.pkl
+faiss_regulation.bin
+faiss_regulation_meta.pkl
+```
+
+### 4. Run the Application
 
 ```bash
 # Web interface (Streamlit)
