@@ -1,22 +1,28 @@
 # HAUI Agent — Project Overview
 
-**HAUI Agent** is a RAG (Retrieval-Augmented Generation) chatbot that helps students and faculty at Hanoi University of Industry (HAUI) — Faculty of Information and Communication Technology (SICT) — look up information about academic programs, university regulations, and the student handbook.
+**HAUI Agent** is a multi-agent system that helps students and faculty at Hanoi University of Industry (HAUI) — Faculty of Information and Communication Technology (SICT) — look up information about academic programs, university regulations, and the student handbook. It uses a Supervisor-Worker architecture built on LangGraph, where specialized RAG agents handle retrieval and generation for each knowledge domain.
 
 ## Key Features
 
-- **Intelligent Query Classification** — A Supervisor classifies user intent before routing to the appropriate agent
-- **Context Retrieval (RAG)** — Two separate FAISS indexes for academic programs and university regulations
-- **Relevance Grading** — Automatically evaluates retrieved documents and rewrites the query if results are not relevant
-- **Multiple Interfaces** — Streamlit web UI and interactive CLI
+- **Supervisor Routing** — A Supervisor node classifies each query and routes it to the appropriate specialist agent or returns a direct response
+- **Dual RAG Workers** — Separate retrieval-generation pipelines for academic programs (`curriculum`) and university regulations (`regulation`)
+- **Adaptive Query Rewriting** — If retrieved documents are not relevant, the agent automatically rewrites the query and retries retrieval
+- **General Fallback** — Queries that don't require document lookup are answered directly via `general_respond`
 - **Vietnamese Language Support** — All prompts and data are in Vietnamese
 
 ## Agent Graph
 
-The diagram below shows the full LangGraph node structure — how queries flow from the Supervisor through each RAG worker and back to the end.
-
 ![Agent Graph](../graph_schema.png)
 
-The Supervisor routes each query to one of three paths: **curriculum** (academic programs), **regulations** (university policies), or **general** (direct LLM response). Each RAG path includes a retrieve → grade → answer loop with an automatic query rewrite if retrieved documents are not relevant.
+The graph above shows the full LangGraph node structure. Every request starts at `__start__`, passes through the **Supervisor**, then follows one of three paths:
+
+| Path | Nodes | Description |
+|------|-------|-------------|
+| **Curriculum** | `curriculum_generate` → `curriculum_retrieve` → `curriculum_answer` or `curriculum_rewrite` | Answers questions about academic programs and course structures |
+| **Regulation** | `regulation_generate` → `regulation_retrieve` → `regulation_answer` or `regulation_rewrite` | Answers questions about university policies and rules |
+| **General** | `general_respond` | Handles greetings and questions that don't need document retrieval |
+
+Each RAG path follows a **retrieve → grade → answer** loop. If the grader marks retrieved documents as irrelevant, the agent rewrites the query (`rewrite_question` edge) and loops back to generate a new retrieval query. When documents are relevant, the `generate_answer` edge sends the context to the answer node, which writes the final response and exits to `__end__`.
 
 ## Quick Start
 
@@ -49,8 +55,10 @@ python main.py
 Haui_Agent/
 ├── app.py                      # Streamlit web UI
 ├── main.py                     # CLI entry point
+├── agent.py                    # Agent entry point
 ├── requirements.txt
 ├── .env.example
+├── graph_schema.png            # Agent workflow diagram
 │
 ├── data/                       # Source data (JSON chunks)
 │   ├── curriculum_chunks.json
@@ -69,8 +77,14 @@ Haui_Agent/
 │   ├── config.py               # Runtime configuration
 │   ├── models.py               # Pydantic schemas
 │   ├── agent/                  # LangGraph multi-agent
-│   ├── llm/                    # LLM client
-│   └── service/                # VectorStore
+│   │   ├── graph.py            # Graph definition and compilation
+│   │   ├── nodes.py            # Node functions (generate, answer, rewrite)
+│   │   ├── supervisor.py       # Supervisor routing logic
+│   │   ├── tools.py            # Retrieval tools
+│   │   ├── state.py            # AgentState definition
+│   │   └── prompt.py           # All prompts
+│   ├── llm/                    # LLM client wrapper
+│   └── service/                # VectorStore service
 │
 └── docs/                       # Project documentation (this directory)
 ```
