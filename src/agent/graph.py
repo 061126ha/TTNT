@@ -1,31 +1,98 @@
-from langgraph.graph import END, StateGraph
+"""
+Multi-agent LangGraph for the HAUI RAG chatbot.
+
+Architecture: Supervisor-Worker pattern with 2 RAG workers + 1 general fallback.
+
+Flow:
+  START → supervisor
+    ├── curriculum  → curriculum_generate → curriculum_retrieve
+    │                   → curriculum_grade → curriculum_answer → END
+    │                                      → curriculum_rewrite → curriculum_generate (loop)
+    ├── regulations → regulation_generate → regulation_retrieve
+    │                   → regulation_grade → regulation_answer → END
+    │                                      → regulation_rewrite → regulation_generate (loop)
+    └── general     → general_respond → END
+"""
+
+from langgraph.graph import StateGraph, START, END
+from langgraph.prebuilt import ToolNode, tools_condition
+
 from src.agent.state import AgentState
-from src.agent.nodes import router_node, retrieve_node, generate_node, off_topic_node
+from src.agent.tools import retrieve_curriculum, retrieve_regulations
+from src.agent.supervisor import supervisor_node, route_to_agent
+from src.agent.nodes import (
+    make_generate_node,
+    make_answer_node,
+    make_rewrite_node,
+    make_grade_edge,
+    general_respond_node,
+    CURRICULUM_SYSTEM,
+    REGULATION_SYSTEM,
+)
 
-def route_by_intent(state: AgentState) -> str:
-    return state["intent"]
 
-def build_graph():
-    graph = StateGraph(AgentState)
+def _add_rag_worker(
+    workflow: StateGraph,
+    prefix: str,
+    tool,
+    system_prompt: str,
+) -> None:
+    """Register the 5 nodes + edges for one RAG worker agent.
 
-    graph.add_node("router", router_node)
-    graph.add_node("retrieve", retrieve_node)
-    graph.add_node("generate", generate_node)
-    graph.add_node("off_topic", off_topic_node)
+    Nodes added:  {prefix}_generate, {prefix}_retrieve, {prefix}_grade,
+                  {prefix}_rewrite, {prefix}_answer
+    """
+    generate = make_generate_node(tool, system_prompt, f"{prefix}_generate")
+    retrieve = ToolNode([tool])
+    grade = make_grade_edge(f"{prefix}_grade")
+    rewrite = make_rewrite_node(f"{prefix}_rewrite")
+    answer = make_answer_node(f"{prefix}_answer")
 
-    graph.set_entry_point("router")
+    workflow.add_node(f"{prefix}_generate", generate)
+    workflow.add_node(f"{prefix}_retrieve", retrieve)
+    workflow.add_node(f"{prefix}_rewrite", rewrite)
+    workflow.add_node(f"{prefix}_answer", answer)
 
-    graph.add_conditional_edges(
-        "router",
-        route_by_intent,
+    # generate → retrieve OR end
+    workflow.add_conditional_edges(
+        f"{prefix}_generate",
+        tools_condition,
         {
-            "related": "retrieve",
-            "unrelated": "off_topic",
+            "tools": f"{prefix}_retrieve",
+            END: END,
         },
     )
 
-    graph.add_edge("retrieve", "generate")
-    graph.add_edge("generate", END)
-    graph.add_edge("off_topic", END)
+    # retrieve → grade (conditional)
+    workflow.add_conditional_edges(
+        f"{prefix}_retrieve",
+        grade,
+        {
+            "generate_answer": f"{prefix}_answer",
+            "rewrite_question": f"{prefix}_rewrite",
+        },
+    )
 
-    return graph.compile()
+    # answer → end, rewrite → generate (retry loop)
+    workflow.add_edge(f"{prefix}_answer", END)
+    workflow.add_edge(f"{prefix}_rewrite", f"{prefix}_generate")
+
+
+def build_graph():
+    """Build and compile the multi-agent Supervisor-Worker graph."""
+    workflow = StateGraph(AgentState)
+
+    # ── Supervisor ──
+    workflow.add_node("supervisor", supervisor_node)
+    workflow.add_edge(START, "supervisor")
+    workflow.add_conditional_edges("supervisor", route_to_agent)
+
+    # ── RAG Workers ──
+    _add_rag_worker(workflow, "curriculum",  retrieve_curriculum,  CURRICULUM_SYSTEM)
+    _add_rag_worker(workflow, "regulation",  retrieve_regulations, REGULATION_SYSTEM)
+
+    # ── General fallback ──
+    workflow.add_node("general_respond", general_respond_node)
+    workflow.add_edge("general_respond", END)
+
+    return workflow.compile()
