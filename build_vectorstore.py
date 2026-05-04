@@ -35,22 +35,31 @@ def make_client() -> OpenAI:
     )
 
 
-def embed_texts(client: OpenAI, texts: list[str]) -> np.ndarray:
-    """Embed texts one at a time (OpenRouter does not support batch input)."""
-    all_embeddings = []
-    n_error_embeddings_text = 0
+def embed_texts(client: OpenAI, texts: list[str]) -> tuple[np.ndarray, list[int]]:
+    """Embed texts one at a time (OpenRouter does not support batch input).
+
+    Returns
+    -------
+    embeddings : np.ndarray
+        Array of shape (N, dim) containing only successfully embedded texts.
+    valid_indices : list[int]
+        Original indices of the texts that were successfully embedded.
+    """
+    all_embeddings: list[list[float]] = []
+    valid_indices: list[int] = []
+    n_errors = 0
     for i, text in enumerate(texts):
         try:
             response = client.embeddings.create(model=EMBEDDING_MODEL, input=text)
+            all_embeddings.append(response.data[0].embedding)
+            valid_indices.append(i)
         except Exception as e:
-            print(text)
-            print("="*100)
-            n_error_embeddings_text += 1
-        all_embeddings.append(response.data[0].embedding)
+            print(f"  [ERROR] Failed to embed chunk {i}: {e}")
+            n_errors += 1
         if (i + 1) % 10 == 0 or (i + 1) == len(texts):
             print(f"  Embedded {i + 1}/{len(texts)} chunks...")
-    print(f"Finished embedding. {n_error_embeddings_text} texts had errors during embedding.")
-    return np.array(all_embeddings, dtype=np.float32)
+    print(f"Finished embedding. {n_errors} texts had errors and were skipped.")
+    return np.array(all_embeddings, dtype=np.float32), valid_indices
 
 
 def build_index(embeddings: np.ndarray) -> faiss.IndexFlatIP:
@@ -90,7 +99,10 @@ def main():
     client = make_client()
 
     print(f"Embedding {len(texts)} chunks with model '{EMBEDDING_MODEL}'...")
-    embeddings = embed_texts(client, texts)
+    embeddings, valid_indices = embed_texts(client, texts)
+
+    # Keep only metadata for successfully embedded chunks
+    metadata_store = [metadata_store[i] for i in valid_indices]
 
     print("Building FAISS index...")
     index = build_index(embeddings)
