@@ -37,12 +37,19 @@ class Settings:
         return int(os.getenv("RETRIEVAL_TOP_K", "5"))
 
     @property
-    def index_file(self) -> str:
-        return os.getenv("FAISS_INDEX_FILE", "faiss_index.bin")
+    def curriculum_index_file(self) -> str:
+        return os.getenv("FAISS_CURRICULUM_INDEX", "faiss_curriculum.bin")
 
     @property
-    def metadata_file(self) -> str:
-        return os.getenv("FAISS_METADATA_FILE", "faiss_metadata.pkl")
+    def curriculum_metadata_file(self) -> str:
+        return os.getenv("FAISS_CURRICULUM_META", "faiss_curriculum_meta.pkl")
 
+    @property
+    def regulation_index_file(self) -> str:
+        return os.getenv("FAISS_REGULATION_INDEX", "faiss_regulation.bin")
+
+    @property
+    def regulation_metadata_file(self) -> str:
+        return os.getenv("FAISS_REGULATION_META", "faiss_regulation_meta.pkl")
 
 settings = Settings()
