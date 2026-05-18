@@ -55,7 +55,7 @@ class Settings:
     @property
     def reranker_type(self) -> str:
         # "none" | "cross_encoder" | "llm" | "cohere"
-        return os.getenv("RERANKER_TYPE", "none")
+        return os.getenv("RERANKER_TYPE", "cohere")
 
     @property
     def rerank_fetch_multiplier(self) -> int:

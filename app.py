@@ -43,6 +43,12 @@ st.markdown(
         font-size: 0.8rem; color: #495057;
     }
 
+    .rerank-pill {
+        display: inline-block; padding: 1px 8px; border-radius: 10px;
+        font-size: 0.72rem; font-weight: 600; margin-left: 4px;
+        background: #e8d5f5; color: #5b2d8e;
+    }
+
     section[data-testid="stSidebar"] { min-width: 280px; }
     </style>
     """,
@@ -88,6 +94,7 @@ with st.sidebar:
     os.environ["RETRIEVAL_TOP_K"] = str(top_k)
 
     show_sources = st.toggle("Hiển thị ngữ cảnh truy xuất", value=True)
+    show_rerank = st.toggle("Hiển thị rerank info", value=True)
 
     st.divider()
 
@@ -108,6 +115,7 @@ with st.sidebar:
 # ─── Agent initialisation ─────────────────────────────────────────────────────
 
 from src.agent.haui_agent import HAUIAgent  # noqa: E402
+import src.agent.tools as _tools_module  # noqa: E402
 
 INDEX_FILE = "faiss_curriculum.bin"
 
@@ -129,6 +137,43 @@ def get_agent() -> HAUIAgent | None:
             return None
         st.session_state.agent = HAUIAgent()
     return st.session_state.agent
+
+
+_TOOL_LABEL = {
+    "curriculum": "🎓 Chương trình đào tạo",
+    "regulations": "🏛️ Thông tin trường",
+}
+
+
+def _render_rerank_info(rerank_info: list[dict]) -> None:
+    if not rerank_info:
+        return
+    for entry in rerank_info:
+        tool_label = _TOOL_LABEL.get(entry["tool"], entry["tool"])
+        reranker_type = entry["reranker_type"]
+        pill = f'<span class="rerank-pill">{reranker_type}</span>'
+        st.markdown(f"**{tool_label}** {pill}", unsafe_allow_html=True)
+
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Fetched từ FAISS", entry["fetch_k"])
+        col2.metric("Thực tế truy xuất", entry["retrieved"])
+        col3.metric("Sau rerank", entry["reranked"])
+
+        chunks = entry.get("chunks", [])
+        if chunks:
+            rows = []
+            for i, chunk in enumerate(chunks, 1):
+                label = " > ".join(filter(None, [chunk.section, chunk.subsection])) or str(chunk.chunk_id)
+                rerank_score = (
+                    f"{chunk.rerank_score:.4f}" if chunk.rerank_score is not None else "—"
+                )
+                rows.append({
+                    "Rank": i,
+                    "Nguồn": label,
+                    "FAISS score": round(chunk.score, 4),
+                    "Rerank score": rerank_score,
+                })
+            st.dataframe(rows, use_container_width=True, hide_index=True)
 
 
 def extract_graph_trace(agent: HAUIAgent) -> list[str]:
@@ -210,6 +255,9 @@ for msg in st.session_state.messages:
             if show_sources and msg.get("context"):
                 with st.expander("📄 Ngữ cảnh truy xuất", expanded=False):
                     st.code(msg["context"][:3000], language=None)
+            if show_rerank and msg.get("rerank_info"):
+                with st.expander("📊 Rerank info", expanded=False):
+                    _render_rerank_info(msg["rerank_info"])
         else:
             st.markdown(msg["content"])
 
@@ -222,7 +270,9 @@ if prompt := st.chat_input("Hỏi về chương trình đào tạo, quy chế, t
 
     with st.chat_message("assistant", avatar="🎓"):
         with st.spinner("Đang xử lý…"):
+            _tools_module.rerank_debug.clear()
             result = agent.chat(prompt)
+            rerank_info = list(_tools_module.rerank_debug)
 
         intent = result.intent
         answer = result.answer
@@ -243,6 +293,10 @@ if prompt := st.chat_input("Hỏi về chương trình đào tạo, quy chế, t
             with st.expander("📄 Ngữ cảnh truy xuất", expanded=True):
                 st.code(tool_context[:3000], language=None)
 
+        if show_rerank and rerank_info:
+            with st.expander("📊 Rerank info", expanded=True):
+                _render_rerank_info(rerank_info)
+
     st.session_state.messages.append(
         {
             "role": "assistant",
@@ -250,5 +304,6 @@ if prompt := st.chat_input("Hỏi về chương trình đào tạo, quy chế, t
             "intent": intent,
             "context": tool_context,
             "trace": graph_trace,
+            "rerank_info": rerank_info,
         }
     )
