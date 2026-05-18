@@ -33,8 +33,11 @@ generate_query
     └─ tool_calls present
          │
          ▼
-    retrieve_<domain>   ← FAISS search
+    retrieve_<domain>   ← FAISS search (top_k × RERANK_FETCH_MULTIPLIER candidates)
          │
+         ▼
+    rerank_chunks       ← Cross-encoder / LLM / Cohere → final top_k chunks
+         │                 (identity pass-through when RERANKER_TYPE=none)
          ▼
     grade_documents     ← relevance check
          │
