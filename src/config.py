@@ -52,4 +52,29 @@ class Settings:
     def regulation_metadata_file(self) -> str:
         return os.getenv("FAISS_REGULATION_META", "faiss_regulation_meta.pkl")
 
+    @property
+    def reranker_type(self) -> str:
+        # "none" | "cross_encoder" | "llm" | "cohere"
+        return os.getenv("RERANKER_TYPE", "none")
+
+    @property
+    def rerank_fetch_multiplier(self) -> int:
+        return int(os.getenv("RERANK_FETCH_MULTIPLIER", "3"))
+
+    @property
+    def rerank_top_k(self) -> int:
+        return int(os.getenv("RERANK_TOP_K", str(self.top_k)))
+
+    @property
+    def cross_encoder_model(self) -> str:
+        return os.getenv("CROSS_ENCODER_MODEL", "BAAI/bge-reranker-base")
+
+    @property
+    def cohere_api_key(self) -> str | None:
+        return os.getenv("COHERE_API_KEY")
+
+    @property
+    def cohere_rerank_model(self) -> str:
+        return os.getenv("COHERE_RERANK_MODEL", "rerank-multilingual-v3.0")
+
 settings = Settings()

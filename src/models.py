@@ -24,6 +24,7 @@ class RetrievedChunk(BaseModel):
     subsection: str = Field("", description="Subsection heading")
     score: float = Field(0.0, description="Cosine similarity score")
     text: str = Field("", description="Full text used for embedding (header + content)")
+    rerank_score: float | None = Field(None, description="Score assigned by the reranker (None if no reranking)")
 
 
 class AgentResponse(BaseModel):

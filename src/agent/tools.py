@@ -10,9 +10,14 @@ import logging
 
 from langchain_core.tools import tool
 
+from src.config import settings
+from src.service.reranker import reranker
 from src.service.vectorstore import curriculum_store, regulation_store
 
 logger = logging.getLogger(__name__)
+
+# Populated by each tool call during one agent turn; cleared by the UI before each new turn.
+rerank_debug: list[dict] = []
 
 
 def _format_chunks(chunks) -> str:
@@ -39,9 +44,19 @@ def retrieve_curriculum(query: str) -> str:
         query: Câu hỏi về chương trình đào tạo (tiếng Việt hoặc tiếng Anh).
     """
     logger.info("═══ [Tool] retrieve_curriculum: %s", query)
-    chunks = curriculum_store.retrieve(query)
-    result = _format_chunks(chunks)
-    logger.info("  Found %d chunks (%d chars)", len(chunks), len(result))
+    fetch_k = settings.top_k * settings.rerank_fetch_multiplier if settings.reranker_type != "none" else None
+    raw_chunks = curriculum_store.retrieve(query, top_k=fetch_k)
+    ranked_chunks = reranker.rerank(query, raw_chunks, top_k=settings.rerank_top_k)
+    rerank_debug.append({
+        "tool": "curriculum",
+        "reranker_type": settings.reranker_type,
+        "fetch_k": fetch_k or settings.top_k,
+        "retrieved": len(raw_chunks),
+        "reranked": len(ranked_chunks),
+        "chunks": ranked_chunks,
+    })
+    result = _format_chunks(ranked_chunks)
+    logger.info("  Found %d chunks (%d chars)", len(ranked_chunks), len(result))
     return result
 
 
@@ -59,7 +74,17 @@ def retrieve_regulations(query: str) -> str:
         query: Câu hỏi về thông tin trường, quy chế, chính sách (tiếng Việt hoặc tiếng Anh).
     """
     logger.info("═══ [Tool] retrieve_regulations: %s", query)
-    chunks = regulation_store.retrieve(query)
-    result = _format_chunks(chunks)
-    logger.info("  Found %d chunks (%d chars)", len(chunks), len(result))
+    fetch_k = settings.top_k * settings.rerank_fetch_multiplier if settings.reranker_type != "none" else None
+    raw_chunks = regulation_store.retrieve(query, top_k=fetch_k)
+    ranked_chunks = reranker.rerank(query, raw_chunks, top_k=settings.rerank_top_k)
+    rerank_debug.append({
+        "tool": "regulations",
+        "reranker_type": settings.reranker_type,
+        "fetch_k": fetch_k or settings.top_k,
+        "retrieved": len(raw_chunks),
+        "reranked": len(ranked_chunks),
+        "chunks": ranked_chunks,
+    })
+    result = _format_chunks(ranked_chunks)
+    logger.info("  Found %d chunks (%d chars)", len(ranked_chunks), len(result))
     return result
