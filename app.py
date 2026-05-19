@@ -1,5 +1,6 @@
 """
-HAUI Student Handbook Chatbot — Streamlit UI
+HAUI SICT Chatbot — Streamlit UI
+
 Run with:
     streamlit run app.py
 """
@@ -14,7 +15,7 @@ load_dotenv()
 # ─── Page config ──────────────────────────────────────────────────────────────
 
 st.set_page_config(
-    page_title="HAUI Chatbot",
+    page_title="HAUI SICT Chatbot",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -25,31 +26,29 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Main chat area */
     .main .block-container { padding-top: 1.5rem; padding-bottom: 0; }
 
-    /* Intent badges */
-    .badge-related {
-        background: #d4edda; color: #155724;
-        padding: 2px 8px; border-radius: 10px;
+    .badge {
+        display: inline-block;
+        padding: 2px 10px; border-radius: 10px;
         font-size: 0.72rem; font-weight: 600; margin-left: 6px;
     }
-    .badge-unrelated {
-        background: #fff3cd; color: #856404;
-        padding: 2px 8px; border-radius: 10px;
-        font-size: 0.72rem; font-weight: 600; margin-left: 6px;
+    .badge-curriculum  { background: #d4edda; color: #155724; }
+    .badge-regulations { background: #cce5ff; color: #004085; }
+    .badge-general     { background: #fff3cd; color: #856404; }
+
+    .graph-info {
+        background: #f1f3f5; border: 1px solid #dee2e6;
+        border-radius: 8px; padding: 8px 12px; margin-top: 6px;
+        font-size: 0.8rem; color: #495057;
     }
 
-    /* Source cards */
-    .source-card {
-        background: #f8f9fa; border: 1px solid #dee2e6;
-        border-radius: 8px; padding: 10px 14px; margin-bottom: 8px;
-        font-size: 0.85rem;
+    .rerank-pill {
+        display: inline-block; padding: 1px 8px; border-radius: 10px;
+        font-size: 0.72rem; font-weight: 600; margin-left: 4px;
+        background: #e8d5f5; color: #5b2d8e;
     }
-    .source-card .score { color: #6c757d; font-size: 0.78rem; float: right; }
-    .source-card .section-label { font-weight: 600; color: #0d6efd; }
 
-    /* Sidebar */
     section[data-testid="stSidebar"] { min-width: 280px; }
     </style>
     """,
@@ -64,22 +63,11 @@ with st.sidebar:
         "HAUI_logo.png/200px-HAUI_logo.png",
         width=120,
     )
-    st.title("HAUI Chatbot")
-    st.caption("Student Handbook Assistant")
+    st.title("HAUI SICT Chatbot")
+    st.caption("Multi-agent RAG · Trường CNTT&TT · ĐH Công nghiệp Hà Nội")
     st.divider()
 
-    # API key input (fallback if not set in .env)
-    api_key_input = st.text_input(
-        "OpenRouter API Key",
-        value=os.getenv("OPENROUTER_API_KEY", ""),
-        type="password",
-        help="Set OPENROUTER_API_KEY in your .env file or enter it here. Get one at openrouter.ai/keys",
-    )
-    if api_key_input:
-        os.environ["OPENROUTER_API_KEY"] = api_key_input
-
-    st.divider()
-    st.subheader("Settings")
+    st.subheader("Cài đặt")
 
     chat_model = st.selectbox(
         "Chat model",
@@ -92,36 +80,58 @@ with st.sidebar:
         ],
         index=0,
     )
+
+    prev_model = st.session_state.get("_prev_chat_model")
+    if prev_model and prev_model != chat_model:
+        import src.llm.client as _llm_client
+        _llm_client._chat_model = None
+        st.session_state.agent = None
+
     os.environ["OPENROUTER_CHAT_MODEL"] = chat_model
+    st.session_state["_prev_chat_model"] = chat_model
 
     top_k = st.slider("Retrieval top-K", min_value=1, max_value=10, value=5)
     os.environ["RETRIEVAL_TOP_K"] = str(top_k)
 
-    show_sources = st.toggle("Show retrieved sources", value=True)
+    show_sources = st.toggle("Hiển thị ngữ cảnh truy xuất", value=True)
+    show_rerank = st.toggle("Hiển thị rerank info", value=True)
 
     st.divider()
 
-    if st.button("🗑️ Clear conversation", use_container_width=True):
+    if st.button("🗑️ Xóa cuộc trò chuyện", use_container_width=True):
         st.session_state.messages = []
         st.session_state.agent = None
         st.rerun()
 
     st.divider()
-    st.caption(
-        "Built with LangGraph · FAISS · OpenRouter\n\n"
-        "Ask anything about the HAUI student handbook in Vietnamese or English."
+    st.markdown(
+        "**Agents:**\n"
+        "- 🎓 Chương trình đào tạo\n"
+        "- 🏛️ Thông tin & quy chế trường\n"
+        "- 💬 Câu hỏi chung\n\n"
+        "Built with **LangGraph** · FAISS · OpenRouter"
     )
 
 # ─── Agent initialisation ─────────────────────────────────────────────────────
 
-# Import here so env vars set above are picked up before the module loads defaults
-from agent import HAUIAgent  # noqa: E402
+from src.agent.haui_agent import HAUIAgent  # noqa: E402
+import src.agent.tools as _tools_module  # noqa: E402
 
-INDEX_FILE = "faiss_index.bin"
+INDEX_FILE = "faiss_curriculum.bin"
+
+_BADGE = {
+    "curriculum":  ("badge-curriculum",  "🎓 Chương trình đào tạo"),
+    "regulations": ("badge-regulations", "🏛️ Thông tin trường"),
+    "general":     ("badge-general",     "💬 Chung"),
+}
+
+
+def _badge_html(intent: str) -> str:
+    cls, label = _BADGE.get(intent, ("badge-general", "💬 Chung"))
+    return f'<span class="badge {cls}">{label}</span>'
 
 
 def get_agent() -> HAUIAgent | None:
-    """Return a cached HAUIAgent, or None if the index hasn't been built yet."""
     if "agent" not in st.session_state or st.session_state.agent is None:
         if not os.path.exists(INDEX_FILE):
             return None
@@ -129,32 +139,101 @@ def get_agent() -> HAUIAgent | None:
     return st.session_state.agent
 
 
+_TOOL_LABEL = {
+    "curriculum": "🎓 Chương trình đào tạo",
+    "regulations": "🏛️ Thông tin trường",
+}
+
+
+def _render_rerank_info(rerank_info: list[dict]) -> None:
+    if not rerank_info:
+        return
+    for entry in rerank_info:
+        tool_label = _TOOL_LABEL.get(entry["tool"], entry["tool"])
+        reranker_type = entry["reranker_type"]
+        pill = f'<span class="rerank-pill">{reranker_type}</span>'
+        st.markdown(f"**{tool_label}** {pill}", unsafe_allow_html=True)
+
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Fetched từ FAISS", entry["fetch_k"])
+        col2.metric("Thực tế truy xuất", entry["retrieved"])
+        col3.metric("Sau rerank", entry["reranked"])
+
+        chunks = entry.get("chunks", [])
+        if chunks:
+            rows = []
+            for i, chunk in enumerate(chunks, 1):
+                label = " > ".join(filter(None, [chunk.section, chunk.subsection])) or str(chunk.chunk_id)
+                rerank_score = (
+                    f"{chunk.rerank_score:.4f}" if chunk.rerank_score is not None else "—"
+                )
+                rows.append({
+                    "Rank": i,
+                    "Nguồn": label,
+                    "FAISS score": round(chunk.score, 4),
+                    "Rerank score": rerank_score,
+                })
+            st.dataframe(rows, use_container_width=True, hide_index=True)
+
+
+def extract_graph_trace(agent: HAUIAgent) -> list[str]:
+    """Reconstruct which multi-agent nodes ran from the message history."""
+    trace: list[str] = []
+    messages = agent._messages
+    for msg in messages:
+        if not hasattr(msg, "type"):
+            continue
+        if msg.type == "ai" and hasattr(msg, "tool_calls") and msg.tool_calls:
+            tool_name = msg.tool_calls[0].get("name", "tool") if msg.tool_calls else "tool"
+            trace.append(f"generate → 🔧 {tool_name}")
+        elif msg.type == "tool":
+            trace.append("retrieve ✅")
+        elif msg.type == "ai" and msg.content:
+            if any(m.type == "tool" for m in messages if hasattr(m, "type")):
+                trace.append("answer →  ✅")
+            else:
+                trace.append("respond directly 💬")
+    return trace
+
+
+def extract_tool_context(agent: HAUIAgent) -> str | None:
+    for msg in reversed(agent._messages):
+        if hasattr(msg, "type") and msg.type == "tool" and msg.content:
+            return msg.content
+    return None
+
+
 # ─── Main UI ──────────────────────────────────────────────────────────────────
 
-st.header("🎓 HAUI Student Handbook Chatbot")
+st.header("🎓 HAUI SICT — Trợ lý AI")
 st.caption(
-    "Ask me anything about academic programmes, learning outcomes, curriculum, "
-    "and more from the HAUI student handbook."
+    "Hỏi về chương trình đào tạo, ngành học, chuẩn đầu ra, quy chế, "
+    "thông tin trường và các vấn đề liên quan đến Trường CNTT&TT - ĐH Công nghiệp Hà Nội."
 )
 
-# Index not built yet — show setup instructions
 if not os.path.exists(INDEX_FILE):
     st.warning(
-        "**Vector index not found.** "
-        "Run the following command to build it, then refresh this page:",
+        "**Vector index chưa được build.** Chạy lần lượt các lệnh sau rồi reload trang:",
         icon="⚠️",
     )
-    st.code("python build_vectorstore.py", language="bash")
+    st.code(
+        "python scripts/crawl_website.py\n"
+        "python scripts/split_chunks.py\n"
+        "python scripts/build_index.py --input data/curriculum_chunks.json --index faiss_curriculum.bin --meta faiss_curriculum_meta.pkl\n"
+        "python scripts/build_index.py --input data/regulation_chunks.json --index faiss_regulation.bin --meta faiss_regulation_meta.pkl",
+        language="bash",
+    )
     st.stop()
 
-# No API key
 if not os.environ.get("OPENROUTER_API_KEY"):
-    st.error("Please enter your OpenRouter API key in the sidebar.", icon="🔑")
+    st.error(
+        "Chưa có OPENROUTER_API_KEY. Thêm vào file .env rồi khởi động lại.",
+        icon="🔑",
+    )
     st.stop()
 
-# Initialise session state
 if "messages" not in st.session_state:
-    st.session_state.messages = []  # list of {"role", "content", "intent", "sources"}
+    st.session_state.messages = []
 
 agent = get_agent()
 
@@ -163,75 +242,68 @@ agent = get_agent()
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"], avatar="🧑" if msg["role"] == "user" else "🎓"):
         if msg["role"] == "assistant":
-            intent = msg.get("intent", "")
-            badge_class = "badge-related" if intent == "related" else "badge-unrelated"
-            badge_label = "handbook" if intent == "related" else "off-topic"
             st.markdown(
-                f'{msg["content"]}'
-                f' <span class="{badge_class}">{badge_label}</span>',
+                msg["content"] + _badge_html(msg.get("intent", "general")),
                 unsafe_allow_html=True,
             )
-            if show_sources and msg.get("sources"):
-                with st.expander(f"📚 Sources ({len(msg['sources'])} chunks)", expanded=False):
-                    for src in msg["sources"]:
-                        label = " › ".join(
-                            filter(None, [src.get("section", ""), src.get("subsection", "")])
-                        )
-                        st.markdown(
-                            f'<div class="source-card">'
-                            f'<span class="score">score: {src["score"]}</span>'
-                            f'<span class="section-label">[{src["chunk_id"]}] {label}</span>'
-                            f"</div>",
-                            unsafe_allow_html=True,
-                        )
+            if msg.get("trace"):
+                trace_str = " → ".join(msg["trace"])
+                st.markdown(
+                    f'<div class="graph-info">🔄 <b>Agent trace:</b> {trace_str}</div>',
+                    unsafe_allow_html=True,
+                )
+            if show_sources and msg.get("context"):
+                with st.expander("📄 Ngữ cảnh truy xuất", expanded=False):
+                    st.code(msg["context"][:3000], language=None)
+            if show_rerank and msg.get("rerank_info"):
+                with st.expander("📊 Rerank info", expanded=False):
+                    _render_rerank_info(msg["rerank_info"])
         else:
             st.markdown(msg["content"])
 
 # ─── Chat input ───────────────────────────────────────────────────────────────
 
-if prompt := st.chat_input("Ask about the student handbook…"):
-    # Show user message
+if prompt := st.chat_input("Hỏi về chương trình đào tạo, quy chế, thông tin trường…"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar="🧑"):
         st.markdown(prompt)
 
-    # Run the agent
     with st.chat_message("assistant", avatar="🎓"):
-        with st.spinner("Thinking…"):
+        with st.spinner("Đang xử lý…"):
+            _tools_module.rerank_debug.clear()
             result = agent.chat(prompt)
+            rerank_info = list(_tools_module.rerank_debug)
 
-        intent = result["intent"]
-        answer = result["answer"]
-        sources = result["sources"]
+        intent = result.intent
+        answer = result.answer
 
-        badge_class = "badge-related" if intent == "related" else "badge-unrelated"
-        badge_label = "handbook" if intent == "related" else "off-topic"
-        st.markdown(
-            f"{answer} "
-            f'<span class="{badge_class}">{badge_label}</span>',
-            unsafe_allow_html=True,
-        )
+        st.markdown(answer + _badge_html(intent), unsafe_allow_html=True)
 
-        if show_sources and sources:
-            with st.expander(f"📚 Sources ({len(sources)} chunks)", expanded=True):
-                for src in sources:
-                    label = " › ".join(
-                        filter(None, [src.get("section", ""), src.get("subsection", "")])
-                    )
-                    st.markdown(
-                        f'<div class="source-card">'
-                        f'<span class="score">score: {src["score"]}</span>'
-                        f'<span class="section-label">[{src["chunk_id"]}] {label}</span>'
-                        f"</div>",
-                        unsafe_allow_html=True,
-                    )
+        tool_context = extract_tool_context(agent)
+        graph_trace = extract_graph_trace(agent)
 
-    # Persist to session
+        if graph_trace:
+            trace_str = " → ".join(graph_trace)
+            st.markdown(
+                f'<div class="graph-info">🔄 <b>Agent trace:</b> {trace_str}</div>',
+                unsafe_allow_html=True,
+            )
+
+        if show_sources and tool_context:
+            with st.expander("📄 Ngữ cảnh truy xuất", expanded=True):
+                st.code(tool_context[:3000], language=None)
+
+        if show_rerank and rerank_info:
+            with st.expander("📊 Rerank info", expanded=True):
+                _render_rerank_info(rerank_info)
+
     st.session_state.messages.append(
         {
             "role": "assistant",
             "content": answer,
             "intent": intent,
-            "sources": sources,
+            "context": tool_context,
+            "trace": graph_trace,
+            "rerank_info": rerank_info,
         }
     )
