@@ -94,22 +94,32 @@ def extract_references(generation_gt) -> list[str]:
 def extract_gt_chunk_ids(retrieval_gt) -> set[str]:
     """Extract ground-truth chunk IDs from the retrieval_gt field."""
     ids: set[str] = set()
+    
+    def _add(val):
+        if val is None or pd.isna(val):
+            return
+        if isinstance(val, float) and val.is_integer():
+            val = int(val)
+        s = str(val).strip()
+        if s:
+            ids.add(s)
+
     if isinstance(retrieval_gt, np.ndarray):
         for item in retrieval_gt.flat:
             if isinstance(item, np.ndarray):
                 for sub in item.flat:
-                    if isinstance(sub, str) and sub.strip():
-                        ids.add(sub.strip())
-            elif isinstance(item, str) and item.strip():
-                ids.add(item.strip())
+                    _add(sub)
+            else:
+                _add(item)
     elif isinstance(retrieval_gt, list):
         for item in retrieval_gt:
             if isinstance(item, list):
                 for sub in item:
-                    if isinstance(sub, str) and sub.strip():
-                        ids.add(sub.strip())
-            elif isinstance(item, str) and item.strip():
-                ids.add(item.strip())
+                    _add(sub)
+            else:
+                _add(item)
+    else:
+        _add(retrieval_gt)
     return ids
 
 
@@ -205,6 +215,7 @@ def evaluate_generation(
     df: pd.DataFrame,
     run_bleu: bool = True,
     run_rouge: bool = True,
+    save_callback=None,
 ) -> tuple[list[dict], dict]:
     """Evaluate generation quality using BLEU and/or ROUGE.
 
@@ -242,8 +253,11 @@ def evaluate_generation(
             resp = agent.chat(question)
             candidate = resp.answer
             intent = resp.intent
+        except KeyboardInterrupt:
+            print("\n  [!] Dừng bởi người dùng (KeyboardInterrupt). Đang lưu kết quả...")
+            break
         except Exception as exc:
-            print(f"    ❌ ERROR: {exc}")
+            print(f" ERROR: {exc}")
             candidate, intent = "", "error"
         elapsed = time.time() - t0
 
@@ -280,6 +294,15 @@ def evaluate_generation(
         print(f"    ({elapsed:.1f}s)")
         results.append(entry)
 
+        if save_callback:
+            temp_avg = {}
+            n_res = len(results)
+            if run_bleu and n_res > 0:
+                for k, vals in bleu_accum.items(): temp_avg[k] = round(sum(vals) / n_res, 4)
+            if run_rouge and n_res > 0:
+                for k, vals in rouge_accum.items(): temp_avg[k] = round(sum(vals) / n_res, 4)
+            save_callback(results, temp_avg)
+
     # ── Aggregate ─────────────────────────────────────────────────────────
     n = len(results)
     avg: dict = {}
@@ -301,6 +324,7 @@ def evaluate_retrieval(
     df: pd.DataFrame,
     k_values: list[int],
     store_mode: str = "curriculum",
+    save_callback=None,
 ) -> tuple[list[dict], dict]:
     """Evaluate retrieval quality using Recall@K.
 
@@ -346,6 +370,9 @@ def evaluate_retrieval(
                 store = regulation_store if domain == "regulations" else curriculum_store
                 chunks = store.retrieve(question, top_k=max_k)
                 retrieved_ids = [str(c.chunk_id) for c in chunks]
+        except KeyboardInterrupt:
+            print("\n  [!] Dừng bởi người dùng (KeyboardInterrupt). Đang lưu kết quả...")
+            break
         except Exception as exc:
             print(f"    ❌ ERROR: {exc}")
             retrieved_ids = []
@@ -372,6 +399,12 @@ def evaluate_retrieval(
             "scores": recalls,
             "elapsed_seconds": round(elapsed, 2),
         })
+
+        if save_callback:
+            temp_avg = {}
+            for k_val in k_values:
+                temp_avg[f"recall@{k_val}"] = round(sum(all_recalls[k_val]) / len(results), 4) if results else 0.0
+            save_callback(results, temp_avg)
 
     # ── Aggregate ─────────────────────────────────────────────────────────
     n = len(results)
@@ -448,6 +481,35 @@ def print_summary(
 # CLI
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def save_evaluation(output_path, mode, qa_file, total, gen_results, gen_avg, ret_results, ret_avg, k_values, store):
+    """Save the evaluation results to JSON."""
+    output = {
+        "evaluation_date": datetime.now().isoformat(),
+        "mode": mode,
+        "qa_file": qa_file,
+        "total_questions": total,
+    }
+
+    if gen_results is not None:
+        output["generation"] = {
+            "evaluated": len(gen_results),
+            "average_scores": gen_avg or {},
+            "details": gen_results,
+        }
+
+    if ret_results is not None:
+        output["retrieval"] = {
+            "evaluated": len(ret_results),
+            "k_values": k_values,
+            "store": store,
+            "average_scores": ret_avg or {},
+            "details": ret_results,
+        }
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Unified evaluation for HAUI Agent (BLEU + ROUGE + Recall@K)",
@@ -497,6 +559,12 @@ Examples:
         help="Only evaluate the first N questions",
     )
     parser.add_argument(
+        "--offset",
+        type=int,
+        default=0,
+        help="Skip the first N questions (use with --limit for batching)",
+    )
+    parser.add_argument(
         "--log-level",
         default="WARNING",
         choices=["DEBUG", "INFO", "WARNING", "ERROR"],
@@ -514,9 +582,13 @@ Examples:
     df = pd.read_parquet(args.qa)
     print(f"Loaded {len(df)} question-answer pairs.")
 
+    if args.offset > 0:
+        df = df.iloc[args.offset:]
+        print(f"Skipping first {args.offset} questions.")
+
     if args.limit:
         df = df.head(args.limit)
-        print(f"Limiting to first {args.limit} questions.")
+        print(f"Limiting to {args.limit} questions.")
 
     total = len(df)
     mode = args.mode
@@ -538,44 +610,28 @@ Examples:
             metrics.append("ROUGE")
         print(f"  Running generation evaluation: {' + '.join(metrics)}")
         print(f"{'─' * 64}")
-        gen_results, gen_avg = evaluate_generation(df, run_bleu=run_bleu, run_rouge=run_rouge)
+        
+        def _save_gen(partial_results, partial_avg):
+            save_evaluation(args.output, mode, args.qa, total, partial_results, partial_avg, ret_results, ret_avg, args.k, args.store)
+            
+        gen_results, gen_avg = evaluate_generation(df, run_bleu=run_bleu, run_rouge=run_rouge, save_callback=_save_gen)
 
     # ── Retrieval evaluation ──────────────────────────────────────────────
     if run_recall:
         print(f"\n{'─' * 64}")
         print(f"  Running retrieval evaluation: Recall@K (store={args.store})")
         print(f"{'─' * 64}")
-        ret_results, ret_avg = evaluate_retrieval(df, args.k, args.store)
+        
+        def _save_ret(partial_results, partial_avg):
+            save_evaluation(args.output, mode, args.qa, total, gen_results, gen_avg, partial_results, partial_avg, args.k, args.store)
+            
+        ret_results, ret_avg = evaluate_retrieval(df, args.k, args.store, save_callback=_save_ret)
 
     # ── Summary ───────────────────────────────────────────────────────────
     print_summary(mode, total, gen_results, gen_avg, ret_results, ret_avg, args.k)
 
-    # ── Save JSON ─────────────────────────────────────────────────────────
-    output = {
-        "evaluation_date": datetime.now().isoformat(),
-        "mode": mode,
-        "qa_file": args.qa,
-        "total_questions": total,
-    }
-
-    if gen_results is not None:
-        output["generation"] = {
-            "evaluated": len(gen_results),
-            "average_scores": gen_avg,
-            "details": gen_results,
-        }
-
-    if ret_results is not None:
-        output["retrieval"] = {
-            "evaluated": len(ret_results),
-            "k_values": args.k,
-            "store": args.store,
-            "average_scores": ret_avg,
-            "details": ret_results,
-        }
-
-    with open(args.output, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
+    # ── Final Save ────────────────────────────────────────────────────────
+    save_evaluation(args.output, mode, args.qa, total, gen_results, gen_avg, ret_results, ret_avg, args.k, args.store)
     print(f"\nResults saved to '{args.output}'")
 
 
