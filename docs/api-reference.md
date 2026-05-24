@@ -58,7 +58,7 @@ class ChatMessage(BaseModel):
 
 ### `RetrievedChunk`
 
-A chunk retrieved from the FAISS index.
+A chunk retrieved from the FAISS index, optionally annotated with a rerank score.
 
 ```python
 class RetrievedChunk(BaseModel):
@@ -66,7 +66,9 @@ class RetrievedChunk(BaseModel):
     content: str
     section: str
     subsection: str
-    score: float    # cosine similarity score (0.0 – 1.0)
+    score: float             # cosine similarity from FAISS (0.0 – 1.0)
+    text: str                # raw text (may differ from content)
+    rerank_score: float | None = None  # score assigned by the reranker; None if not reranked
 ```
 
 ### `AgentResponse`
@@ -127,11 +129,65 @@ from src.service.vectorstore import curriculum_store, regulation_store
 
 ---
 
+## Reranker Service (`src/service/reranker.py`)
+
+### Abstract Base
+
+```python
+class BaseReranker(ABC):
+    def rerank(self, query: str, chunks: list[RetrievedChunk], top_k: int) -> list[RetrievedChunk]: ...
+```
+
+### Implementations
+
+| Class | `RERANKER_TYPE` | Description |
+|-------|-----------------|-------------|
+| `IdentityReranker` | `none` | Returns first `top_k` chunks unchanged |
+| `CrossEncoderReranker` | `cross_encoder` | Local cross-encoder via `sentence-transformers`; lazy-loads model on first call |
+| `LLMReranker` | `llm` | Scores each chunk with one LLM call; no extra dependencies |
+| `CohereReranker` | `cohere` | Cohere Rerank API; requires `COHERE_API_KEY` |
+
+### `get_reranker() -> BaseReranker`
+
+Factory that reads `settings.reranker_type` and returns the appropriate instance. Raises `ValueError` if `RERANKER_TYPE=cohere` and `COHERE_API_KEY` is unset.
+
+### Module-level singleton
+
+```python
+from src.service import reranker as _reranker_module
+
+# Always use module-attribute access — direct import creates a stale binding
+_reranker_module.reranker.rerank(query, chunks, top_k)
+```
+
+The `reranker` module attribute is replaced at runtime when the Streamlit sidebar changes the reranker type. If initialization fails (e.g. missing `COHERE_API_KEY`), the module falls back to `IdentityReranker` and logs a warning.
+
+### `rerank_debug` (`src/agent/tools.py`)
+
+```python
+rerank_debug: list[dict]
+```
+
+A module-level list appended to by each tool call. The Streamlit UI calls `rerank_debug.clear()` before each new user turn and reads it after to display the **Rerank info** expander. Each entry contains:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `tool` | `str` | `"curriculum"` or `"regulations"` |
+| `reranker_type` | `str` | Active `RERANKER_TYPE` |
+| `reranker_model` | `str \| None` | Model name (Cohere or cross-encoder); `None` for `llm`/`none` |
+| `fetch_k` | `int` | Candidates fetched from FAISS |
+| `retrieved` | `int` | Candidates actually returned by FAISS |
+| `reranked` | `int` | Chunks after reranking |
+| `effective_top_k` | `int` | `min(rerank_top_k, fetch_k)` — actual cap applied |
+| `chunks` | `list[RetrievedChunk]` | Final ranked chunks |
+
+---
+
 ## LangGraph Tools (`src/agent/tools.py`)
 
 ### `retrieve_curriculum(query: str) -> str`
 
-Tool bound to the curriculum worker. Calls `curriculum_store.retrieve()` and formats results.
+Tool bound to the curriculum worker. Fetches `top_k × RERANK_FETCH_MULTIPLIER` candidates from `curriculum_store`, reranks them, then formats the top `RERANK_TOP_K` results.
 
 **Output format:**
 ```
@@ -146,7 +202,7 @@ In 2024, the enrollment quota...
 
 ### `retrieve_regulations(query: str) -> str`
 
-Tool bound to the regulation worker. Calls `regulation_store.retrieve()` and formats results the same way.
+Tool bound to the regulation worker. Same pipeline as `retrieve_curriculum` but uses `regulation_store`.
 
 ---
 
@@ -216,12 +272,22 @@ settings.openrouter_base_url      # str
 settings.openrouter_api_key       # str
 settings.chat_model               # str — model name
 settings.embedding_model          # str — embedding model name
-settings.top_k                    # int — retrieval top-k
+settings.top_k                    # int — FAISS retrieval top-k
 settings.curriculum_index_file    # str — path to FAISS index
 settings.curriculum_meta_file     # str — path to metadata pickle
 settings.regulation_index_file    # str
 settings.regulation_meta_file     # str
+
+# Reranker properties (all read @property from os.environ at access time)
+settings.reranker_type            # str — "cohere" | "cross_encoder" | "llm" | "none"
+settings.rerank_top_k             # int — chunks to keep after reranking
+settings.rerank_fetch_multiplier  # int — FAISS over-fetch multiplier
+settings.cohere_api_key           # str | None
+settings.cohere_rerank_model      # str — default "rerank-multilingual-v3.0"
+settings.cross_encoder_model      # str — HuggingFace model name
 ```
+
+All properties are `@property` decorators that read from `os.environ` at access time, so env var changes (e.g. from the Streamlit sidebar) take effect immediately without restarting the application.
 
 ---
 

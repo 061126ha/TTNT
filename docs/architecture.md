@@ -71,6 +71,7 @@ generate_query
 | File | Role |
 |------|------|
 | `vectorstore.py` | `VectorStore` — lazy-loaded FAISS wrapper |
+| `reranker.py` | `BaseReranker` hierarchy — post-FAISS chunk scoring (Cohere / Cross-Encoder / LLM / Identity) |
 
 ### 4. LLM Layer (`src/llm/`)
 
@@ -193,6 +194,38 @@ class HAUIAgent:
 - `"curriculum"` / `"regulations"` / `"general"` — from `query_type` set by the supervisor
 - `"related"` — if a tool call occurred but no `query_type` was set
 - `"unrelated"` — if no retrieval occurred
+
+## Reranker Service
+
+After FAISS retrieval, chunks are re-scored by a configurable reranker before being passed to the answer node. The reranker is a module-level singleton in `src/service/reranker.py`; the Streamlit sidebar replaces it live by reassigning `_reranker_module.reranker`.
+
+```
+FAISS → raw_chunks (top_k × fetch_multiplier)
+              │
+              ▼
+        reranker.rerank(query, raw_chunks, top_k=rerank_top_k)
+              │
+              ▼
+        ranked_chunks (top rerank_top_k)  →  answer node
+```
+
+| `RERANKER_TYPE` | Implementation | Notes |
+|-----------------|----------------|-------|
+| `cohere` (default) | `CohereReranker` | Requires `COHERE_API_KEY`; uses Cohere Rerank API |
+| `cross_encoder` | `CrossEncoderReranker` | Local model via `sentence-transformers`; no API key needed |
+| `llm` | `LLMReranker` | One LLM call per chunk; higher latency |
+| `none` | `IdentityReranker` | Returns first `top_k` chunks unchanged |
+
+**Hot-swap pattern** — tools.py uses a module-level import to ensure calls always read the current singleton:
+
+```python
+import src.service.reranker as _reranker_module
+
+# Correct — reads the current singleton at call time
+ranked = _reranker_module.reranker.rerank(query, chunks, top_k)
+```
+
+Assigning `from src.service.reranker import reranker` would create a stale local binding that would not reflect runtime updates.
 
 ## Vector Store
 

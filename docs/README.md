@@ -6,6 +6,7 @@
 
 - **Supervisor Routing** — A Supervisor node classifies each query and routes it to the appropriate specialist agent or returns a direct response
 - **Dual RAG Workers** — Separate retrieval-generation pipelines for academic programs (`curriculum`) and university regulations (`regulation`)
+- **Post-Retrieval Reranking** — FAISS candidates are re-scored before generation using Cohere Rerank, a local Cross-Encoder, or an LLM scorer (configurable via `RERANKER_TYPE`; switchable live from the Streamlit sidebar)
 - **Adaptive Query Rewriting** — If retrieved documents are not relevant, the agent automatically rewrites the query and retries retrieval
 - **General Fallback** — Queries that don't require document lookup are answered directly via `general_respond`
 - **Vietnamese Language Support** — All prompts and data are in Vietnamese
@@ -118,7 +119,9 @@ Haui_Agent/
 │   │   ├── state.py            # AgentState definition
 │   │   └── prompt.py           # All prompts
 │   ├── llm/                    # LLM client wrapper
-│   └── service/                # VectorStore service
+│   └── service/                # Business-logic services
+│       ├── vectorstore.py      # VectorStore — FAISS retrieval
+│       └── reranker.py         # BaseReranker hierarchy — post-FAISS chunk scoring
 │
 └── docs/                       # Project documentation (this directory)
 ```
@@ -141,5 +144,7 @@ Haui_Agent/
 | LangChain | Abstractions for LLM and tool calling |
 | FAISS | Vector similarity search |
 | OpenRouter | LLM API gateway (Gemini, Claude, etc.) |
+| Cohere | Rerank API (`cohere` reranker type) |
+| sentence-transformers | Local cross-encoder reranking (`cross_encoder` reranker type) |
 | Streamlit | Web UI |
 | Pydantic | Data validation |

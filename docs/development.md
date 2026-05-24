@@ -50,12 +50,20 @@ research_store = VectorStore("faiss_research.bin", "faiss_research_meta.pkl")
 ### 3. Add Retrieval Tool (`src/agent/tools.py`)
 
 ```python
+import src.service.reranker as _reranker_module
+from src.config import settings
+
 @tool
 def retrieve_research(query: str) -> str:
     """Find information about scientific research at SICT HAUI."""
-    chunks = research_store.retrieve(query)
-    return _format_chunks(chunks)
+    fetch_k = settings.top_k * settings.rerank_fetch_multiplier if settings.reranker_type != "none" else None
+    raw_chunks = research_store.retrieve(query, top_k=fetch_k)
+    effective_top_k = min(settings.rerank_top_k, fetch_k) if fetch_k is not None else settings.rerank_top_k
+    ranked_chunks = _reranker_module.reranker.rerank(query, raw_chunks, top_k=effective_top_k)
+    return _format_chunks(ranked_chunks)
 ```
+
+> **Important:** Always import the reranker as a module (`import src.service.reranker as _reranker_module`) and access the singleton via `_reranker_module.reranker`. A direct `from ... import reranker` creates a stale local binding that will not reflect live reranker changes from the Streamlit sidebar.
 
 ### 4. Update Supervisor (`src/agent/supervisor.py`)
 
@@ -235,12 +243,14 @@ src/
 │
 └── service/
     ├── __init__.py
-    └── vectorstore.py  # VectorStore — imports llm/client, models, config
+    ├── vectorstore.py  # VectorStore — imports llm/client, models, config
+    └── reranker.py     # BaseReranker hierarchy — imports models, config, llm/client (LLMReranker only)
 ```
 
 **Import order** (no circular imports allowed):
 ```
 config → llm/client → service/vectorstore → agent/tools → agent/nodes
 config → models
+config → service/reranker (lazy llm/client import inside LLMReranker.rerank)
 agent/state → agent/supervisor → agent/nodes → agent/graph → agent/haui_agent
 ```

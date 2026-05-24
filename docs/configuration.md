@@ -25,6 +25,12 @@ cp .env.example .env
 | `FAISS_CURRICULUM_META` | `faiss_curriculum_meta.pkl` | Path to the curriculum metadata |
 | `FAISS_REGULATION_INDEX` | `faiss_regulation.bin` | Path to the regulation FAISS index |
 | `FAISS_REGULATION_META` | `faiss_regulation_meta.pkl` | Path to the regulation metadata |
+| `RERANKER_TYPE` | `cohere` | Reranker to use: `cohere`, `cross_encoder`, `llm`, or `none` |
+| `RERANK_TOP_K` | *(same as `RETRIEVAL_TOP_K`)* | Number of chunks kept after reranking |
+| `RERANK_FETCH_MULTIPLIER` | `3` | How many extra candidates to fetch before reranking (`top_k × multiplier`) |
+| `COHERE_API_KEY` | *(required for `cohere`)* | API key from [cohere.com](https://cohere.com) |
+| `COHERE_RERANK_MODEL` | `rerank-multilingual-v3.0` | Cohere rerank model name |
+| `CROSS_ENCODER_MODEL` | `BAAI/bge-reranker-base` | HuggingFace cross-encoder model for local reranking |
 
 ### Full `.env` File
 
@@ -44,6 +50,14 @@ FAISS_CURRICULUM_INDEX=faiss_curriculum.bin
 FAISS_CURRICULUM_META=faiss_curriculum_meta.pkl
 FAISS_REGULATION_INDEX=faiss_regulation.bin
 FAISS_REGULATION_META=faiss_regulation_meta.pkl
+
+# Reranker (optional — defaults to cohere)
+RERANKER_TYPE=cohere
+RERANK_TOP_K=5
+RERANK_FETCH_MULTIPLIER=3
+COHERE_API_KEY=your-cohere-api-key
+COHERE_RERANK_MODEL=rerank-multilingual-v3.0
+CROSS_ENCODER_MODEL=BAAI/bge-reranker-base
 ```
 
 ## Settings Class (`src/config.py`)
@@ -90,6 +104,43 @@ The number of FAISS chunks returned per query. A higher value provides richer co
 
 - Streamlit UI: Sidebar → **Top-K Retrieval** slider (1–10)
 - `.env`: `RETRIEVAL_TOP_K=5`
+
+## Reranker Configuration
+
+After FAISS retrieval, chunks are re-scored before being passed to the answer node. Configure via `RERANKER_TYPE`.
+
+### Reranker Types
+
+| Type | Description | Requirements |
+|------|-------------|--------------|
+| `cohere` (default) | Cohere Rerank API — best multilingual quality | `COHERE_API_KEY` |
+| `cross_encoder` | Local cross-encoder model — no API key, higher CPU usage | `sentence-transformers` |
+| `llm` | LLM scoring — one call per chunk, highest latency | none |
+| `none` | No reranking — first `top_k` FAISS results used | none |
+
+### Reranker Parameters
+
+| Variable | Description |
+|----------|-------------|
+| `RERANK_TOP_K` | Number of chunks to keep after reranking (≤ `RETRIEVAL_TOP_K`) |
+| `RERANK_FETCH_MULTIPLIER` | Multiplier for FAISS candidates before reranking (`top_k × N`) |
+
+**Example:** `RETRIEVAL_TOP_K=5`, `RERANK_FETCH_MULTIPLIER=3` → FAISS fetches 15 candidates, reranker selects top `RERANK_TOP_K`.
+
+> **Note:** `RERANK_TOP_K` is automatically capped at `RERANK_FETCH_MULTIPLIER × RETRIEVAL_TOP_K` to prevent the reranker from requesting more documents than were fetched.
+
+### Changing Reranker via Streamlit UI
+
+Sidebar → **Reranker** dropdown. Changing the selection reinitializes the reranker singleton and resets the agent.
+
+### Changing Reranker via `.env`
+
+```env
+RERANKER_TYPE=cross_encoder
+CROSS_ENCODER_MODEL=BAAI/bge-reranker-base
+RERANK_TOP_K=3
+RERANK_FETCH_MULTIPLIER=3
+```
 
 ### Changing the FAISS Index Path
 
