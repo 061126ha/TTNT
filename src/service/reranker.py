@@ -1,8 +1,11 @@
 """Reranker service layer for post-FAISS chunk scoring."""
 
+import logging
 from abc import ABC, abstractmethod
 
 from src.models import RetrievedChunk
+
+logger = logging.getLogger(__name__)
 
 
 class BaseReranker(ABC):
@@ -57,8 +60,14 @@ class LLMReranker(BaseReranker):
             prompt = self._PROMPT.format(query=query, doc=text)
             try:
                 resp = model.invoke([{"role": "user", "content": prompt}])
+            except Exception as exc:
+                logger.warning("LLMReranker: scoring failed (%s), defaulting to 0", exc)
+                scored.append((0.0, chunk))
+                continue
+            try:
                 score = float(resp.content.strip())
-            except Exception:
+            except ValueError:
+                logger.warning("LLMReranker: unparseable score %r, defaulting to 0", resp.content.strip())
                 score = 0.0
             scored.append((score, chunk))
         return [
@@ -101,4 +110,8 @@ def get_reranker() -> BaseReranker:
     return IdentityReranker()
 
 
-reranker = get_reranker()
+try:
+    reranker = get_reranker()
+except ValueError as _exc:
+    logger.warning("Reranker init failed (%s) — falling back to IdentityReranker.", _exc)
+    reranker = IdentityReranker()
