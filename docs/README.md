@@ -13,8 +13,6 @@
 
 ## Agent Graph
 
-![Agent Graph](../graph_schema.png)
-
 The graph above shows the full LangGraph node structure. Every request starts at `__start__`, passes through the **Supervisor**, then follows one of three paths:
 
 | Path | Nodes | Description |
