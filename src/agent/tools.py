@@ -10,8 +10,9 @@ import logging
 
 from langchain_core.tools import tool
 
+import src.service.reranker as _reranker_module
+
 from src.config import settings
-from src.service.reranker import reranker
 from src.service.vectorstore import curriculum_store, regulation_store
 
 logger = logging.getLogger(__name__)
@@ -46,13 +47,16 @@ def retrieve_curriculum(query: str) -> str:
     logger.info("═══ [Tool] retrieve_curriculum: %s", query)
     fetch_k = settings.top_k * settings.rerank_fetch_multiplier if settings.reranker_type != "none" else None
     raw_chunks = curriculum_store.retrieve(query, top_k=fetch_k)
-    ranked_chunks = reranker.rerank(query, raw_chunks, top_k=settings.rerank_top_k)
+    effective_top_k = min(settings.rerank_top_k, fetch_k) if fetch_k is not None else settings.rerank_top_k
+    ranked_chunks = _reranker_module.reranker.rerank(query, raw_chunks, top_k=effective_top_k)
     rerank_debug.append({
         "tool": "curriculum",
         "reranker_type": settings.reranker_type,
+        "reranker_model": settings.cohere_rerank_model if settings.reranker_type == "cohere" else settings.cross_encoder_model if settings.reranker_type == "cross_encoder" else None,
         "fetch_k": fetch_k or settings.top_k,
         "retrieved": len(raw_chunks),
         "reranked": len(ranked_chunks),
+        "effective_top_k": effective_top_k,
         "chunks": ranked_chunks,
     })
     result = _format_chunks(ranked_chunks)
@@ -76,13 +80,16 @@ def retrieve_regulations(query: str) -> str:
     logger.info("═══ [Tool] retrieve_regulations: %s", query)
     fetch_k = settings.top_k * settings.rerank_fetch_multiplier if settings.reranker_type != "none" else None
     raw_chunks = regulation_store.retrieve(query, top_k=fetch_k)
-    ranked_chunks = reranker.rerank(query, raw_chunks, top_k=settings.rerank_top_k)
+    effective_top_k = min(settings.rerank_top_k, fetch_k) if fetch_k is not None else settings.rerank_top_k
+    ranked_chunks = _reranker_module.reranker.rerank(query, raw_chunks, top_k=effective_top_k)
     rerank_debug.append({
         "tool": "regulations",
         "reranker_type": settings.reranker_type,
+        "reranker_model": settings.cohere_rerank_model if settings.reranker_type == "cohere" else settings.cross_encoder_model if settings.reranker_type == "cross_encoder" else None,
         "fetch_k": fetch_k or settings.top_k,
         "retrieved": len(raw_chunks),
         "reranked": len(ranked_chunks),
+        "effective_top_k": effective_top_k,
         "chunks": ranked_chunks,
     })
     result = _format_chunks(ranked_chunks)
