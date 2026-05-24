@@ -7,6 +7,8 @@ Run with:
 
 import os
 
+import html as _html
+
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -93,6 +95,71 @@ with st.sidebar:
     top_k = st.slider("Retrieval top-K", min_value=1, max_value=10, value=5)
     os.environ["RETRIEVAL_TOP_K"] = str(top_k)
 
+    reranker_type = st.selectbox(
+        "Reranker",
+        ["cohere", "cross_encoder", "llm", "none"],
+        format_func={
+            "cohere": "Cohere Rerank",
+            "cross_encoder": "Cross-encoder local",
+            "llm": "LLM rerank",
+            "none": "Không rerank",
+        }.get,
+        index=["cohere", "cross_encoder", "llm", "none"].index(
+            os.environ.get("RERANKER_TYPE", "cohere")
+        ) if os.environ.get("RERANKER_TYPE", "cohere") in ["cohere", "cross_encoder", "llm", "none"] else 0,
+    )
+    os.environ["RERANKER_TYPE"] = reranker_type
+
+    if reranker_type != "none":
+        def _safe_int(val: str, default: int) -> int:
+            try:
+                return int(val)
+            except (ValueError, TypeError):
+                return default
+
+        rerank_top_k = st.slider(
+            "Rerank top-K",
+            min_value=1,
+            max_value=top_k,
+            value=min(_safe_int(os.environ.get("RERANK_TOP_K", ""), top_k), top_k),
+        )
+        fetch_multiplier = st.slider(
+            "Rerank fetch multiplier",
+            min_value=1,
+            max_value=5,
+            value=_safe_int(os.environ.get("RERANK_FETCH_MULTIPLIER", ""), 3),
+        )
+        os.environ["RERANK_TOP_K"] = str(rerank_top_k)
+        os.environ["RERANK_FETCH_MULTIPLIER"] = str(fetch_multiplier)
+    else:
+        os.environ.pop("RERANK_TOP_K", None)
+        os.environ.pop("RERANK_FETCH_MULTIPLIER", None)
+
+    if reranker_type == "cohere":
+        cohere_model = st.text_input(
+            "Cohere rerank model",
+            value=os.environ.get("COHERE_RERANK_MODEL", "rerank-multilingual-v3.0"),
+        )
+        
+        os.environ["COHERE_RERANK_MODEL"] = cohere_model
+        
+
+    rerank_config = (
+        reranker_type,
+        os.environ.get("RERANK_TOP_K"),
+        os.environ.get("RERANK_FETCH_MULTIPLIER"),
+        os.environ.get("COHERE_RERANK_MODEL"),
+    )
+    prev_rerank_config = st.session_state.get("_prev_rerank_config")
+    if prev_rerank_config is not None and prev_rerank_config != rerank_config:
+        import src.service.reranker as _reranker_module
+        try:
+            _reranker_module.reranker = _reranker_module.get_reranker()
+        except ValueError as _exc:
+            st.sidebar.error(f"Reranker init failed: {_exc}")
+        st.session_state.agent = None
+    st.session_state["_prev_rerank_config"] = rerank_config
+
     show_sources = st.toggle("Hiển thị ngữ cảnh truy xuất", value=True)
     show_rerank = st.toggle("Hiển thị rerank info", value=True)
 
@@ -151,7 +218,9 @@ def _render_rerank_info(rerank_info: list[dict]) -> None:
     for entry in rerank_info:
         tool_label = _TOOL_LABEL.get(entry["tool"], entry["tool"])
         reranker_type = entry["reranker_type"]
-        pill = f'<span class="rerank-pill">{reranker_type}</span>'
+        model_name = entry.get("reranker_model")
+        pill_label = f"{reranker_type}: {_html.escape(model_name)}" if model_name else reranker_type
+        pill = f'<span class="rerank-pill">{pill_label}</span>'
         st.markdown(f"**{tool_label}** {pill}", unsafe_allow_html=True)
 
         col1, col2, col3 = st.columns(3)
@@ -180,6 +249,7 @@ def extract_graph_trace(agent: HAUIAgent) -> list[str]:
     """Reconstruct which multi-agent nodes ran from the message history."""
     trace: list[str] = []
     messages = agent._messages
+    tool_called_this_turn = False
     for msg in messages:
         if not hasattr(msg, "type"):
             continue
@@ -187,12 +257,14 @@ def extract_graph_trace(agent: HAUIAgent) -> list[str]:
             tool_name = msg.tool_calls[0].get("name", "tool") if msg.tool_calls else "tool"
             trace.append(f"generate → 🔧 {tool_name}")
         elif msg.type == "tool":
+            tool_called_this_turn = True
             trace.append("retrieve ✅")
         elif msg.type == "ai" and msg.content:
-            if any(m.type == "tool" for m in messages if hasattr(m, "type")):
+            if tool_called_this_turn:
                 trace.append("answer →  ✅")
             else:
                 trace.append("respond directly 💬")
+            tool_called_this_turn = False
     return trace
 
 
