@@ -1,0 +1,2157 @@
+{
+  "evaluation_date": "2026-05-21T20:39:45.032092",
+  "mode": "recall",
+  "qa_file": "data/qa.parquet",
+  "total_questions": 79,
+  "retrieval": {
+    "evaluated": 79,
+    "k_values": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "store": "both",
+    "average_scores": {
+      "recall@1": 0.0127,
+      "recall@3": 0.0127,
+      "recall@5": 0.0253,
+      "recall@10": 0.0633
+    },
+    "details": [
+      {
+        "qid": "b3f56fbc-cd8d-4d58-a1f8-0ea9074bc309",
+        "question": "Mục tiêu của SICT - Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "1"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "191",
+          "25",
+          "45",
+          "56",
+          "123",
+          "37",
+          "218",
+          "96",
+          "111"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 3.34
+      },
+      {
+        "qid": "a5893aa7-b3ec-431e-b14f-5bdb78638cc5",
+        "question": "Các chuẩn đầu ra của chương trình đào tạo SICT - Đại học Công nghiệp Hà Nội bao gồm những gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "2"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "76",
+          "21",
+          "9",
+          "123",
+          "148",
+          "171",
+          "191",
+          "13",
+          "170"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.03
+      },
+      {
+        "qid": "a9699ca1-5444-477d-b7ae-d72f2d7539a4",
+        "question": "Chương trình khung ngành Khoa học máy tính của Đại học Công nghiệp Hà Nội có những khóa nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "3"
+        ],
+        "retrieved_chunk_ids": [
+          "97",
+          "17",
+          "92",
+          "13",
+          "44",
+          "41",
+          "15",
+          "164",
+          "36",
+          "90"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.95
+      },
+      {
+        "qid": "c5ea652d-08b6-405b-a462-6a5e211dfcd9",
+        "question": "Chương trình Cử nhân Kỹ thuật phần mềm tại Đại học Công nghiệp Hà Nội có mã ngành đào tạo là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "4"
+        ],
+        "retrieved_chunk_ids": [
+          "23",
+          "11",
+          "78",
+          "115",
+          "44",
+          "67",
+          "41",
+          "182",
+          "36",
+          "65"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.97
+      },
+      {
+        "qid": "a496731b-4acb-4d07-82d2-a15e7272d8bc",
+        "question": "Mục tiêu cụ thể nào trong chương trình đào tạo Kỹ thuật phần mềm của SICT - Đại học Công nghiệp Hà Nội được nhấn mạnh nhất?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "5"
+        ],
+        "retrieved_chunk_ids": [
+          "115",
+          "44",
+          "78",
+          "23",
+          "11",
+          "41",
+          "96",
+          "196",
+          "50",
+          "33"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.01
+      },
+      {
+        "qid": "f54497a3-ad34-495d-8a1e-8206de3fbf0d",
+        "question": "Các chuẩn đầu ra chương trình đào tạo của SICT - Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "6"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "76",
+          "21",
+          "9",
+          "123",
+          "171",
+          "191",
+          "56",
+          "148",
+          "41"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.02
+      },
+      {
+        "qid": "02a51a05-c8c5-4284-b315-8daedba5bf07",
+        "question": "Các tiêu chí đánh giá (PI) của SICT - Đại học Công nghiệp Hà Nội bao gồm những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "7"
+        ],
+        "retrieved_chunk_ids": [
+          "191",
+          "99",
+          "50",
+          "170",
+          "94",
+          "25",
+          "189",
+          "13",
+          "94",
+          "37"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.12
+      },
+      {
+        "qid": "dcec2918-639f-4469-9de0-6a1546236c02",
+        "question": "Chương trình Cử nhân Hệ thống thông tin tại Đại học Công nghiệp Hà Nội có mã ngành đào tạo là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "8"
+        ],
+        "retrieved_chunk_ids": [
+          "51",
+          "81",
+          "94",
+          "152",
+          "148",
+          "171",
+          "76",
+          "21",
+          "9",
+          "123"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.21
+      },
+      {
+        "qid": "82b45907-9820-432c-88a2-b1e20554d2c6",
+        "question": "Mục tiêu cụ thể nào của SICT - Đại học Công nghiệp Hà Nội được nhấn mạnh để phát triển kỹ năng làm việc trong môi trường đa quốc gia?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "9"
+        ],
+        "retrieved_chunk_ids": [
+          "25",
+          "191",
+          "50",
+          "69",
+          "14",
+          "2",
+          "94",
+          "122",
+          "195",
+          "45"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 4.35
+      },
+      {
+        "qid": "334625be-d964-4fb7-8863-bd01178e8820",
+        "question": "Các chuẩn đầu ra chương trình đào tạo của SICT - Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "10"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "76",
+          "21",
+          "9",
+          "123",
+          "171",
+          "191",
+          "56",
+          "148",
+          "41"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.02
+      },
+      {
+        "qid": "11647c68-6444-43f6-b087-a904b03895a8",
+        "question": "Các tiêu chí đánh giá (PI) của SICT - Đại học Công nghiệp Hà Nội bao gồm những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "11"
+        ],
+        "retrieved_chunk_ids": [
+          "191",
+          "99",
+          "50",
+          "170",
+          "94",
+          "25",
+          "189",
+          "13",
+          "94",
+          "37"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.04
+      },
+      {
+        "qid": "4a781b34-9bca-436e-964f-62d78734ec8b",
+        "question": "Chương trình khung ngành Hệ thống thông tin của Đại học Công nghiệp Hà Nội có những khóa nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "12"
+        ],
+        "retrieved_chunk_ids": [
+          "94",
+          "97",
+          "90",
+          "167",
+          "13",
+          "17",
+          "172",
+          "46",
+          "63",
+          "95"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.13
+      },
+      {
+        "qid": "0aeed54e-33b5-4cd9-ae6d-a04764bbcd10",
+        "question": "Chương trình Cử nhân Công nghệ thông tin tại SICT - Đại học Công nghiệp Hà Nội có mã ngành đào tạo là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "13"
+        ],
+        "retrieved_chunk_ids": [
+          "76",
+          "21",
+          "9",
+          "123",
+          "148",
+          "37",
+          "56",
+          "171",
+          "51",
+          "85"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.23
+      },
+      {
+        "qid": "a9af0a06-abf0-4e05-bc53-2f418e6d0f30",
+        "question": "Mục tiêu cụ thể nào của SICT - Đại học Công nghiệp Hà Nội được đề ra để phát triển nguồn nhân lực trong lĩnh vực công nghệ thông tin?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "14"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "85",
+          "191",
+          "81",
+          "56",
+          "25",
+          "45",
+          "37",
+          "111",
+          "86"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.0
+      },
+      {
+        "qid": "4aefa379-4393-4fc4-bc2f-550f10f192fa",
+        "question": "Các chuẩn đầu ra chương trình đào tạo của SICT - Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "15"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "76",
+          "21",
+          "9",
+          "123",
+          "171",
+          "191",
+          "56",
+          "148",
+          "41"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.99
+      },
+      {
+        "qid": "86d3b647-dada-420b-b1d2-5fd8804e6fe3",
+        "question": "Các chuẩn đầu ra cấp độ 3 của SICT - Đại học Công nghiệp Hà Nội bao gồm những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "16"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "191",
+          "25",
+          "170",
+          "69",
+          "14",
+          "2",
+          "122",
+          "123",
+          "13"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.26
+      },
+      {
+        "qid": "f47c5b4a-e335-4768-9d4b-6270bdd49370",
+        "question": "Chương trình khung ngành Công nghệ thông tin của Đại học Công nghiệp Hà Nội có những khóa nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "17"
+        ],
+        "retrieved_chunk_ids": [
+          "90",
+          "97",
+          "94",
+          "13",
+          "17",
+          "63",
+          "44",
+          "37",
+          "46",
+          "121"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0
+        },
+        "elapsed_seconds": 1.25
+      },
+      {
+        "qid": "17e8805a-ab31-402d-834f-f5badac29ab1",
+        "question": "Ngành Công nghệ đa phương tiện tại SICT - Đại học Công nghiệp Hà Nội có mã ngành đào tạo là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "18"
+        ],
+        "retrieved_chunk_ids": [
+          "22",
+          "10",
+          "77",
+          "37",
+          "173",
+          "114",
+          "148",
+          "60",
+          "149",
+          "76"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.19
+      },
+      {
+        "qid": "b32f5dac-4c68-4466-bb97-4097cca210c3",
+        "question": "Mục tiêu cụ thể của chương trình đào tạo SICT - Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "19"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "76",
+          "21",
+          "9",
+          "52",
+          "123",
+          "56",
+          "191",
+          "171",
+          "148"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.01
+      },
+      {
+        "qid": "8d795f96-07f9-4a39-b693-008c93d976ab",
+        "question": "Các chuẩn đầu ra chương trình đào tạo của SICT - Đại học Công nghiệp Hà Nội bao gồm những gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "20"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "76",
+          "21",
+          "9",
+          "171",
+          "148",
+          "51",
+          "36",
+          "123",
+          "41"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.02
+      },
+      {
+        "qid": "6508d1f2-fee5-4229-903d-fd77e042631f",
+        "question": "Các tiêu chí đánh giá (PI) của SICT - Đại học Công nghiệp Hà Nội bao gồm những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "21"
+        ],
+        "retrieved_chunk_ids": [
+          "191",
+          "99",
+          "50",
+          "170",
+          "94",
+          "25",
+          "189",
+          "13",
+          "94",
+          "37"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.47
+      },
+      {
+        "qid": "ef7ac394-0267-44a1-878b-dbeb95b191ce",
+        "question": "Chương trình khung ngành Công nghệ đa phương tiện của Đại học Công nghiệp Hà Nội có những khóa nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "22"
+        ],
+        "retrieved_chunk_ids": [
+          "97",
+          "90",
+          "101",
+          "94",
+          "17",
+          "63",
+          "13",
+          "92",
+          "44",
+          "61"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.36
+      },
+      {
+        "qid": "82c81b3b-6206-44d7-9bd0-18b02bb83938",
+        "question": "Chương trình Cử nhân An toàn thông tin tại Đại học Công nghiệp Hà Nội có mã ngành đào tạo là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "23"
+        ],
+        "retrieved_chunk_ids": [
+          "85",
+          "188",
+          "51",
+          "148",
+          "171",
+          "76",
+          "21",
+          "9",
+          "94",
+          "81"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.98
+      },
+      {
+        "qid": "c0c5074b-0012-4618-a412-e49d311fd87f",
+        "question": "Mục tiêu đào tạo của SICT - Đại học Công nghiệp Hà Nội bao gồm những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "24"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "52",
+          "191",
+          "123",
+          "76",
+          "21",
+          "9",
+          "45",
+          "81",
+          "233"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.06
+      },
+      {
+        "qid": "016f5819-3951-476b-bc5e-6b4da37a823a",
+        "question": "Các chuẩn đầu ra chương trình đào tạo của SICT - Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "25"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "76",
+          "21",
+          "9",
+          "123",
+          "171",
+          "191",
+          "56",
+          "148",
+          "41"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.22
+      },
+      {
+        "qid": "b326d776-8018-4836-b26c-13c075610031",
+        "question": "Các tiêu chí đánh giá (PI) của SICT - Đại học Công nghiệp Hà Nội bao gồm những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "26"
+        ],
+        "retrieved_chunk_ids": [
+          "191",
+          "99",
+          "50",
+          "170",
+          "94",
+          "25",
+          "189",
+          "13",
+          "94",
+          "37"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.11
+      },
+      {
+        "qid": "b4f83ae0-b045-4b05-a955-822d9648104d",
+        "question": "Chương trình khung ngành An toàn thông tin Khóa 19 có những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "27"
+        ],
+        "retrieved_chunk_ids": [
+          "97",
+          "90",
+          "99",
+          "85",
+          "94",
+          "188",
+          "158",
+          "162",
+          "67",
+          "13"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.94
+      },
+      {
+        "qid": "00dd4b99-4b8b-434b-a8c5-7a3f82a6dc5d",
+        "question": "Chương trình Thạc sỹ Hệ thống thông tin tại Đại học Công nghiệp Hà Nội có những nội dung và yêu cầu gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "28"
+        ],
+        "retrieved_chunk_ids": [
+          "56",
+          "81",
+          "167",
+          "53",
+          "94",
+          "50",
+          "85",
+          "123",
+          "171",
+          "76"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.92
+      },
+      {
+        "qid": "f90409fe-545d-4097-9ed6-b8b57714f550",
+        "question": "Mục tiêu chính của chương trình Thạc sỹ Hệ thống thông tin tại SICT - Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "29"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "56",
+          "123",
+          "76",
+          "21",
+          "9",
+          "52",
+          "171",
+          "85",
+          "148"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.82
+      },
+      {
+        "qid": "3c15856a-5401-4e28-90d4-b19ee239dfed",
+        "question": "Các chuẩn đầu ra của chương trình đào tạo ngành Hệ thống thông tin tại Đại học Công nghiệp Hà Nội là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "30"
+        ],
+        "retrieved_chunk_ids": [
+          "94",
+          "81",
+          "152",
+          "171",
+          "51",
+          "148",
+          "76",
+          "21",
+          "9",
+          "52"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.93
+      },
+      {
+        "qid": "c17b188b-3f57-4a5b-8ba6-31c3f0bd1e7c",
+        "question": "Các tiêu chí đánh giá nào được sử dụng để đánh giá năng lực trong lĩnh vực Hệ thống thông tin tại SICT - Đại học Công nghiệp Hà Nội?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "31"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "167",
+          "45",
+          "13",
+          "191",
+          "25",
+          "81",
+          "37",
+          "170",
+          "152"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.17
+      },
+      {
+        "qid": "b72d0e21-8522-4cf8-a876-50ea6ba456eb",
+        "question": "Chương trình khung ngành Thạc sỹ Hệ thống thông tin tại SICT - Đại học Công nghiệp Hà Nội bao gồm những nội dung gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "32"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "56",
+          "76",
+          "21",
+          "9",
+          "171",
+          "123",
+          "148",
+          "94",
+          "167"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.02
+      },
+      {
+        "qid": "7549e5c6-0cec-45d1-93ac-81993e58ca4f",
+        "question": "Đại học Công nghiệp Hà Nội sẽ tổ chức những sự kiện gì trong năm 2026?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "33"
+        ],
+        "retrieved_chunk_ids": [
+          "79",
+          "87",
+          "91",
+          "81",
+          "93",
+          "35",
+          "89",
+          "95",
+          "75",
+          "83"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.96
+      },
+      {
+        "qid": "7a039d5c-62dc-4230-823c-33034f532a71",
+        "question": "Khoa Công nghệ thông tin - Trường Đại học Công nghiệp đã trải qua những giai đoạn phát triển nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "34"
+        ],
+        "retrieved_chunk_ids": [
+          "111",
+          "114",
+          "73",
+          "18",
+          "6",
+          "22",
+          "10",
+          "77",
+          "85",
+          "149"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.18
+      },
+      {
+        "qid": "4c55053b-261b-4537-884d-9ca6a308552e",
+        "question": "Khoa Công nghệ thông tin của SICT - Đại học Công nghiệp Hà Nội được thành lập vào ngày nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "35"
+        ],
+        "retrieved_chunk_ids": [
+          "56",
+          "191",
+          "233",
+          "6",
+          "2",
+          "104",
+          "111",
+          "37",
+          "95",
+          "170"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 2.35
+      },
+      {
+        "qid": "24075970-ef44-40e5-80f6-2fe3c9980a87",
+        "question": "Khoa Công nghệ thông tin của Đại học Công nghiệp Hà Nội được thành lập vào năm nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "36"
+        ],
+        "retrieved_chunk_ids": [
+          "104",
+          "100",
+          "95",
+          "76",
+          "91",
+          "102",
+          "61",
+          "58",
+          "1",
+          "121"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 4.04
+      },
+      {
+        "qid": "b7197395-b198-480c-a6cb-e7e7e2de8d02",
+        "question": "Trường Công nghệ Thông tin và Truyền thông (SICT) được thành lập vào ngày nào và theo nghị quyết nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "37"
+        ],
+        "retrieved_chunk_ids": [
+          "67",
+          "191",
+          "18",
+          "96",
+          "56",
+          "189",
+          "23",
+          "162",
+          "25",
+          "170"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.37
+      },
+      {
+        "qid": "800c746f-bbb6-482a-8fd8-0a658a96bbbb",
+        "question": "Khoa Công nghệ thông tin - Trường Đại học Công nghiệp Hà Nội đã trải qua những giai đoạn nào trong quá trình hình thành và phát triển?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "38"
+        ],
+        "retrieved_chunk_ids": [
+          "18",
+          "81",
+          "111",
+          "114",
+          "73",
+          "18",
+          "6",
+          "85",
+          "22",
+          "10"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.0
+      },
+      {
+        "qid": "a4af8e45-6fcb-43f8-b179-cc141917d124",
+        "question": "Khoa Công nghệ thông tin - Trường Đại học Công nghiệp Hà Nội được thành lập vào ngày nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "39"
+        ],
+        "retrieved_chunk_ids": [
+          "104",
+          "76",
+          "91",
+          "95",
+          "100",
+          "61",
+          "58",
+          "1",
+          "102",
+          "166"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.44
+      },
+      {
+        "qid": "2e240a72-efb1-4f23-8533-c7431aa68d41",
+        "question": "Khoa Công nghệ thông tin của Trường Đại học Công nghiệp Hà Nội có những chức năng và nhiệm vụ gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "40"
+        ],
+        "retrieved_chunk_ids": [
+          "81",
+          "85",
+          "59",
+          "152",
+          "111",
+          "73",
+          "18",
+          "6",
+          "37",
+          "147"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.09
+      },
+      {
+        "qid": "d28b237d-44cf-4867-908d-1a16f82585dc",
+        "question": "Trường Công nghệ Thông tin và Truyền thông (SICT) được thành lập vào ngày nào và theo nghị quyết nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "41"
+        ],
+        "retrieved_chunk_ids": [
+          "67",
+          "191",
+          "18",
+          "96",
+          "56",
+          "189",
+          "23",
+          "162",
+          "25",
+          "170"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.71
+      },
+      {
+        "qid": "499b15ab-9c2d-4a22-8acc-b1861c82b448",
+        "question": "Trường Công nghệ thông tin và Truyền thông - Đại học Công nghiệp Hà Nội đã đạt được những thành tích gì nổi bật trong 20 năm qua?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "42"
+        ],
+        "retrieved_chunk_ids": [
+          "192",
+          "204",
+          "190",
+          "218",
+          "91",
+          "27",
+          "95",
+          "39",
+          "169",
+          "32"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.1
+      },
+      {
+        "qid": "72e8630d-3a05-446f-ae7d-98c3aaf1122a",
+        "question": "Cơ cấu tổ chức của Trường Công nghệ thông tin và Truyền thông tại Đại học Công nghiệp Hà Nội gồm những bộ phận nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "43"
+        ],
+        "retrieved_chunk_ids": [
+          "81",
+          "59",
+          "152",
+          "85",
+          "111",
+          "73",
+          "18",
+          "6",
+          "167",
+          "40"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 2.9
+      },
+      {
+        "qid": "e32ccecd-c229-4bda-93d5-7e419c6b2123",
+        "question": "Hiệu trưởng TS. Đặng Trọng Hợp có những nhiệm vụ cụ thể nào trong việc quản lý Trường CNTT &TT?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "44"
+        ],
+        "retrieved_chunk_ids": [
+          "59",
+          "78",
+          "148",
+          "63",
+          "94",
+          "212",
+          "99",
+          "45",
+          "52",
+          "167"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.72
+      },
+      {
+        "qid": "72c010af-dc1f-4bdc-98f5-df4cff823673",
+        "question": "TS. Phạm Văn Hà phụ trách những lĩnh vực nào tại SICT - Đại học Công nghiệp Hà Nội?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "45"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "60",
+          "56",
+          "123",
+          "76",
+          "21",
+          "9",
+          "171",
+          "148",
+          "181"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.03
+      },
+      {
+        "qid": "aec5a99b-6d97-476b-b60c-141dcbba81cb",
+        "question": "PGS.TS. Nguyễn Thị Kim Sơn có những nhiệm vụ cụ thể nào trong công tác quản lý và tổ chức đào tạo tại Khoa Công nghệ thông tin?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "46"
+        ],
+        "retrieved_chunk_ids": [
+          "52",
+          "99",
+          "94",
+          "90",
+          "96",
+          "101",
+          "56",
+          "59",
+          "17",
+          "171"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.11
+      },
+      {
+        "qid": "6cdd3a9e-2801-4a35-b76d-aee335714c9c",
+        "question": "Ai là Bí thư của Ban Chi ủy Chi bộ Trường nhiệm kỳ 2022-2025?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "47"
+        ],
+        "retrieved_chunk_ids": [
+          "34",
+          "36",
+          "23",
+          "22",
+          "96",
+          "24",
+          "25",
+          "35",
+          "67",
+          "214"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.62
+      },
+      {
+        "qid": "ed6b009e-886c-46ee-905e-a985dfb69e0b",
+        "question": "Ai là Chủ tịch của Ban Chấp hành Công đoàn Trường nhiệm kỳ 2025-2027?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "48"
+        ],
+        "retrieved_chunk_ids": [
+          "34",
+          "36",
+          "23",
+          "96",
+          "136",
+          "79",
+          "75",
+          "35",
+          "38",
+          "25"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.95
+      },
+      {
+        "qid": "ecf0b6d8-d9af-4b7d-8bbb-8f8d91812c30",
+        "question": "Ai là Bí thư của Ban Chấp hành Liên chi đoàn trường nhiệm kỳ 2025 - 2027?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "49"
+        ],
+        "retrieved_chunk_ids": [
+          "34",
+          "36",
+          "23",
+          "96",
+          "25",
+          "67",
+          "24",
+          "136",
+          "22",
+          "132"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.06
+      },
+      {
+        "qid": "6b712871-b2bf-49d9-9626-8b172a16e59d",
+        "question": "Ban chấp hành Liên chi hội nhiệm kỳ 2023 - 2025 gồm những ai?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "50"
+        ],
+        "retrieved_chunk_ids": [
+          "34",
+          "79",
+          "67",
+          "36",
+          "19",
+          "23",
+          "96",
+          "35",
+          "83",
+          "213"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.17
+      },
+      {
+        "qid": "98548b8f-4001-40db-bc27-926682c86ad1",
+        "question": "Các khoa chuyên môn tại SICT - Đại học Công nghiệp Hà Nội có những tên khoa nào và ai là trưởng các khoa đó?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "51"
+        ],
+        "retrieved_chunk_ids": [
+          "191",
+          "50",
+          "25",
+          "170",
+          "45",
+          "102",
+          "61",
+          "58",
+          "1",
+          "195"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.02
+      },
+      {
+        "qid": "957a25f8-3eee-4777-8698-986a3cab4305",
+        "question": "Chiến lược phát triển của Trường Công nghệ thông tin và Truyền thông giai đoạn 2021-2025 có những mục tiêu gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "52"
+        ],
+        "retrieved_chunk_ids": [
+          "94",
+          "38",
+          "67",
+          "46",
+          "40",
+          "149",
+          "156",
+          "61",
+          "168",
+          "130"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.09
+      },
+      {
+        "qid": "7e1e51d8-b2a2-4845-beed-1554e1877eb8",
+        "question": "Quy mô tuyển sinh và đào tạo của các ngành tại SICT - Đại học Công nghiệp Hà Nội trong các năm 2020 đến 2023 như thế nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "53"
+        ],
+        "retrieved_chunk_ids": [
+          "69",
+          "14",
+          "2",
+          "122",
+          "127",
+          "25",
+          "187",
+          "203",
+          "191",
+          "59"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.02
+      },
+      {
+        "qid": "ca20b559-4de7-402a-b2c9-7541a01cfcfb",
+        "question": "Trường Đại học Công nghiệp Hà Nội đã thực hiện những biện pháp gì để đảm bảo chất lượng chương trình đào tạo trong bối cảnh dịch COVID-19?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "54"
+        ],
+        "retrieved_chunk_ids": [
+          "55",
+          "57",
+          "172",
+          "14",
+          "56",
+          "160",
+          "120",
+          "143",
+          "41",
+          "52"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.04
+      },
+      {
+        "qid": "838fe0a4-4b9e-4a4d-b0a0-bb0a53112e00",
+        "question": "Số lượng bài báo đăng ở tạp chí ISI/Scopus dự kiến sẽ tăng lên bao nhiêu vào năm 2024?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "55"
+        ],
+        "retrieved_chunk_ids": [
+          "94",
+          "128",
+          "201",
+          "93",
+          "69",
+          "14",
+          "2",
+          "156",
+          "122",
+          "193"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.18
+      },
+      {
+        "qid": "924ee45e-5e6b-45df-bffc-a0a6e66913ca",
+        "question": "Số lượng bài báo đăng ở tạp chí ISI/Scopus của SICT - Đại học Công nghiệp Hà Nội là bao nhiêu?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "56"
+        ],
+        "retrieved_chunk_ids": [
+          "122",
+          "69",
+          "14",
+          "2",
+          "29",
+          "127",
+          "56",
+          "25",
+          "191",
+          "13"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 1.0
+        },
+        "elapsed_seconds": 1.16
+      },
+      {
+        "qid": "5bb34c7b-4632-432f-9371-b147574c3123",
+        "question": "Số lượng đề tài nghiên cứu khoa học cấp trường và cấp tỉnh/bộ của SICT - Đại học Công nghiệp Hà Nội là bao nhiêu?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "57"
+        ],
+        "retrieved_chunk_ids": [
+          "191",
+          "122",
+          "69",
+          "14",
+          "2",
+          "233",
+          "6",
+          "2",
+          "25",
+          "127"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.12
+      },
+      {
+        "qid": "ad4e073a-9a74-4959-8ebf-b5d68c6f1cdf",
+        "question": "Số lượng sinh viên tham gia vào các đề tài SVNCKH là bao nhiêu?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "58"
+        ],
+        "retrieved_chunk_ids": [
+          "106",
+          "42",
+          "102",
+          "200",
+          "183",
+          "207",
+          "89",
+          "79",
+          "24",
+          "12"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.03
+      },
+      {
+        "qid": "23feecbc-e026-499d-a3b8-d2f5242cc189",
+        "question": "Cơ cấu tổ chức của Trường CNTT và Truyền thông tại Đại học Công nghiệp Hà Nội bao gồm những thành phần nào?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "59"
+        ],
+        "retrieved_chunk_ids": [
+          "59",
+          "111",
+          "73",
+          "18",
+          "6",
+          "81",
+          "17",
+          "85",
+          "40",
+          "13"
+        ],
+        "scores": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0
+        },
+        "elapsed_seconds": 0.97
+      },
+      {
+        "qid": "aef47eb3-da5a-485a-a80e-1939169e096b",
+        "question": "Tỷ lệ giảng viên có trình độ tiến sỹ tại SICT - Đại học Công nghiệp Hà Nội là bao nhiêu phần trăm?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "60"
+        ],
+        "retrieved_chunk_ids": [
+          "25",
+          "122",
+          "69",
+          "14",
+          "2",
+          "191",
+          "127",
+          "124",
+          "89",
+          "79"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.1
+      },
+      {
+        "qid": "806e5c0d-1194-408b-8016-cbfdb6d0ab2b",
+        "question": "Khối lượng giảng dạy hàng năm của các bộ môn tại SICT - Đại học Công nghiệp Hà Nội có xu hướng thay đổi như thế nào trong giai đoạn 2019 đến 2022?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "61"
+        ],
+        "retrieved_chunk_ids": [
+          "187",
+          "185",
+          "201",
+          "203",
+          "189",
+          "184",
+          "191",
+          "94",
+          "197",
+          "193"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.09
+      },
+      {
+        "qid": "d63958f6-4550-4890-9c9b-bc33621d9b5a",
+        "question": "Cơ sở vật chất của SICT - Đại học Công nghiệp Hà Nội được trang bị những gì để phục vụ cho giảng dạy và nghiên cứu?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "62"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "191",
+          "122",
+          "233",
+          "6",
+          "2",
+          "69",
+          "14",
+          "2",
+          "203"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.02
+      },
+      {
+        "qid": "b2ca1570-bc0c-4dca-9c2a-6cb070ba95bd",
+        "question": "Trường SICT - Đại học Công nghiệp Hà Nội có những hoạt động hợp tác nào với các doanh nghiệp lớn trong lĩnh vực CNTT?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "63"
+        ],
+        "retrieved_chunk_ids": [
+          "212",
+          "233",
+          "6",
+          "2",
+          "37",
+          "25",
+          "191",
+          "45",
+          "56",
+          "170"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.97
+      },
+      {
+        "qid": "b1e96e26-0615-401e-b2d8-2fcb6356da68",
+        "question": "Đại học Công nghiệp Hà Nội có những biện pháp gì để nâng cao chất lượng giảng viên trong ngành CNTT?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "64"
+        ],
+        "retrieved_chunk_ids": [
+          "72",
+          "17",
+          "5",
+          "110",
+          "14",
+          "212",
+          "149",
+          "17",
+          "130",
+          "37"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 0.95
+      },
+      {
+        "qid": "44caa15d-8884-4b80-8238-5542c69cc527",
+        "question": "Trường CNTT và Truyền thông có những chỉ tiêu phấn đấu cụ thể nào để trở thành một trong những Trường hàng đầu ở Việt Nam?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "65"
+        ],
+        "retrieved_chunk_ids": [
+          "25",
+          "68",
+          "13",
+          "1",
+          "107",
+          "118",
+          "119",
+          "73",
+          "18",
+          "6"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.0
+      },
+      {
+        "qid": "a76d10a8-c754-4fa5-ac13-433c5a7e3c6c",
+        "question": "Đại học Công nghiệp Hà Nội có những chương trình đào tạo nào được kiểm định và đạt tiêu chuẩn gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "66"
+        ],
+        "retrieved_chunk_ids": [
+          "110",
+          "72",
+          "17",
+          "5",
+          "83",
+          "41",
+          "88",
+          "14",
+          "161",
+          "172"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.03
+      },
+      {
+        "qid": "336f369b-ba46-4bc5-befe-f10c1886f01c",
+        "question": "Đại học Công nghiệp Hà Nội có kế hoạch gì để đạt được các chỉ tiêu nghiên cứu khoa học trong năm 2025?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "67"
+        ],
+        "retrieved_chunk_ids": [
+          "108",
+          "201",
+          "202",
+          "132",
+          "140",
+          "112",
+          "88",
+          "157",
+          "186",
+          "130"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.1
+      },
+      {
+        "qid": "a5d9d63f-6ce4-43c3-a36f-9b7120b70c58",
+        "question": "Đội ngũ giảng viên của SICT - Đại học Công nghiệp Hà Nội có những tiêu chí nào để đảm bảo chất lượng đào tạo và nghiên cứu?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "68"
+        ],
+        "retrieved_chunk_ids": [
+          "94",
+          "14",
+          "233",
+          "6",
+          "2",
+          "110",
+          "72",
+          "17",
+          "5",
+          "50"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 7.04
+      },
+      {
+        "qid": "c1d87f49-a7bf-4d47-876e-2e68df273e06",
+        "question": "Cơ sở vật chất của SICT - Đại học Công nghiệp Hà Nội có những trang thiết bị và phòng lab nào để hỗ trợ nghiên cứu và học tập?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "69"
+        ],
+        "retrieved_chunk_ids": [
+          "50",
+          "233",
+          "6",
+          "2",
+          "13",
+          "191",
+          "56",
+          "122",
+          "175",
+          "69"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 1.0
+        },
+        "elapsed_seconds": 0.98
+      },
+      {
+        "qid": "2538a979-c0dd-4d37-973f-8e18f872f368",
+        "question": "Các hoạt động hợp tác và phát triển của SICT - Đại học Công nghiệp Hà Nội có ảnh hưởng như thế nào đến cơ hội việc làm của sinh viên?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "70"
+        ],
+        "retrieved_chunk_ids": [
+          "25",
+          "94",
+          "233",
+          "6",
+          "2",
+          "118",
+          "107",
+          "130",
+          "97",
+          "68"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.1
+      },
+      {
+        "qid": "2551ea71-787a-4088-8bd2-43f7475d31cf",
+        "question": "Đại học Công nghiệp Hà Nội đã áp dụng những giải pháp nào để cải thiện chất lượng đào tạo và đáp ứng các tiêu chuẩn kiểm định?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "71"
+        ],
+        "retrieved_chunk_ids": [
+          "72",
+          "17",
+          "5",
+          "110",
+          "14",
+          "83",
+          "87",
+          "175",
+          "41",
+          "120"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.07
+      },
+      {
+        "qid": "0649bdf4-6f19-400a-94a0-88bced7d3108",
+        "question": "Các lab chủ chốt tại SICT - Đại học Công nghiệp Hà Nội sẽ được xây dựng như thế nào để đảm bảo hiệu quả trong hoạt động khoa học và công nghệ?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "72"
+        ],
+        "retrieved_chunk_ids": [
+          "191",
+          "233",
+          "6",
+          "2",
+          "45",
+          "175",
+          "50",
+          "94",
+          "25",
+          "41"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.01
+      },
+      {
+        "qid": "cb90a4d5-f3ae-4fb2-84ab-20804ff0af46",
+        "question": "Các giải pháp nào được đề xuất để nâng cao chất lượng đội ngũ giảng viên tại SICT - Đại học Công nghiệp Hà Nội?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "73"
+        ],
+        "retrieved_chunk_ids": [
+          "14",
+          "94",
+          "72",
+          "17",
+          "5",
+          "110",
+          "189",
+          "50",
+          "233",
+          "6"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.01
+      },
+      {
+        "qid": "c5206015-00a6-4414-874a-ea82da471527",
+        "question": "Đại học Công nghiệp Hà Nội có kế hoạch gì để nâng cấp và phát triển cơ sở vật chất phục vụ cho việc đào tạo và nghiên cứu?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "74"
+        ],
+        "retrieved_chunk_ids": [
+          "241",
+          "94",
+          "18",
+          "10",
+          "200",
+          "41",
+          "128",
+          "114",
+          "62",
+          "22"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.16
+      },
+      {
+        "qid": "f4e44c34-df13-43ac-aa55-cc5ee33827b4",
+        "question": "Trường Đại học Công nghiệp Hà Nội có kế hoạch gì để nâng cao chất lượng giảng viên và cơ sở vật chất phục vụ đào tạo?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "75"
+        ],
+        "retrieved_chunk_ids": [
+          "14",
+          "110",
+          "72",
+          "17",
+          "5",
+          "94",
+          "149",
+          "200",
+          "202",
+          "108"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 3.93
+      },
+      {
+        "qid": "c1abcd78-c4bf-4b16-8530-c8e5422e9777",
+        "question": "Đội ngũ cán bộ, giảng viên của Trường Công nghệ thông tin và Truyền thông hiện nay có bao nhiêu PGS.TS và các trình độ học vấn khác?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "76"
+        ],
+        "retrieved_chunk_ids": [
+          "55",
+          "17",
+          "147",
+          "22",
+          "10",
+          "77",
+          "114",
+          "92",
+          "40",
+          "90"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.04
+      },
+      {
+        "qid": "b552efd9-2b1b-42fb-aff6-74b16f2ea6d1",
+        "question": "Trường Công nghệ thông tin và Truyền thông có những trang thiết bị và phòng học nào để phục vụ cho việc giảng dạy và thực hành?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "77"
+        ],
+        "retrieved_chunk_ids": [
+          "17",
+          "81",
+          "14",
+          "116",
+          "80",
+          "77",
+          "22",
+          "10",
+          "114",
+          "13"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 1.0
+        },
+        "elapsed_seconds": 1.01
+      },
+      {
+        "qid": "decb11a7-653f-43ca-b0ee-de0942beeb6b",
+        "question": "Địa chỉ của Trường Công nghệ thông tin và Truyền thông (SICT) là gì?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "78"
+        ],
+        "retrieved_chunk_ids": [
+          "73",
+          "18",
+          "6",
+          "111",
+          "56",
+          "147",
+          "191",
+          "45",
+          "123",
+          "25"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.26
+      },
+      {
+        "qid": "00610851-bb00-4b50-a8fa-08276bd9a7f2",
+        "question": "Trường Công nghệ thông tin và Truyền thông – Đại học Công nghiệp Hà Nội có những hoạt động gì nổi bật trong thời gian gần đây?",
+        "domain": "both",
+        "gt_chunk_ids": [
+          "79"
+        ],
+        "retrieved_chunk_ids": [
+          "111",
+          "73",
+          "18",
+          "6",
+          "91",
+          "204",
+          "95",
+          "147",
+          "81",
+          "190"
+        ],
+        "scores": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0
+        },
+        "elapsed_seconds": 1.07
+      }
+    ]
+  }
+}

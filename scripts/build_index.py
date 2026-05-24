@@ -22,6 +22,13 @@ import argparse
 import json
 import os
 import pickle
+import sys
+
+# ── Fix Windows console encoding for Vietnamese text and special chars ────────
+if sys.stdout.encoding != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8")
+if sys.stderr.encoding != "utf-8":
+    sys.stderr.reconfigure(encoding="utf-8")
 
 import faiss
 import numpy as np
