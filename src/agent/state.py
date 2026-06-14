@@ -2,20 +2,25 @@
 LangGraph multi-agent state definition.
 """
 
-from typing import Annotated, TypedDict
+from typing import Annotated, TypedDict, Literal
 
 from langgraph.graph.message import add_messages
 from langchain_core.messages import AnyMessage
 
 
-class AgentState(TypedDict):
-    """State for the multi-agent HAUI RAG graph.
+QueryType = Literal["curriculum", "regulation", "general", ""]
 
-    query_type: set by the Supervisor node to route to the correct worker.
-      Values: "curriculum" | "regulations" | "general"
-    retry_count: tracks rewrite iterations per turn; reset to 0 at invocation start.
+
+class AgentState(TypedDict):
+    """
+    Shared state for HAUI multi-agent RAG system.
+
+    Fields:
+        messages: conversation history (LangGraph-managed)
+        query_type: routing decision from supervisor
+        retry_count: number of rewrite attempts for current turn
     """
 
     messages: Annotated[list[AnyMessage], add_messages]
-    query_type: str
+    query_type: QueryType
     retry_count: int

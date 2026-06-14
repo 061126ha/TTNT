@@ -5,7 +5,15 @@ Usage:
     python main.py
 """
 
-from agent import HAUIAgent
+import os
+import sys
+
+# Ensure project root is on path
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
+from src.agent.haui_agent import HAUIAgent
 
 
 BANNER = """
@@ -16,7 +24,7 @@ BANNER = """
 ╚══════════════════════════════════════════════════════════╝
 """
 
-SHOW_SOURCES = True  # Set to False to hide retrieval source info
+SHOW_SOURCES = True
 
 
 def main():
@@ -42,15 +50,19 @@ def main():
             print("── Conversation history cleared. ──\n")
             continue
 
-        result = agent.chat(query)
+        try:
+            result = agent.chat(query)
+        except Exception as e:
+            print(f"\n[Error] {e}\n")
+            continue
 
         print(f"\nBot [{result.intent}]: {result.answer}\n")
 
-        if SHOW_SOURCES and result.sources:
+        if SHOW_SOURCES and getattr(result, "sources", None):
             print("── Sources ──")
             for src in result.sources:
                 label = " > ".join(filter(None, [src.section, src.subsection]))
-                print(f"  [{src.chunk_id}] {label}  (score: {src.score})")
+                print(f"  [{src.chunk_id}] {label} (score: {src.score})")
             print()
 
 

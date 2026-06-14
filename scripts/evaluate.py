@@ -1,638 +1,276 @@
 """
-Unified Evaluation for HAUI Agent — BLEU, ROUGE & Recall@K.
-
-Reads question-answer pairs from data/qa.parquet and evaluates:
-  - BLEU-1 to BLEU-4  (generation quality — n-gram precision)
-  - ROUGE-1, ROUGE-2, ROUGE-L  (generation quality — overlap)
-  - Recall@K  (retrieval quality — chunk hit rate)
-
-Usage:
-    # Run all metrics (BLEU + ROUGE need LLM API; Recall@K needs only embedding API)
-    python scripts/evaluate.py --mode all --limit 10
-
-    # Run only retrieval evaluation (no LLM credits needed)
-    python scripts/evaluate.py --mode recall --store curriculum --k 1 3 5 10
-
-    # Run only generation evaluation (BLEU + ROUGE)
-    python scripts/evaluate.py --mode generation --limit 5
-
-    # Run individual metrics
-    python scripts/evaluate.py --mode bleu --limit 5
-    python scripts/evaluate.py --mode rouge --limit 5
+Unified Evaluation for HAUI Agent — BLEU, ROUGE & Recall@K (FIXED STABLE VERSION)
 """
 
 import argparse
-import json
 import logging
-import os
 import sys
-import time
-from datetime import datetime
-
-# ── Fix Windows console encoding for Vietnamese text ──────────────────────────
-if sys.stdout.encoding != "utf-8":
-    sys.stdout.reconfigure(encoding="utf-8")
-if sys.stderr.encoding != "utf-8":
-    sys.stderr.reconfigure(encoding="utf-8")
 
 import numpy as np
 import pandas as pd
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rouge_score import rouge_scorer
 
-# ── Ensure project root is on sys.path ────────────────────────────────────────
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if ROOT_DIR not in sys.path:
-    sys.path.insert(0, ROOT_DIR)
-
 from dotenv import load_dotenv
 
-load_dotenv(os.path.join(ROOT_DIR, ".env"))
+load_dotenv()
+
+# ── UTF-8 FIX ─────────────────────────────
+if sys.stdout.encoding != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8")
+if sys.stderr.encoding != "utf-8":
+    sys.stderr.reconfigure(encoding="utf-8")
 
 logger = logging.getLogger(__name__)
-
 SMOOTHING = SmoothingFunction().method1
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Tokeniser
-# ═══════════════════════════════════════════════════════════════════════════════
-
+# =========================
+# TOKENIZER (simple safe)
+# =========================
 def tokenize_vi(text: str) -> list[str]:
-    """Tokenize Vietnamese text by whitespace splitting and lowercasing."""
+    if not text:
+        return []
     return text.lower().strip().split()
 
 
 class ViTokenizer:
-    """Whitespace tokenizer compatible with rouge_score library."""
-
-    def tokenize(self, text: str) -> list[str]:
+    def tokenize(self, text):
         return tokenize_vi(text)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Data extraction helpers
-# ═══════════════════════════════════════════════════════════════════════════════
+# =========================
+# GT EXTRACTION
+# =========================
+def extract_references(gt):
+    if not gt:
+        return []
 
-def extract_references(generation_gt) -> list[str]:
-    """Extract non-empty reference answer strings from the generation_gt field."""
-    refs: list[str] = []
-    if isinstance(generation_gt, np.ndarray):
-        items = generation_gt.tolist()
-    elif isinstance(generation_gt, list):
-        items = generation_gt
-    elif isinstance(generation_gt, str):
-        items = [generation_gt]
-    else:
-        return refs
-    for item in items:
-        if isinstance(item, str) and item.strip():
-            refs.append(item.strip())
-    return refs
+    if isinstance(gt, np.ndarray):
+        gt = gt.tolist()
+
+    if isinstance(gt, str):
+        return [gt]
+
+    if isinstance(gt, list):
+        out = []
+        for x in gt:
+            if isinstance(x, list):
+                out.extend([str(i).strip() for i in x if i])
+            elif x:
+                out.append(str(x).strip())
+        return out
+
+    return []
 
 
-def extract_gt_chunk_ids(retrieval_gt) -> set[str]:
-    """Extract ground-truth chunk IDs from the retrieval_gt field."""
-    ids: set[str] = set()
-    
-    def _add(val):
-        if val is None or pd.isna(val):
+def extract_gt_chunk_ids(gt):
+    ids = set()
+
+    if not gt:
+        return ids
+
+    if isinstance(gt, np.ndarray):
+        gt = gt.tolist()
+
+    def add(v):
+        if v is None:
             return
-        if isinstance(val, float) and val.is_integer():
-            val = int(val)
-        s = str(val).strip()
+        s = str(v).strip()
         if s:
             ids.add(s)
 
-    if isinstance(retrieval_gt, np.ndarray):
-        for item in retrieval_gt.flat:
-            if isinstance(item, np.ndarray):
-                for sub in item.flat:
-                    _add(sub)
+    if isinstance(gt, list):
+        for i in gt:
+            if isinstance(i, list):
+                for j in i:
+                    add(j)
             else:
-                _add(item)
-    elif isinstance(retrieval_gt, list):
-        for item in retrieval_gt:
-            if isinstance(item, list):
-                for sub in item:
-                    _add(sub)
-            else:
-                _add(item)
+                add(i)
     else:
-        _add(retrieval_gt)
+        add(gt)
+
     return ids
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# BLEU scoring
-# ═══════════════════════════════════════════════════════════════════════════════
+# =========================
+# BLEU
+# =========================
+def compute_bleu(refs, cand):
+    refs = [tokenize_vi(r) for r in refs]
+    cand = tokenize_vi(cand)
 
-def compute_bleu(references: list[str], candidate: str) -> dict[str, float]:
-    """Compute BLEU-1 through BLEU-4 for a candidate vs references."""
-    ref_tokens = [tokenize_vi(ref) for ref in references if ref.strip()]
-    cand_tokens = tokenize_vi(candidate)
-
-    if not ref_tokens or not cand_tokens:
-        return {"bleu_1": 0.0, "bleu_2": 0.0, "bleu_3": 0.0, "bleu_4": 0.0}
+    if not refs or not cand:
+        return {"bleu_1": 0, "bleu_2": 0, "bleu_3": 0, "bleu_4": 0}
 
     weights = {
-        "bleu_1": (1.0, 0, 0, 0),
+        "bleu_1": (1, 0, 0, 0),
         "bleu_2": (0.5, 0.5, 0, 0),
-        "bleu_3": (1 / 3, 1 / 3, 1 / 3, 0),
+        "bleu_3": (1/3, 1/3, 1/3, 0),
         "bleu_4": (0.25, 0.25, 0.25, 0.25),
     }
 
-    scores = {}
-    for name, w in weights.items():
-        scores[name] = round(sentence_bleu(
-            ref_tokens, cand_tokens, weights=w, smoothing_function=SMOOTHING,
-        ), 4)
-    return scores
+    return {
+        k: round(
+            sentence_bleu(refs, cand, weights=w, smoothing_function=SMOOTHING),
+            4
+        )
+        for k, w in weights.items()
+    }
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# ROUGE scoring
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def compute_rouge(references: list[str], candidate: str) -> dict[str, dict[str, float]]:
-    """Compute ROUGE-1, ROUGE-2, ROUGE-L (best across references)."""
-    if not references or not candidate.strip():
-        empty = {"precision": 0.0, "recall": 0.0, "fmeasure": 0.0}
+# =========================
+# ROUGE
+# =========================
+def compute_rouge(refs, cand):
+    if not refs or not cand:
+        empty = {"precision": 0, "recall": 0, "fmeasure": 0}
         return {"rouge1": empty, "rouge2": empty, "rougeL": empty}
 
     scorer = rouge_scorer.RougeScorer(
-        ["rouge1", "rouge2", "rougeL"], tokenizer=ViTokenizer(),
+        ["rouge1", "rouge2", "rougeL"],
+        tokenizer=ViTokenizer()
     )
 
-    best: dict[str, dict[str, float]] = {}
-    for ref in references:
-        if not ref.strip():
-            continue
-        scores = scorer.score(ref, candidate)
-        for name, obj in scores.items():
-            cur = {
-                "precision": round(obj.precision, 4),
-                "recall": round(obj.recall, 4),
-                "fmeasure": round(obj.fmeasure, 4),
-            }
-            if name not in best or cur["fmeasure"] > best[name]["fmeasure"]:
-                best[name] = cur
+    best = {}
 
-    if not best:
-        empty = {"precision": 0.0, "recall": 0.0, "fmeasure": 0.0}
-        return {"rouge1": empty, "rouge2": empty, "rougeL": empty}
+    for r in refs:
+        scores = scorer.score(r, cand)
+
+        for k, v in scores.items():
+            cur = {
+                "precision": round(v.precision, 4),
+                "recall": round(v.recall, 4),
+                "fmeasure": round(v.fmeasure, 4),
+            }
+
+            if k not in best or cur["fmeasure"] > best[k]["fmeasure"]:
+                best[k] = cur
+
     return best
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Recall@K scoring
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def compute_recall_at_k(gt_ids: set[str], retrieved_ids: list[str], k: int) -> float:
-    """Compute Recall@K."""
-    if not gt_ids:
+# =========================
+# RECALL@K
+# =========================
+def recall_at_k(gt, pred, k):
+    if not gt:
         return 0.0
-    top_k = set(str(cid) for cid in retrieved_ids[:k])
-    return len(top_k & set(str(g) for g in gt_ids)) / len(gt_ids)
+
+    pred = pred[:k]
+    return len(set(pred) & set(gt)) / len(gt)
 
 
-def route_query(query: str) -> str:
-    """Simple keyword-based routing for retrieval domain."""
-    q = query.lower()
-    kws = [
-        "quy chế", "quy định", "chính sách", "phòng ban",
-        "giới thiệu", "chiến lược", "tổ chức", "giảng viên",
-        "sự kiện", "thông báo", "chất lượng", "đội ngũ", "cơ cấu",
-    ]
-    return "regulations" if any(k in q for k in kws) else "curriculum"
+# =========================
+# GENERATION EVAL
+# =========================
+def evaluate_generation(df, agent):
+    results = []
+    bleu_acc = {"bleu_1": [], "bleu_2": [], "bleu_3": [], "bleu_4": []}
 
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# Generation evaluation (BLEU + ROUGE)
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def evaluate_generation(
-    df: pd.DataFrame,
-    run_bleu: bool = True,
-    run_rouge: bool = True,
-    save_callback=None,
-) -> tuple[list[dict], dict]:
-    """Evaluate generation quality using BLEU and/or ROUGE.
-
-    Returns (per_question_results, aggregate_scores).
-    """
-    from src.agent.haui_agent import HAUIAgent
-
-    print("\n  Initialising HAUIAgent...")
-    agent = HAUIAgent()
-
-    results: list[dict] = []
-    bleu_accum = {"bleu_1": [], "bleu_2": [], "bleu_3": [], "bleu_4": []}
-    rouge_accum = {
-        "rouge1_p": [], "rouge1_r": [], "rouge1_f": [],
-        "rouge2_p": [], "rouge2_r": [], "rouge2_f": [],
-        "rougeL_p": [], "rougeL_r": [], "rougeL_f": [],
-    }
-
-    total = len(df)
-
-    for idx, row in df.iterrows():
-        qid = row.get("qid", str(idx))
-        question = row["query"]
-        refs = extract_references(row["generation_gt"])
+    for i, row in df.iterrows():
+        q = row["query"]
+        refs = extract_references(row.get("generation_gt"))
 
         if not refs:
-            print(f"  [{idx + 1}/{total}] SKIP (no ground truth)")
             continue
 
-        print(f"\n  [{idx + 1}/{total}] Q: {question[:80]}...")
+        print(f"[GEN {i}] {q[:60]}")
 
-        agent.reset()
-        t0 = time.time()
         try:
-            resp = agent.chat(question)
-            candidate = resp.answer
-            intent = resp.intent
-        except KeyboardInterrupt:
-            print("\n  [!] Dừng bởi người dùng (KeyboardInterrupt). Đang lưu kết quả...")
-            break
-        except Exception as exc:
-            print(f" ERROR: {exc}")
-            candidate, intent = "", "error"
-        elapsed = time.time() - t0
+            resp = agent.chat(q)
+            cand = resp.answer or ""
+        except Exception as e:
+            print("ERROR:", e)
+            cand = ""
 
-        entry: dict = {
-            "qid": qid,
-            "question": question,
-            "reference": refs[0][:200] + ("..." if len(refs[0]) > 200 else ""),
-            "candidate": candidate[:200] + ("..." if len(candidate) > 200 else ""),
-            "intent": intent,
-            "elapsed_seconds": round(elapsed, 2),
-        }
+        bleu = compute_bleu(refs, cand)
 
-        # ── BLEU ──
-        if run_bleu:
-            bleu = compute_bleu(refs, candidate)
-            entry["bleu"] = bleu
-            for k, v in bleu.items():
-                bleu_accum[k].append(v)
-            print(f"    BLEU  1:{bleu['bleu_1']:.4f}  2:{bleu['bleu_2']:.4f}  "
-                  f"3:{bleu['bleu_3']:.4f}  4:{bleu['bleu_4']:.4f}")
-
-        # ── ROUGE ──
-        if run_rouge:
-            rouge = compute_rouge(refs, candidate)
-            entry["rouge"] = rouge
-            for metric in ["rouge1", "rouge2", "rougeL"]:
-                rouge_accum[f"{metric}_p"].append(rouge[metric]["precision"])
-                rouge_accum[f"{metric}_r"].append(rouge[metric]["recall"])
-                rouge_accum[f"{metric}_f"].append(rouge[metric]["fmeasure"])
-            r1, r2, rL = rouge["rouge1"], rouge["rouge2"], rouge["rougeL"]
-            print(f"    ROUGE 1-F:{r1['fmeasure']:.4f}  2-F:{r2['fmeasure']:.4f}  "
-                  f"L-F:{rL['fmeasure']:.4f}")
-
-        print(f"    ({elapsed:.1f}s)")
-        results.append(entry)
-
-        if save_callback:
-            temp_avg = {}
-            n_res = len(results)
-            if run_bleu and n_res > 0:
-                for k, vals in bleu_accum.items(): temp_avg[k] = round(sum(vals) / n_res, 4)
-            if run_rouge and n_res > 0:
-                for k, vals in rouge_accum.items(): temp_avg[k] = round(sum(vals) / n_res, 4)
-            save_callback(results, temp_avg)
-
-    # ── Aggregate ─────────────────────────────────────────────────────────
-    n = len(results)
-    avg: dict = {}
-    if run_bleu and n > 0:
-        for k, vals in bleu_accum.items():
-            avg[k] = round(sum(vals) / n, 4)
-    if run_rouge and n > 0:
-        for k, vals in rouge_accum.items():
-            avg[k] = round(sum(vals) / n, 4)
-
-    return results, avg
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# Retrieval evaluation (Recall@K)
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def evaluate_retrieval(
-    df: pd.DataFrame,
-    k_values: list[int],
-    store_mode: str = "curriculum",
-    save_callback=None,
-) -> tuple[list[dict], dict]:
-    """Evaluate retrieval quality using Recall@K.
-
-    Returns (per_question_results, aggregate_scores).
-    """
-    from src.config import settings
-    from src.service.vectorstore import curriculum_store, regulation_store
-
-    max_k = max(k_values)
-    results: list[dict] = []
-    all_recalls: dict[int, list[float]] = {k: [] for k in k_values}
-
-    total = len(df)
-
-    for idx, row in df.iterrows():
-        qid = row.get("qid", str(idx))
-        question = row["query"]
-        gt_ids = extract_gt_chunk_ids(row["retrieval_gt"])
-
-        if not gt_ids:
-            print(f"  [{idx + 1}/{total}] SKIP (no retrieval ground truth)")
-            continue
-
-        print(f"\n  [{idx + 1}/{total}] Q: {question[:80]}...")
-        print(f"    GT IDs: {sorted(gt_ids)}")
-
-        # Determine store
-        if store_mode == "auto":
-            domain = route_query(question)
-        elif store_mode == "both":
-            domain = "both"
-        else:
-            domain = store_mode
-
-        t0 = time.time()
-        try:
-            if domain == "both":
-                c_chunks = curriculum_store.retrieve(question, top_k=max_k)
-                r_chunks = regulation_store.retrieve(question, top_k=max_k)
-                merged = sorted(c_chunks + r_chunks, key=lambda c: c.score, reverse=True)
-                retrieved_ids = [str(c.chunk_id) for c in merged[:max_k]]
-            else:
-                store = regulation_store if domain == "regulations" else curriculum_store
-                chunks = store.retrieve(question, top_k=max_k)
-                retrieved_ids = [str(c.chunk_id) for c in chunks]
-        except KeyboardInterrupt:
-            print("\n  [!] Dừng bởi người dùng (KeyboardInterrupt). Đang lưu kết quả...")
-            break
-        except Exception as exc:
-            print(f"    ❌ ERROR: {exc}")
-            retrieved_ids = []
-        elapsed = time.time() - t0
-
-        print(f"    Store: {domain} | Retrieved: {retrieved_ids[:10]}"
-              f"{'...' if len(retrieved_ids) > 10 else ''} ({elapsed:.2f}s)")
-
-        recalls: dict[str, float] = {}
-        for k in k_values:
-            r = compute_recall_at_k(gt_ids, retrieved_ids, k)
-            recalls[f"recall@{k}"] = round(r, 4)
-            all_recalls[k].append(r)
-
-        recall_parts = [f"R@{k}:{recalls[f'recall@{k}']:.4f}" for k in k_values]
-        print(f"    {' '.join(recall_parts)}")
+        for k in bleu:
+            bleu_acc[k].append(bleu[k])
 
         results.append({
-            "qid": qid,
-            "question": question,
-            "domain": domain,
-            "gt_chunk_ids": sorted(gt_ids),
-            "retrieved_chunk_ids": retrieved_ids[:max_k],
-            "scores": recalls,
-            "elapsed_seconds": round(elapsed, 2),
+            "query": q,
+            "candidate": cand,
+            "bleu": bleu
         })
 
-        if save_callback:
-            temp_avg = {}
-            for k_val in k_values:
-                temp_avg[f"recall@{k_val}"] = round(sum(all_recalls[k_val]) / len(results), 4) if results else 0.0
-            save_callback(results, temp_avg)
-
-    # ── Aggregate ─────────────────────────────────────────────────────────
-    n = len(results)
-    avg: dict = {}
-    if n > 0:
-        for k in k_values:
-            avg[f"recall@{k}"] = round(sum(all_recalls[k]) / n, 4)
+    avg = {
+        k: round(sum(v) / len(v), 4) if v else 0
+        for k, v in bleu_acc.items()
+    }
 
     return results, avg
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Summary printer
-# ═══════════════════════════════════════════════════════════════════════════════
+# =========================
+# RETRIEVAL EVAL
+# =========================
+def evaluate_retrieval(df, store, k_list):
+    results = []
+    acc = {k: [] for k in k_list}
 
-def print_summary(
-    mode: str,
-    total: int,
-    gen_results: list[dict] | None,
-    gen_avg: dict | None,
-    ret_results: list[dict] | None,
-    ret_avg: dict | None,
-    k_values: list[int],
-):
-    """Print a pretty summary table to console."""
-    print("\n" + "=" * 64)
-    print("  HAUI AGENT — EVALUATION SUMMARY")
-    print("=" * 64)
+    for i, row in df.iterrows():
+        q = row["query"]
+        gt = extract_gt_chunk_ids(row.get("retrieval_gt"))
 
-    # ── Generation metrics ────────────────────────────────────────────────
-    if gen_results is not None and gen_avg:
-        n = len(gen_results)
-        print(f"\n  Generation metrics ({n}/{total} questions)")
+        try:
+            chunks = store.retrieve(q, top_k=max(k_list))
+            pred = [c.chunk_id for c in chunks]
+        except Exception as e:
+            print("ERROR:", e)
+            pred = []
 
-        if any(k.startswith("bleu") for k in gen_avg):
-            print(f"  ┌──────────┬──────────┐")
-            print(f"  │  Metric  │  Score   │")
-            print(f"  ├──────────┼──────────┤")
-            for i in range(1, 5):
-                key = f"bleu_{i}"
-                if key in gen_avg:
-                    print(f"  │  BLEU-{i}  │  {gen_avg[key]:.4f}  │")
-            print(f"  └──────────┴──────────┘")
+        scores = {}
 
-        if any(k.startswith("rouge") for k in gen_avg):
-            print(f"  ┌──────────┬───────────┬──────────┬──────────┐")
-            print(f"  │  Metric  │ Precision │  Recall  │ F-score  │")
-            print(f"  ├──────────┼───────────┼──────────┼──────────┤")
-            for m in ["rouge1", "rouge2", "rougeL"]:
-                label = {"rouge1": "ROUGE-1", "rouge2": "ROUGE-2", "rougeL": "ROUGE-L"}[m]
-                p = gen_avg.get(f"{m}_p", 0)
-                r = gen_avg.get(f"{m}_r", 0)
-                f = gen_avg.get(f"{m}_f", 0)
-                print(f"  │ {label:8s} │  {p:.4f}   │  {r:.4f}  │  {f:.4f}  │")
-            print(f"  └──────────┴───────────┴──────────┴──────────┘")
+        for k in k_list:
+            r = recall_at_k(gt, pred, k)
+            scores[f"recall@{k}"] = round(r, 4)
+            acc[k].append(r)
 
-    # ── Retrieval metrics ─────────────────────────────────────────────────
-    if ret_results is not None and ret_avg:
-        n = len(ret_results)
-        print(f"\n  Retrieval metrics ({n}/{total} questions)")
-        print(f"  ┌──────────────┬──────────┐")
-        print(f"  │    Metric    │  Score   │")
-        print(f"  ├──────────────┼──────────┤")
-        for k in k_values:
-            key = f"recall@{k}"
-            if key in ret_avg:
-                print(f"  │  Recall@{k:<4d} │  {ret_avg[key]:.4f}  │")
-        print(f"  └──────────────┴──────────┘")
+        results.append({
+            "query": q,
+            "scores": scores
+        })
 
-    print("=" * 64)
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# CLI
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def save_evaluation(output_path, mode, qa_file, total, gen_results, gen_avg, ret_results, ret_avg, k_values, store):
-    """Save the evaluation results to JSON."""
-    output = {
-        "evaluation_date": datetime.now().isoformat(),
-        "mode": mode,
-        "qa_file": qa_file,
-        "total_questions": total,
+    avg = {
+        f"recall@{k}": round(sum(v) / len(v), 4) if v else 0
+        for k, v in acc.items()
     }
 
-    if gen_results is not None:
-        output["generation"] = {
-            "evaluated": len(gen_results),
-            "average_scores": gen_avg or {},
-            "details": gen_results,
-        }
-
-    if ret_results is not None:
-        output["retrieval"] = {
-            "evaluated": len(ret_results),
-            "k_values": k_values,
-            "store": store,
-            "average_scores": ret_avg or {},
-            "details": ret_results,
-        }
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
+    return results, avg
 
 
+# =========================
+# MAIN
+# =========================
 def main():
-    parser = argparse.ArgumentParser(
-        description="Unified evaluation for HAUI Agent (BLEU + ROUGE + Recall@K)",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  python scripts/evaluate.py --mode all --limit 10
-  python scripts/evaluate.py --mode recall --store curriculum --k 1 3 5 10
-  python scripts/evaluate.py --mode generation --limit 5
-  python scripts/evaluate.py --mode bleu --limit 5
-  python scripts/evaluate.py --mode rouge --limit 5
-        """,
-    )
-    parser.add_argument(
-        "--mode",
-        default="all",
-        choices=["all", "generation", "recall", "bleu", "rouge"],
-        help="Which metrics to run (default: all)",
-    )
-    parser.add_argument(
-        "--qa",
-        default="data/qa.parquet",
-        help="Path to the Q&A parquet file (default: data/qa.parquet)",
-    )
-    parser.add_argument(
-        "--output",
-        default="evaluation_results.json",
-        help="Path to save evaluation results JSON (default: evaluation_results.json)",
-    )
-    parser.add_argument(
-        "--k",
-        type=int,
-        nargs="+",
-        default=[1, 3, 5, 10],
-        help="K values for Recall@K (default: 1 3 5 10)",
-    )
-    parser.add_argument(
-        "--store",
-        default="curriculum",
-        choices=["curriculum", "regulations", "both", "auto"],
-        help="Which FAISS store for retrieval eval (default: curriculum)",
-    )
-    parser.add_argument(
-        "--limit",
-        type=int,
-        default=None,
-        help="Only evaluate the first N questions",
-    )
-    parser.add_argument(
-        "--offset",
-        type=int,
-        default=0,
-        help="Skip the first N questions (use with --limit for batching)",
-    )
-    parser.add_argument(
-        "--log-level",
-        default="WARNING",
-        choices=["DEBUG", "INFO", "WARNING", "ERROR"],
-        help="Logging level (default: WARNING)",
-    )
+    from src.agent.haui_agent import HAUIAgent
+    from src.service.vectorstore import curriculum_store
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--qa", default="data/qa.parquet")
+    parser.add_argument("--mode", default="all")
+    parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args()
 
-    logging.basicConfig(
-        level=getattr(logging, args.log_level),
-        format="%(asctime)s %(name)s %(levelname)s: %(message)s",
-    )
+    df = pd.read_parquet(args.qa).head(args.limit)
 
-    # ── Load data ─────────────────────────────────────────────────────────
-    print(f"Loading QA data from '{args.qa}'...")
-    df = pd.read_parquet(args.qa)
-    print(f"Loaded {len(df)} question-answer pairs.")
+    agent = HAUIAgent()
 
-    if args.offset > 0:
-        df = df.iloc[args.offset:]
-        print(f"Skipping first {args.offset} questions.")
+    gen_avg, ret_avg = None, None
 
-    if args.limit:
-        df = df.head(args.limit)
-        print(f"Limiting to {args.limit} questions.")
+    if args.mode in ["all", "generation"]:
+        print("\n=== GENERATION ===")
+        _, gen_avg = evaluate_generation(df, agent)
 
-    total = len(df)
-    mode = args.mode
+    if args.mode in ["all", "recall"]:
+        print("\n=== RETRIEVAL ===")
+        _, ret_avg = evaluate_retrieval(df, curriculum_store, [1, 3, 5, 10])
 
-    run_bleu = mode in ("all", "generation", "bleu")
-    run_rouge = mode in ("all", "generation", "rouge")
-    run_recall = mode in ("all", "recall")
-
-    gen_results, gen_avg = None, None
-    ret_results, ret_avg = None, None
-
-    # ── Generation evaluation ─────────────────────────────────────────────
-    if run_bleu or run_rouge:
-        print(f"\n{'─' * 64}")
-        metrics = []
-        if run_bleu:
-            metrics.append("BLEU")
-        if run_rouge:
-            metrics.append("ROUGE")
-        print(f"  Running generation evaluation: {' + '.join(metrics)}")
-        print(f"{'─' * 64}")
-        
-        def _save_gen(partial_results, partial_avg):
-            save_evaluation(args.output, mode, args.qa, total, partial_results, partial_avg, ret_results, ret_avg, args.k, args.store)
-            
-        gen_results, gen_avg = evaluate_generation(df, run_bleu=run_bleu, run_rouge=run_rouge, save_callback=_save_gen)
-
-    # ── Retrieval evaluation ──────────────────────────────────────────────
-    if run_recall:
-        print(f"\n{'─' * 64}")
-        print(f"  Running retrieval evaluation: Recall@K (store={args.store})")
-        print(f"{'─' * 64}")
-        
-        def _save_ret(partial_results, partial_avg):
-            save_evaluation(args.output, mode, args.qa, total, gen_results, gen_avg, partial_results, partial_avg, args.k, args.store)
-            
-        ret_results, ret_avg = evaluate_retrieval(df, args.k, args.store, save_callback=_save_ret)
-
-    # ── Summary ───────────────────────────────────────────────────────────
-    print_summary(mode, total, gen_results, gen_avg, ret_results, ret_avg, args.k)
-
-    # ── Final Save ────────────────────────────────────────────────────────
-    save_evaluation(args.output, mode, args.qa, total, gen_results, gen_avg, ret_results, ret_avg, args.k, args.store)
-    print(f"\nResults saved to '{args.output}'")
+    print("\n========== RESULT ==========")
+    print("GEN:", gen_avg)
+    print("RET:", ret_avg)
 
 
 if __name__ == "__main__":

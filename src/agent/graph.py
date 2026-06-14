@@ -2,16 +2,6 @@
 Multi-agent LangGraph for the HAUI RAG chatbot.
 
 Architecture: Supervisor-Worker pattern with 2 RAG workers + 1 general fallback.
-
-Flow:
-  START → supervisor
-    ├── curriculum  → curriculum_generate → curriculum_retrieve
-    │                   → curriculum_grade → curriculum_answer → END
-    │                                      → curriculum_rewrite → curriculum_generate (loop)
-    ├── regulations → regulation_generate → regulation_retrieve
-    │                   → regulation_grade → regulation_answer → END
-    │                                      → regulation_rewrite → regulation_generate (loop)
-    └── general     → general_respond → END
 """
 
 from langgraph.graph import StateGraph, START, END
@@ -31,29 +21,27 @@ from src.agent.nodes import (
 )
 
 
-def _add_rag_worker(
-    workflow: StateGraph,
-    prefix: str,
-    tool,
-    system_prompt: str,
-) -> None:
-    """Register the 5 nodes + edges for one RAG worker agent.
-
-    Nodes added:  {prefix}_generate, {prefix}_retrieve, {prefix}_grade,
-                  {prefix}_rewrite, {prefix}_answer
+def _add_rag_worker(workflow: StateGraph, prefix: str, tool, system_prompt: str) -> None:
     """
+    Add a full RAG worker pipeline:
+    generate → retrieve → grade → (answer | rewrite loop)
+    """
+
     generate = make_generate_node(tool, system_prompt, f"{prefix}_generate")
     retrieve = ToolNode([tool])
     grade = make_grade_edge(f"{prefix}_grade")
     rewrite = make_rewrite_node(f"{prefix}_rewrite")
     answer = make_answer_node(f"{prefix}_answer")
 
+    # register nodes
     workflow.add_node(f"{prefix}_generate", generate)
     workflow.add_node(f"{prefix}_retrieve", retrieve)
     workflow.add_node(f"{prefix}_rewrite", rewrite)
     workflow.add_node(f"{prefix}_answer", answer)
 
-    # generate → retrieve OR end
+    # ─────────────────────────────
+    # generate → tool call OR END
+    # ─────────────────────────────
     workflow.add_conditional_edges(
         f"{prefix}_generate",
         tools_condition,
@@ -63,35 +51,45 @@ def _add_rag_worker(
         },
     )
 
-    # retrieve → grade (conditional)
+    # ─────────────────────────────
+    # retrieve → grade decision
+    # ─────────────────────────────
+    def grade_router(state):
+        return grade(state)
+
     workflow.add_conditional_edges(
         f"{prefix}_retrieve",
-        grade,
+        grade_router,
         {
             "generate_answer": f"{prefix}_answer",
             "rewrite_question": f"{prefix}_rewrite",
         },
     )
 
-    # answer → end, rewrite → generate (retry loop)
+    # ─────────────────────────────
+    # answer → END
+    # rewrite → loop back
+    # ─────────────────────────────
     workflow.add_edge(f"{prefix}_answer", END)
     workflow.add_edge(f"{prefix}_rewrite", f"{prefix}_generate")
 
 
 def build_graph():
-    """Build and compile the multi-agent Supervisor-Worker graph."""
+    """Compile full supervisor-worker LangGraph."""
+
     workflow = StateGraph(AgentState)
 
     # ── Supervisor ──
     workflow.add_node("supervisor", supervisor_node)
     workflow.add_edge(START, "supervisor")
+
     workflow.add_conditional_edges("supervisor", route_to_agent)
 
-    # ── RAG Workers ──
-    _add_rag_worker(workflow, "curriculum",  retrieve_curriculum,  CURRICULUM_SYSTEM)
-    _add_rag_worker(workflow, "regulation",  retrieve_regulations, REGULATION_SYSTEM)
+    # ── Workers ──
+    _add_rag_worker(workflow, "curriculum", retrieve_curriculum, CURRICULUM_SYSTEM)
+    _add_rag_worker(workflow, "regulation", retrieve_regulations, REGULATION_SYSTEM)
 
-    # ── General fallback ──
+    # ── Fallback ──
     workflow.add_node("general_respond", general_respond_node)
     workflow.add_edge("general_respond", END)
 

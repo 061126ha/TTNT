@@ -1,37 +1,67 @@
 """
 Pydantic models for the HAUI Agent.
 
-Provides type-safe data structures used across the agent pipeline:
-  - ChatMessage: a single chat message with role + content
-  - RetrievedChunk: a chunk returned from FAISS vector search
-  - AgentResponse: the final response returned to the caller
+Type-safe structures for:
+- Retrieval (FAISS + reranker)
+- Agent response
 """
 
 from pydantic import BaseModel, Field
 
 
-class ChatMessage(BaseModel):
-    """A single message in the conversation history."""
-    role: str = Field(..., description="Message role: 'system', 'user', or 'assistant'")
-    content: str = Field(..., description="Message text content")
-
-
+# =========================
+# Retrieved Chunk
+# =========================
 class RetrievedChunk(BaseModel):
-    """A chunk retrieved from the FAISS vector store."""
-    chunk_id: int | str = Field(..., description="Unique identifier of the chunk")
-    content: str = Field("", description="Text content of the chunk")
-    section: str = Field("", description="Top-level section heading")
+    """A chunk retrieved from FAISS + reranker pipeline."""
+
+    chunk_id: int = Field(..., description="Unique chunk ID")
+
+    content: str = Field("", description="Raw text content")
+
+    section: str = Field("", description="Top-level section")
+
     subsection: str = Field("", description="Subsection heading")
-    score: float = Field(0.0, description="Cosine similarity score")
-    text: str = Field("", description="Full text used for embedding (header + content)")
-    rerank_score: float | None = Field(None, description="Score assigned by the reranker (None if no reranking)")
+
+    score: float = Field(
+        0.0,
+        description="FAISS similarity score"
+    )
+
+    rerank_score: float | None = Field(
+        None,
+        description="Reranker score (if applied)"
+    )
+
+    # unified field (important fix)
+    text: str = Field(
+        "",
+        description="Final text used for embedding/retrieval (header + content)"
+    )
+
+    class Config:
+        extra = "ignore"
+        validate_assignment = True
 
 
+# =========================
+# Agent Response
+# =========================
 class AgentResponse(BaseModel):
-    """Response returned by HAUIAgent.chat()."""
-    answer: str = Field(..., description="The generated answer text")
-    intent: str = Field(..., description="Classified intent: 'related' or 'unrelated'")
+    """Final output of HAUIAgent.chat()."""
+
+    answer: str = Field(..., description="Final generated answer")
+
+    intent: str = Field(
+        ...,
+        description="curriculum | regulations | general | related | unrelated"
+    )
+
     sources: list[RetrievedChunk] = Field(
         default_factory=list,
-        description="Retrieved source chunks (empty for off-topic queries)",
+        description="Retrieved chunks used for answer"
     )
+
+    class Config:
+        extra = "ignore"
+        validate_assignment = True
